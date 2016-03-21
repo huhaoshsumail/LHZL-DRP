@@ -1,24 +1,27 @@
-package com.lhzl.drp.filter;
+package com.lhzl.drp.controller;
 
 import com.lhzl.drp.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.ValidationException;
+import java.util.List;
 
 @ControllerAdvice
 @ResponseBody
-public class ExceptionFilter {
+public class ExceptionAdvice {
 
-    static private Logger logger = LoggerFactory.getLogger(ExceptionFilter.class);
+    static private Logger logger = LoggerFactory.getLogger(ExceptionAdvice.class);
 
     /**
      * 400 - Bad Request
@@ -30,7 +33,22 @@ public class ExceptionFilter {
         return new Response().failure("could_not_read_json");
     }
 
-
+    /**
+     * 400 - Bad Request
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Response handleValidationException(MethodArgumentNotValidException e) {
+        logger.error("参数验证失败", e);
+        BindingResult bindingResult = e.getBindingResult();
+        String msg = "";
+        List<ObjectError> objErrorList = bindingResult.getAllErrors();
+        for (ObjectError error : objErrorList) {
+            msg += error.getDefaultMessage() + "，";
+        }
+        return new Response().failure(msg);
+    }
+    
     /**
      * 405 - Method Not Allowed
      */
@@ -60,4 +78,5 @@ public class ExceptionFilter {
         logger.error("服务运行异常", e);
         return new Response().failure(e.getMessage());
     }
+
 } 

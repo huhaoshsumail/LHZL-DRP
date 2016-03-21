@@ -48,10 +48,7 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Response insertUser(@RequestBody @Valid User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new Response().failure(Error.analyzeError(bindingResult));
-        }
+    public Response insertUser(@RequestBody @Valid User user) {
         userService.insertUser(user);
         return new Response().success();
     }
