@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <title>莲花之旅分销系统</title>
     <link href="favicon.ico" rel="shortcut icon">
-    <link href="assets/css/app.css" rel="stylesheet">
+    <link href="assets/css/index.css" rel="stylesheet">
 </head>
 <body>
 <script src="assets/js/jquery-1.12.1.min.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/index.js"></script>
 </body>
 </html>
