@@ -23,8 +23,6 @@
         <property value="application/json" name="supportedMediaTypes"/>
     </bean>
 
-    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
-
     <!-- 对模型视图添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/" p:suffix=".jsp"/>

@@ -22,8 +22,6 @@
     <import resource="classpath:spring-mybatis.xml"/>
 
     <!--导入task配置文件-->
-    <!--<import resource="classpath:spring-task.xml"/>-->
-
-    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
+    <import resource="classpath:spring-task.xml"/>
 
 </beans>
