@@ -24,7 +24,4 @@
     <!--导入task配置文件-->
     <import resource="classpath:spring-task.xml"/>
 
-    <!--开启验证-->
-    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
-
 </beans>

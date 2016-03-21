@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.chenhao.admin.dao.UserMapper">
+<mapper namespace="com.lhzl.drp.dao.UserMapper">
 
-    <select id="queryUserById" resultType="com.chenhao.admin.model.User" parameterType="java.lang.Integer">
+    <select id="queryUserById" resultType="com.lhzl.drp.model.User" parameterType="java.lang.Integer">
         select
             id,
             ename,
@@ -16,7 +16,7 @@
         from user t where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="queryUser" resultType="com.chenhao.admin.model.User" parameterType="java.util.Map">
+    <select id="queryUser" resultType="com.lhzl.drp.model.User" parameterType="java.util.Map">
         select
         id,
         ename,
@@ -56,7 +56,7 @@
         </if>
     </select>
 
-    <insert id="insertUser" parameterType="com.chenhao.admin.model.User">
+    <insert id="insertUser" parameterType="com.lhzl.drp.model.User">
       INSERT INTO user
       (
 	    ename,
@@ -78,7 +78,7 @@
 	  )
     </insert>
 
-    <update id="updateUser" parameterType="com.chenhao.admin.model.User">
+    <update id="updateUser" parameterType="com.lhzl.drp.model.User">
         UPDATE user
         SET
             ename = #{ename,jdbcType=VARCHAR},
