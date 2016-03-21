@@ -60,7 +60,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 
     <!--配置dao-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.chenhao.admin.dao"/>
+        <property name="basePackage" value="com.lhzl.drp.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
