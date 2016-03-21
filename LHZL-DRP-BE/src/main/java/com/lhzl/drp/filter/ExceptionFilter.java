@@ -30,15 +30,6 @@ public class ExceptionFilter {
         return new Response().failure("could_not_read_json");
     }
 
-    /**
-     * 400 - Bad Request
-     */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ValidationException.class)
-    public Response handleValidationException(ValidationException e) {
-        logger.error("参数验证失败", e);
-        return new Response().failure("validation_exception");
-    }
 
     /**
      * 405 - Method Not Allowed

@@ -2,6 +2,7 @@ package com.lhzl.drp.controller;
 
 import com.lhzl.drp.model.User;
 import com.lhzl.drp.service.UserService;
+import com.lhzl.drp.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,53 +33,40 @@ public class UserController {
 
     @RequestMapping("/queryUserById")
     @ResponseBody
-    public Map<String, Object> queryUserById(int id) {
-        Map<String, Object> res = new HashMap();
+    public Response queryUserById(int id) {
         User user = userService.queryUserById(id);
-        res.put("data", user);
-        res.put("status", "success");
-        return res;
+        return new Response().success(user);
     }
 
     @RequestMapping("/queryUser")
     @ResponseBody
-    public Map<String, Object> queryUser(@RequestBody Map<String, Object> map) {
-        Map<String, Object> res = new HashMap();
+    public Response queryUser(@RequestBody Map<String, Object> map) {
         List<User> users = userService.queryUser(map);
-        res.put("status", "success");
-        res.put("data", users);
-        res.put("count", map.get("count"));
-        return res;
+        return new Response().success(users);
     }
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Map<String, Object> insertUser(@RequestBody @Valid User user,BindingResult binding) {
-        if(!binding.hasErrors()){
+    public Response insertUser(@RequestBody @Valid User user, BindingResult binding) {
+        if (binding.hasErrors()) {
+            return new Response().failure("验证参数失败");
         }
-        Map<String, Object> res = new HashMap();
         userService.insertUser(user);
-        res.put("status", "success");
-        return res;
+        return new Response().success();
     }
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Map<String, Object> updateUser(@RequestBody @Valid User user) {
-        Map<String, Object> res = new HashMap();
+    public Response updateUser(@RequestBody @Valid User user) {
         userService.updateUser(user);
-        res.put("status", "success");
-        return res;
+        return new Response().success();
     }
 
     @RequestMapping("/deleteUser")
     @ResponseBody
-    public Map<String, Object> deleteUser(@RequestBody ArrayList<Integer> ids) {
-        Map<String, Object> res = new HashMap();
+    public Response deleteUser(@RequestBody ArrayList<Integer> ids) {
         userService.deleteUser(ids);
-        res.put("status", "success");
-        return res;
+        return new Response().success();
     }
-
 
 }
