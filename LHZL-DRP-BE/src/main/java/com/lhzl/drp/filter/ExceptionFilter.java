@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.validation.ValidationException;
+
 @ControllerAdvice
 @ResponseBody
 public class ExceptionFilter {
@@ -26,6 +28,16 @@ public class ExceptionFilter {
     public Response handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         logger.error("参数解析失败", e);
         return new Response().failure("could_not_read_json");
+    }
+
+    /**
+     * 400 - Bad Request
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ValidationException.class)
+    public Response handleValidationException(ValidationException e) {
+        logger.error("参数验证失败", e);
+        return new Response().failure("validation_exception");
     }
 
     /**

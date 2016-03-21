@@ -31,7 +31,7 @@ import java.util.Properties;
  */
 @Intercepts({
         @Signature(method = "prepare", type = StatementHandler.class, args = {Connection.class})})
-public class PageFiler implements Interceptor {
+public class PageFilter implements Interceptor {
 
     private String databaseType;//数据库类型，不同的数据库有不同的分页方法
 

@@ -45,7 +45,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
     </bean>
 
     <!-- 分页拦截器 -->
-    <bean id="pageInterceptor" class="com.lhzl.drp.filter.PageFiler">
+    <bean id="pageInterceptor" class="com.lhzl.drp.filter.PageFilter">
         <property name="databaseType" value="mysql"/>
     </bean>
 

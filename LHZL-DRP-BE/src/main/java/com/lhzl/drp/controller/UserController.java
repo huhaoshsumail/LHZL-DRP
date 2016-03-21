@@ -65,10 +65,7 @@ public class UserController {
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Map<String, Object> updateUser(@RequestBody @Valid User user, BindingResult binding) {
-        if(binding.hasErrors()){
-            return ResponseUtil.analyzeError(binding);
-        }
+    public Map<String, Object> updateUser(@RequestBody @Valid User user) {
         Map<String, Object> res = new HashMap();
         userService.updateUser(user);
         res.put("status", "success");
