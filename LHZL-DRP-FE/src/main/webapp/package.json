@@ -1,0 +1,8 @@
+{
+  "name": "lhzl-drp-fe",
+  "version": "1.0.0",
+  "description": "莲花之旅分销系统",
+  "dependencies": {
+    "admin-lte": "^2.3.2"
+  }
+}
