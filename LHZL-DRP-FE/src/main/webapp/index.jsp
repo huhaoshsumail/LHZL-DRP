@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>莲花之旅</title>
+    <title>莲花之旅分销系统</title>
     <link href="favicon.ico" rel="shortcut icon">
     <link href="assets/css/app.css" rel="stylesheet">
 </head>
