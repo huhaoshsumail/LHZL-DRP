@@ -1,4 +1,4 @@
-package com.lhzl.drp.controller;
+package com.lhzl.drp.exception;
 
 import com.lhzl.drp.util.Response;
 import org.slf4j.Logger;
@@ -48,7 +48,7 @@ public class ExceptionAdvice {
         }
         return new Response().failure(msg);
     }
-    
+
     /**
      * 405 - Method Not Allowed
      */
