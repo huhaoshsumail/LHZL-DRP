@@ -7,6 +7,7 @@ public class Response {
 
     private Meta meta;
     private Object data;
+    private int count;
 
     public Response success() {
         this.meta = new Meta(true, OK);
@@ -35,6 +36,14 @@ public class Response {
 
     public Object getData() {
         return data;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public class Meta {

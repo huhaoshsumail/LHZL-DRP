@@ -41,7 +41,11 @@ public class UserController {
     @ResponseBody
     public Response queryUser(@RequestBody Map<String, Object> map) {
         List<User> users = userService.queryUser(map);
-        return new Response().success(users);
+        Response res = new Response().success(users);
+        if (map.containsKey("count")) {
+            res.setCount((Integer) map.get("count"));
+        }
+        return res;
     }
 
     @RequestMapping("/insertUser")
