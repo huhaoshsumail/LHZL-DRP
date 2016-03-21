@@ -630,7 +630,7 @@
                             <!-- /.item -->
                             <!-- chat item -->
                             <div class="item">
-                                <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline">
+                                <img src="node_modules/admin-lte/dist/img/user3-128x128.jpg" alt="user image" class="offline">
 
                                 <p class="message">
                                     <a href="#" class="name">
