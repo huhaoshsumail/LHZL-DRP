@@ -8,7 +8,6 @@
     <link href="assets/css/index.css" rel="stylesheet">
 </head>
 <body>
-<script src="assets/js/jquery-1.12.1.min.js"></script>
 <script src="assets/js/index.js"></script>
 </body>
 </html>

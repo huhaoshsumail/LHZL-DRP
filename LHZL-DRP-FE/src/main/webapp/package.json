@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "莲花之旅分销系统",
   "dependencies": {
-    "admin-lte": "^2.3.2"
+    "admin-lte": "^2.3.2",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "html5shiv": "^3.7.3",
+    "ionicons": "^3.0.0-alpha.3",
+    "jquery": "^2.2.2",
+    "jquery-ui": "^1.10.5",
+    "moment": "^2.12.0",
+    "raphael": "^2.1.4",
+    "respond": "^0.9.0"
   }
 }
