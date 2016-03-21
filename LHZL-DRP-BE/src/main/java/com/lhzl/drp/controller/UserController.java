@@ -2,6 +2,7 @@ package com.lhzl.drp.controller;
 
 import com.lhzl.drp.model.User;
 import com.lhzl.drp.service.UserService;
+import com.lhzl.drp.util.Error;
 import com.lhzl.drp.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,9 +48,9 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Response insertUser(@RequestBody @Valid User user, BindingResult binding) {
-        if (binding.hasErrors()) {
-            return new Response().failure("验证参数失败");
+    public Response insertUser(@RequestBody @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new Response().failure(Error.analyzeError(bindingResult));
         }
         userService.insertUser(user);
         return new Response().success();
