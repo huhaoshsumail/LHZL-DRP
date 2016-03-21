@@ -1,4 +1,4 @@
-package com.lhzl.drp.exception;
+package com.lhzl.drp.filter;
 
 import com.lhzl.drp.util.Response;
 import org.slf4j.Logger;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 @ResponseBody
-public class ExceptionAdvice {
+public class ExceptionFilter {
 
-    static private Logger logger = LoggerFactory.getLogger(ExceptionAdvice.class);
+    static private Logger logger = LoggerFactory.getLogger(ExceptionFilter.class);
 
     /**
      * 400 - Bad Request
