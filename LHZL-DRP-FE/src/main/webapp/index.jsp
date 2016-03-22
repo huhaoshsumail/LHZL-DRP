@@ -217,6 +217,7 @@
     <!-- Content Wrapper. Contains page content -->
     <iframe class="content-wrapper" id="pageContent" frameborder="0" src="pages/home/index.jsp">
     </iframe>
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs"><b>Version</b> 1.0.0</div>
