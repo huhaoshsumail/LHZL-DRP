@@ -18,6 +18,7 @@
     <link href="node_modules/admin-lte/plugins/datepicker/datepicker3.css" rel="stylesheet">
     <link href="node_modules/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
     <link href="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet">
+    <link href="node_modules/nprogress/nprogress.css">
     <link href="assets/css/index.css" rel="stylesheet" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -264,6 +265,7 @@
 <script src="node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
 <script src="node_modules/admin-lte/dist/js/app.min.js"></script>
+<script src="node_modules/nprogress/nprogress.js"></script>
 <script src="assets/js/index.js"></script>
 </body>
 </html>

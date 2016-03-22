@@ -8,6 +8,7 @@
     "html5shiv": "^3.7.3",
     "ionicons": "^3.0.0-alpha.3",
     "moment": "^2.12.0",
+    "nprogress": "^0.2.0",
     "raphael": "^2.1.4",
     "respond.js": "^1.4.2"
   }

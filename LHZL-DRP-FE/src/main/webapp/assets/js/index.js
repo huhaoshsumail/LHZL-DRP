@@ -330,13 +330,16 @@
 
     }
 
-    //加载动画
-    $("#pageContent").load(function(){
 
-    });
+    NProgress.configure({parent: '#pageContent'});
 
     //切换页面
     window.findPage = function (pageName) {
+        NProgress.start();
+        setTimeout(function () {
+            NProgress.done();
+            $('.fade').removeClass('out');
+        }, 1000);
         $("#pageContent").attr("src", "pages/" + pageName + "/index.html");
     };
 
