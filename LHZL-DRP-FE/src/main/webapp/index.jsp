@@ -196,7 +196,8 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">莲花之旅分销系统</li>
-                <li class="active" onclick="findPage('home')"><a href="javascript:;"><i class="fa fa-home"></i><span>首页</span></a>
+                <li class="active" onclick="findPage('home')"><a href="javascript:;"><i
+                        class="fa fa-home"></i><span>首页</span></a>
                 </li>
                 <li class="treeview">
                     <a href="#">
@@ -215,15 +216,13 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        <iframe id="pageContent" frameborder="0"></iframe>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-        </div>
-        <strong>Copyright &copy; 2016-2017 <a href="https://github.com/huhaoshsumail/LHZL-DRP"
-                                              target="_blank">LHZL-DRP</a>.</strong> All rights
-        reserved.
+        <div class="pull-right hidden-xs"><b>Version</b> 1.0.0</div>
+        <strong>Copyright &copy; 2016-2017<a href="https://github.com/huhaoshsumail/LHZL-DRP"
+                                             target="_blank">LHZL-DRP</a>.</strong>All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->

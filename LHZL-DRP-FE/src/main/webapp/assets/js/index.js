@@ -331,7 +331,7 @@
     }
 
     window.findPage = function (pageName) {
-        $(".wrapper>.content-wrapper").load("pages/" + pageName + "/index.html");
+        $("#pageContent").attr("src", "pages/" + pageName + "/index.html");
     };
 
 })(jQuery, $.AdminLTE);
