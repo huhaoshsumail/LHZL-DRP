@@ -330,6 +330,12 @@
 
     }
 
+    //加载动画
+    $("#pageContent").load(function(){
+
+    });
+
+    //切换页面
     window.findPage = function (pageName) {
         $("#pageContent").attr("src", "pages/" + pageName + "/index.html");
     };

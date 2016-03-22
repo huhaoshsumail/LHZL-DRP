@@ -216,7 +216,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <iframe id="pageContent" frameborder="0"></iframe>
+        <iframe id="pageContent" frameborder="0" src="pages/home/index.html"></iframe>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
