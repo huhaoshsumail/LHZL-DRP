@@ -329,4 +329,9 @@
         }
 
     }
+
+    window.findPage = function (pageName) {
+        $(".wrapper>.content-wrapper").load("pages/" + pageName + "/index.html");
+    };
+
 })(jQuery, $.AdminLTE);

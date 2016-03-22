@@ -196,11 +196,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">莲花之旅分销系统</li>
-                <li class="active">
-                    <a href="#">
-                        <i class="fa fa-home"></i>
-                        <span>首页</span>
-                    </a>
+                <li class="active" onclick="findPage('home')"><a href="javascript:;"><i class="fa fa-home"></i><span>首页</span></a>
                 </li>
                 <li class="treeview">
                     <a href="#">
@@ -209,8 +205,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i>功能项</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>功能项</a></li>
+                        <li onclick="findPage('demo')"><a href="javascript:;"><i class="fa fa-circle-o"></i>功能项</a></li>
                     </ul>
                 </li>
             </ul>
@@ -220,7 +215,6 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
