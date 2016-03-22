@@ -254,7 +254,6 @@
     <div class="control-sidebar-bg"></div>
 </div>
 
-
 <script src="node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="node_modules/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>$.widget.bridge('uibutton', $.ui.button);</script>

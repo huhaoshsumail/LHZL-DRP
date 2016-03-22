@@ -3,6 +3,7 @@
 }
 
 .sidebar-menu>li>a>span{
+    font-size: 13px!important;
     letter-spacing: 2px;
 }
 
