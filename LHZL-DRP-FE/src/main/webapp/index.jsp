@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -215,7 +216,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <iframe id="pageContent" frameborder="0" src="pages/home/index.html"></iframe>
+        <iframe id="pageContent" frameborder="0" src="pages/home/index.jsp"></iframe>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
