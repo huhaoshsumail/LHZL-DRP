@@ -1,0 +1,12 @@
+.sidebar-menu{
+    font-family: 'Microsoft YaHei';
+}
+
+.sidebar-menu>li>a>span{
+    letter-spacing: 2px;
+}
+
+.treeview-menu>li>a{
+    font-size: 12px!important;
+    letter-spacing: 2px;
+}
