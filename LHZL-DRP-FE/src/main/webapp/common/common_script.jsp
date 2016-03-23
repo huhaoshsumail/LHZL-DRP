@@ -15,5 +15,4 @@
 <script src="node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
 <script src="node_modules/admin-lte/dist/js/app.min.js"></script>
-<script src="assets/js/jquery.pjax.js"></script>
 <script src="assets/js/index.js"></script>

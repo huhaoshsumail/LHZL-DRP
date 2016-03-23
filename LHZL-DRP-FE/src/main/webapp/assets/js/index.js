@@ -330,6 +330,4 @@
 
     }
 
-    $(document).pjax('.main-sidebar .sidebar-menu a', '.wrapper>.content-wrapper');
-
 })(jQuery, $.AdminLTE);
