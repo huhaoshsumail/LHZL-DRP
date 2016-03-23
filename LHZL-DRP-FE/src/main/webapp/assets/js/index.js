@@ -330,10 +330,7 @@
 
     }
 
+    $(document).pjax('.main-sidebar .sidebar-menu a', '.wrapper>.content-wrapper')
 
-    //切换页面
-    window.findPage = function (pageName) {
-        $("#pageContent").attr("src", "pages/" + pageName + "/index.jsp");
-    };
 
 })(jQuery, $.AdminLTE);
