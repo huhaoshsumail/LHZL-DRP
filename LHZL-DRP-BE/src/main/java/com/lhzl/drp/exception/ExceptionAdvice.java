@@ -1,6 +1,6 @@
 package com.lhzl.drp.exception;
 
-import com.lhzl.drp.util.Response;
+import com.lhzl.drp.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

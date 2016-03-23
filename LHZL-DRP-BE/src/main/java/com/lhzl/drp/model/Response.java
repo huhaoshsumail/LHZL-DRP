@@ -1,4 +1,4 @@
-package com.lhzl.drp.util;
+package com.lhzl.drp.model;
 
 public class Response {
 

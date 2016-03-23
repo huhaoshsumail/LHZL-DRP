@@ -2,7 +2,7 @@ package com.lhzl.drp.controller;
 
 import com.lhzl.drp.model.User;
 import com.lhzl.drp.service.UserService;
-import com.lhzl.drp.util.Response;
+import com.lhzl.drp.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
