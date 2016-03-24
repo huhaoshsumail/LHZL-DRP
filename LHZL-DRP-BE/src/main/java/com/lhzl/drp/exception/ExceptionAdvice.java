@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @ControllerAdvice
@@ -53,12 +54,13 @@ public class ExceptionAdvice {
 
     /**
      * 404
+     *
      * @param e
      * @return
      */
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoHandlerFoundException.class)
-    public Response handleNotFoundException(NoHandlerFoundException e){
+    public Response handleNotFoundException(NoHandlerFoundException e) {
         logger.error("不支持当前请求url", e);
         return new Response().failure("resource_not_available");
     }
@@ -81,6 +83,19 @@ public class ExceptionAdvice {
     public Response handleHttpMediaTypeNotSupportedException(Exception e) {
         logger.error("不支持当前媒体类型", e);
         return new Response().failure("content_type_not_supported");
+    }
+
+    /**
+     * 500
+     *
+     * @param e
+     * @return
+     */
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(SQLException.class)
+    public Response handleException(SQLException e) {
+        logger.error("数据库异常", e);
+        return new Response().failure(e.getMessage());
     }
 
     /**
