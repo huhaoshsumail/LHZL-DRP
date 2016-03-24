@@ -1,5 +1,7 @@
 package com.lhzl.drp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Userinfo {
@@ -65,6 +67,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createtime;
 
     /**
@@ -81,6 +84,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updatetime;
 
     /**
@@ -88,7 +92,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.userId
      *
      * @return the value of tbl_userinfo.userId
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public Long getUserid() {
@@ -100,7 +103,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.userId
      *
      * @param userid the value for tbl_userinfo.userId
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setUserid(Long userid) {
@@ -112,7 +114,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.userType
      *
      * @return the value of tbl_userinfo.userType
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getUsertype() {
@@ -124,7 +125,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.userType
      *
      * @param usertype the value for tbl_userinfo.userType
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setUsertype(String usertype) {
@@ -136,7 +136,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.username
      *
      * @return the value of tbl_userinfo.username
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getUsername() {
@@ -148,7 +147,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.username
      *
      * @param username the value for tbl_userinfo.username
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setUsername(String username) {
@@ -160,7 +158,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.mobile
      *
      * @return the value of tbl_userinfo.mobile
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getMobile() {
@@ -172,7 +169,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.mobile
      *
      * @param mobile the value for tbl_userinfo.mobile
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setMobile(String mobile) {
@@ -184,7 +180,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.IDCard
      *
      * @return the value of tbl_userinfo.IDCard
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getIdcard() {
@@ -196,7 +191,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.IDCard
      *
      * @param idcard the value for tbl_userinfo.IDCard
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setIdcard(String idcard) {
@@ -208,7 +202,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.status
      *
      * @return the value of tbl_userinfo.status
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getStatus() {
@@ -220,7 +213,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.status
      *
      * @param status the value for tbl_userinfo.status
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setStatus(String status) {
@@ -232,7 +224,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.createby
      *
      * @return the value of tbl_userinfo.createby
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getCreateby() {
@@ -244,7 +235,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.createby
      *
      * @param createby the value for tbl_userinfo.createby
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setCreateby(String createby) {
@@ -256,7 +246,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.createTime
      *
      * @return the value of tbl_userinfo.createTime
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public Date getCreatetime() {
@@ -268,7 +257,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.createTime
      *
      * @param createtime the value for tbl_userinfo.createTime
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setCreatetime(Date createtime) {
@@ -280,7 +268,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.updateby
      *
      * @return the value of tbl_userinfo.updateby
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public String getUpdateby() {
@@ -292,7 +279,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.updateby
      *
      * @param updateby the value for tbl_userinfo.updateby
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setUpdateby(String updateby) {
@@ -304,7 +290,6 @@ public class Userinfo {
      * This method returns the value of the database column tbl_userinfo.updateTime
      *
      * @return the value of tbl_userinfo.updateTime
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public Date getUpdatetime() {
@@ -316,7 +301,6 @@ public class Userinfo {
      * This method sets the value of the database column tbl_userinfo.updateTime
      *
      * @param updatetime the value for tbl_userinfo.updateTime
-     *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     public void setUpdatetime(Date updatetime) {
