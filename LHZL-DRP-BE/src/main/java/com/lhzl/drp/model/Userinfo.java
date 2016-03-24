@@ -1,6 +1,8 @@
 package com.lhzl.drp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
 
@@ -19,6 +21,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @NotBlank(message = "会员类型不能为空")
     private String usertype;
 
     /**
@@ -27,6 +30,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @NotBlank(message = "会员姓名不能为空")
     private String username;
 
     /**
@@ -35,6 +39,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @NotBlank(message = "电话不能为空")
     private String mobile;
 
     /**
@@ -43,6 +48,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @NotBlank(message = "会员证件不能为空")
     private String idcard;
 
     /**
@@ -51,6 +57,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
+    @NotBlank(message = "会员状态不能为空")
     private String status;
 
     /**
