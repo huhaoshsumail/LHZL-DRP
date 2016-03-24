@@ -67,7 +67,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 14:57:45 CST 2016
      */
-    @JsonFormat(pattern = "yyyy-MM-dd hh24:mi:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createtime;
 
     /**
@@ -84,7 +84,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 14:57:45 CST 2016
      */
-    @JsonFormat(pattern = "yyyy-MM-dd hh24:mi:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updatetime;
 
     /**
