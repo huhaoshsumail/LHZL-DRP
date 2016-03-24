@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-            location="src\main\resources\mysql-connector-java-5.1.30.jar"/>
+            location="lib\mysql-connector-java-5.1.30.jar"/>
     <context id="myContext" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/lhzl-drp?useUnicode=true&amp;characterEncoding=utf-8"
@@ -14,7 +14,7 @@
                          targetProject="src\main\java"/>
         <javaClientGenerator targetPackage="com.lhzl.drp.dao"
                              targetProject="src\main\java" type="XMLMAPPER"/>
-        <table schema="lhzl-drp" tableName="tbl_extendinfo" domainObjectName="Extendinfo"
+        <!--<table schema="lhzl-drp" tableName="tbl_extendinfo" domainObjectName="Extendinfo"
                enableCountByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"
@@ -139,6 +139,6 @@
                enableSelectByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
-        />
+        />-->
     </context>
 </generatorConfiguration>
