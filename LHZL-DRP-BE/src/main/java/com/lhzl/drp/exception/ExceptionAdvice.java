@@ -1,6 +1,7 @@
 package com.lhzl.drp.exception;
 
 import com.lhzl.drp.model.Response;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -92,10 +93,11 @@ public class ExceptionAdvice {
      * @return
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(SQLException.class)
-    public Response handleException(SQLException e) {
+    @ExceptionHandler(MySQLSyntaxErrorException.class)
+    public Response handleException(MySQLSyntaxErrorException e) {
         logger.error("数据库异常", e);
-        return new Response().failure(e.getMessage());
+        //return new Response().failure(e.getMessage());
+        return new Response().failure("数据库异常");
     }
 
     /**
@@ -105,7 +107,8 @@ public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public Response handleException(Exception e) {
         logger.error("服务运行异常", e);
-        return new Response().failure(e.getMessage());
+        //return new Response().failure(e.getMessage());
+        return new Response().failure("服务运行异常");
     }
 
 } 
