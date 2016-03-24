@@ -40,6 +40,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
         <property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
         <property name="testOnReturn" value="${jdbc.testOnReturn}"/>
         <property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
+        <property name="filters" value="stat" />
     </bean>
 
     <!-- 分页拦截器 -->
