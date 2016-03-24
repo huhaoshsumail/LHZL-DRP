@@ -1,6 +1,6 @@
 package com.lhzl.drp.controller;
 
-import com.lhzl.drp.model.User;
+import com.lhzl.drp.model.Userinfo;
 import com.lhzl.drp.service.UserService;
 import com.lhzl.drp.model.Response;
 import org.slf4j.Logger;
@@ -12,14 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-/**
- * Created by chenhao on 2015/9/7.
- */
 
 @Controller
 @RequestMapping("/userController")
@@ -32,15 +27,15 @@ public class UserController {
 
     @RequestMapping("/queryUserById")
     @ResponseBody
-    public Response queryUserById(int id) {
-        User user = userService.queryUserById(id);
+    public Response queryUserById(long id) {
+        Userinfo user = userService.queryUserById(id);
         return new Response().success(user);
     }
 
     @RequestMapping("/queryUser")
     @ResponseBody
     public Response queryUser(@RequestBody Map<String, Object> map) {
-        List<User> users = userService.queryUser(map);
+        List<Userinfo> users = userService.queryUser(map);
         Response res = new Response().success(users);
         if (map.containsKey("count")) {
             res.setCount((Integer) map.get("count"));
@@ -50,22 +45,22 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Response insertUser(@RequestBody @Valid User user) {
+    public Response insertUser(@RequestBody @Valid Userinfo user) {
         userService.insertUser(user);
         return new Response().success();
     }
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Response updateUser(@RequestBody @Valid User user) {
+    public Response updateUser(@RequestBody @Valid Userinfo user) {
         userService.updateUser(user);
         return new Response().success();
     }
 
     @RequestMapping("/deleteUser")
     @ResponseBody
-    public Response deleteUser(@RequestBody ArrayList<Integer> ids) {
-        userService.deleteUser(ids);
+    public Response deleteUser(long id) {
+        userService.deleteUser(id);
         return new Response().success();
     }
 

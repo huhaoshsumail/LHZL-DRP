@@ -1,24 +1,19 @@
 package com.lhzl.drp.service;
 
+import com.lhzl.drp.model.Userinfo;
 
-import com.lhzl.drp.model.User;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by chenhao on 2015/9/7.
- */
 public interface UserService {
 
-    User queryUserById(int id);
+    Userinfo queryUserById(long id);
 
-    List<User> queryUser(Map<String, Object> map);
+    List<Userinfo> queryUser(Map<String, Object> map);
 
-    void insertUser(User user);
+    void insertUser(Userinfo user);
 
-    void updateUser(User user);
+    void updateUser(Userinfo user);
 
-    void deleteUser(ArrayList<Integer> ids);
+    void deleteUser(long id);
 }
