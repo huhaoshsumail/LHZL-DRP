@@ -67,7 +67,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 13:45:27 CST 2016
      */
-    @JsonFormat(pattern = "yyy-MM-dd hh24:mi:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh24:mi:ss")
     private Date createtime;
 
     /**
@@ -84,7 +84,7 @@ public class Userinfo {
      *
      * @mbggenerated Thu Mar 24 13:45:27 CST 2016
      */
-    @JsonFormat(pattern = "yyy-MM-dd hh24:mi:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh24:mi:ss")
     private Date updatetime;
 
     /**
