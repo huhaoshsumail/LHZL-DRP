@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="src\main\resources\mysql-connector-java-5.1.30.jar"/>
+    <context id="myContext" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/lhzl-drp?useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="root" password="123456"/>
+        <javaModelGenerator targetPackage="com.lhzl.drp.model"
+                            targetProject="src\main\java"/>
+        <sqlMapGenerator targetPackage="com.lhzl.drp.dao"
+                         targetProject="src\main\java"/>
+        <javaClientGenerator targetPackage="com.lhzl.drp.dao"
+                             targetProject="src\main\java" type="XMLMAPPER"/>
+        <table schema="lhzl-drp" tableName="tbl_extendinfo" domainObjectName="Extendinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_groupinfo" domainObjectName="Groupinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_hotelinfo" domainObjectName="Hotelinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_keywords" domainObjectName="Keywords"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_lineinfo" domainObjectName="Lineinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_loginfo" domainObjectName="Loginfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_messageinfo" domainObjectName="Messageinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_operatorinfo" domainObjectName="Operatorinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_orderinfo" domainObjectName="Orderinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_payinfo" domainObjectName="Payinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_permissioninfo" domainObjectName="Permissioninfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_roleinfo" domainObjectName="Roleinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_rolepermissioninfo" domainObjectName="Rolepermissioninfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_rolepmsninfo" domainObjectName="Rolepmsninfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_shuttleinfo" domainObjectName="Shuttleinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_stationinfo" domainObjectName="Stationinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_themeinfo" domainObjectName="Themeinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_touristinfo" domainObjectName="Touristinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_traininfo" domainObjectName="Traininfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_triprules" domainObjectName="Triprules"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_userinfo" domainObjectName="Userinfo"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+    </context>
+</generatorConfiguration>
