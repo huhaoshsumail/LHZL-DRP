@@ -22,8 +22,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
         <property name="initialSize" value="${jdbc.initialSize}"/>
         <!-- 连接池最大使用连接数量 -->
         <property name="maxActive" value="${jdbc.maxActive}"/>
-        <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${jdbc.maxIdle}"/>
         <!-- 连接池最小空闲 -->
         <property name="minIdle" value="${jdbc.minIdle}"/>
         <!-- 获取连接最大等待时间 -->
