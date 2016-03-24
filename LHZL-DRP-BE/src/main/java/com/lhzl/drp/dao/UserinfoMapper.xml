@@ -197,34 +197,34 @@
         from tbl_userinfo
         where 1=1
         <if test="userid != null">
-            userid = #{userid,jdbcType=BIGINT},
+            AND userid = #{userid,jdbcType=BIGINT}
         </if>
         <if test="usertype != null">
-            userType = #{usertype,jdbcType=VARCHAR},
+            AND userType = #{usertype,jdbcType=VARCHAR}
         </if>
         <if test="username != null">
-            username = #{username,jdbcType=VARCHAR},
+            AND username = #{username,jdbcType=VARCHAR}
         </if>
         <if test="mobile != null">
-            mobile = #{mobile,jdbcType=VARCHAR},
+            AND mobile = #{mobile,jdbcType=VARCHAR}
         </if>
         <if test="idcard != null">
-            IDCard = #{idcard,jdbcType=VARCHAR},
+            AND IDCard = #{idcard,jdbcType=VARCHAR}
         </if>
         <if test="status != null">
-            status = #{status,jdbcType=VARCHAR},
+            AND status = #{status,jdbcType=VARCHAR}
         </if>
         <if test="createby != null">
-            createby = #{createby,jdbcType=VARCHAR},
+            AND createby = #{createby,jdbcType=VARCHAR}
         </if>
         <if test="createtime != null">
-            createTime = #{createtime,jdbcType=TIMESTAMP},
+            AND createTime = #{createtime,jdbcType=TIMESTAMP}
         </if>
         <if test="updateby != null">
-            updateby = #{updateby,jdbcType=VARCHAR},
+            AND updateby = #{updateby,jdbcType=VARCHAR}
         </if>
         <if test="updatetime != null">
-            updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
         </if>
     </select>
 </mapper>
