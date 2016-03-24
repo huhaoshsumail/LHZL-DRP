@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-            location="lib\mysql-connector-java-5.1.30.jar"/>
+            location="src\main\webapp\WEB-INF\lib\mysql-connector-java-5.1.30.jar"/>
     <context id="myContext" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/lhzl-drp?useUnicode=true&amp;characterEncoding=utf-8"
