@@ -330,4 +330,14 @@
 
     }
 
+    /**
+     * 全局ajax事件
+     */
+    $(document).ajaxSuccess(function (event, xhr, options) {
+        //console.log("请求成功");
+    }).ajaxError(function (event, xhr, options, exc) {
+        //console.log("请求失败");
+    });
+
+
 })(jQuery, $.AdminLTE);
