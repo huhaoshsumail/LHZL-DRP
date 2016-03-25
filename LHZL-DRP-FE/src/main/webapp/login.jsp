@@ -26,7 +26,7 @@
     <script src="node_modules/respond.js/dest/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition">
 <div class="login-box">
     <div class="login-logo">
         <a href="javascript:;"><b>莲花之旅</b>+</a>
@@ -37,11 +37,11 @@
 
         <form action="index.jsp" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="email" class="form-control" placeholder="账号">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="密码">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
