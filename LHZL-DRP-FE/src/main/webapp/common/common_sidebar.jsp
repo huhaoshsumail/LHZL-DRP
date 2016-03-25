@@ -29,7 +29,7 @@
         <ul class="sidebar-menu">
             <li class="header">莲花之旅分销系统</li>
             <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span>主页</span></a></li>
-            <li><a href="index.jsp"><i class="fa fa-map"></i><span>线路维护</span></a></li>
+            <li><a href="pages/line/index.jsp"><i class="fa fa-map"></i><span>线路</span></a></li>
             <li class="treeview">
                 <a href="javascript:;">
                     <i class="fa fa-th-list"></i><span>站点管理</span><i class="fa fa-angle-left pull-right"></i>
