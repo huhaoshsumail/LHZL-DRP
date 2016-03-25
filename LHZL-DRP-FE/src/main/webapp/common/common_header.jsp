@@ -11,7 +11,7 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
 
@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-success">4</span>
                     </a>
@@ -29,7 +29,7 @@
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li><!-- start message -->
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <div class="pull-left">
                                             <img src="node_modules/admin-lte/dist/img/user2-160x160.jpg"
                                                  class="img-circle" alt="User Image">
@@ -43,7 +43,7 @@
                                 </li>
                                 <!-- end message -->
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <div class="pull-left">
                                             <img src="node_modules/admin-lte/dist/img/user3-128x128.jpg"
                                                  class="img-circle" alt="User Image">
@@ -56,7 +56,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <div class="pull-left">
                                             <img src="node_modules/admin-lte/dist/img/user4-128x128.jpg"
                                                  class="img-circle" alt="User Image">
@@ -69,7 +69,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <div class="pull-left">
                                             <img src="node_modules/admin-lte/dist/img/user3-128x128.jpg"
                                                  class="img-circle" alt="User Image">
@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <div class="pull-left">
                                             <img src="node_modules/admin-lte/dist/img/user4-128x128.jpg"
                                                  class="img-circle" alt="User Image">
@@ -96,12 +96,12 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="javascript:;">See All Messages</a></li>
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="node_modules/admin-lte/dist/img/user2-160x160.jpg" class="user-image"
                              alt="User Image">
                         <span class="hidden-xs">Alexander Pierce</span>
@@ -120,17 +120,17 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="javascript:;" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="javascript:;" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
                 <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    <a href="javascript:;" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>
