@@ -1,0 +1,11 @@
+a{
+    font-family: 'Microsoft YaHei';
+}
+
+.login-box-body>a{
+    font-size: 12px;
+}
+
+.remember{
+    font-size: 13px;
+}
