@@ -10,7 +10,7 @@
     <%@include file="../../common/common_header.jsp" %>
     <%@include file="../../common/common_sidebar.jsp" %>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="pjax-content">
         demo
     </div>
 

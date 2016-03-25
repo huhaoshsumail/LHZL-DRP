@@ -342,9 +342,8 @@
     /**
      * 局部刷新
      */
-    /*$(document).pjax('.sidebar-menu a', '.wrapper>.content-wrapper', {
-        fragment: '.wrapper>.content-wrapper',
-        timeout: 6000
+    $(document).pjax('.sidebar-menu a', '#pjax-content', {
+        fragment: '#pjax-content'
     });
 
     $(document).on('pjax:send', function () {
@@ -352,6 +351,6 @@
     });
     $(document).on('pjax:complete', function () {
         //执行pjax结束，在这里添加要重载的代码，可自行添加loading动画结束或隐藏代码。例如NProgress的结束代码 NProgress.done();
-    });*/
+    });
 
 })(jQuery, $.AdminLTE);
