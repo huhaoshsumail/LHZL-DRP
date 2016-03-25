@@ -19,4 +19,3 @@
 <script src="node_modules/nprogress/nprogress.js"></script>
 <script src="assets/js/jquery.pjax.js"></script>
 <script src="assets/js/index.js"></script>
-<script src="pages/demo/index.js"></script>
