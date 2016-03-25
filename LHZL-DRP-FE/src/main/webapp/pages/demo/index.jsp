@@ -10,9 +10,8 @@
     <%@include file="../../common/common_header.jsp" %>
     <%@include file="../../common/common_sidebar.jsp" %>
 
-    <div class="content-wrapper" id="pjax-container">
-        <a href="index.jsp">home</a>
-        <a href="pages/demo/index.jsp">demo</a>
+    <div class="content-wrapper">
+        demo
     </div>
 
     <%@include file="../../common/common_footer.jsp" %>

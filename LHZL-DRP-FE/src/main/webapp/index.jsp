@@ -9,9 +9,8 @@
     <%@include file="common/common_header.jsp" %>
     <%@include file="common/common_sidebar.jsp" %>
 
-    <div class="content-wrapper" id="pjax-container">
-        <a href="/LHZL-DRP-FE/index.jsp">home</a>
-        <a href="/LHZL-DRP-FE/pages/demo/index.jsp">demo</a>
+    <div class="content-wrapper">
+        index
     </div>
 
     <%@include file="common/common_footer.jsp" %>

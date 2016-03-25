@@ -339,9 +339,4 @@
         //console.log("请求失败");
     });
 
-    /**
-     * 页面跳转控制
-     */
-    $(document).pjax('a', '#pjax-container')
-
 })(jQuery, $.AdminLTE);
