@@ -1,9 +1,3 @@
 .sidebar-menu {
     font-family: 'Microsoft YaHei';
 }
-
-#nprogress,
-#nprogress .bar,
-#nprogress .spinner {
-    z-index: 1030;
-}

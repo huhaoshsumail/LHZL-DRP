@@ -355,7 +355,7 @@
     });
     $(document).on('pjax:complete', function () {
         //执行pjax结束，在这里添加要重载的代码，可自行添加loading动画结束或隐藏代码。例如NProgress的结束代码 NProgress.done();
-        //NProgress.done();
+        NProgress.done();
     });
 
 })(jQuery, $.AdminLTE);
