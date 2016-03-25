@@ -342,21 +342,17 @@
     /**
      * 局部刷新
      */
-    /*$(document).pjax('a[target!=_blank]', '.wrapper>.content-wrapper', {
-     fragment: '.wrapper>.content-wrapper',
-     timeout: 6000
-     });*/
+    $(document).pjax('.sidebar-menu a', '.wrapper>.content-wrapper', {
+        fragment: '.wrapper>.content-wrapper',
+        timeout: 6000
+    });
 
-    /*
-     $(document).on('submit', 'form', function (event) {
-     $.pjax.submit(event, '#content', {fragment: '#content', timeout: 6000});
-     }); //这是提交表单的pjax。form表示所有的提交表单都会执行pjax，比如搜索和提交评论，可自行修改改成你想要执行pjax的form id或class。#content 同上改成你主题的内容主体id或class。
-     $(document).on('pjax:send', function () {
-     $(".pjax_loading,.pjax_loading1").css("display", "block");//参考的loading动画代码
-     //执行pjax开始，在这里添加要重载的代码，可自行添加loading动画代码。例如你已调用了NProgress，在这里添加 NProgress.start();
-     });
-     $(document).on('pjax:complete', function () {
-     //执行pjax结束，在这里添加要重载的代码，可自行添加loading动画结束或隐藏代码。例如NProgress的结束代码 NProgress.done();
-     });*/
+    $(document).on('pjax:send', function () {
+        //执行pjax开始，在这里添加要重载的代码，可自行添加loading动画代码。例如你已调用了NProgress，在这里添加 NProgress.start();
+    });
+    $(document).on('pjax:complete', function () {
+        //执行pjax结束，在这里添加要重载的代码，可自行添加loading动画结束或隐藏代码。例如NProgress的结束代码 NProgress.done();
+        debugger;
+    });
 
 })(jQuery, $.AdminLTE);
