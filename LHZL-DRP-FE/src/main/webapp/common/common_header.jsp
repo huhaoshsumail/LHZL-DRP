@@ -120,10 +120,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="javascript:;" class="btn btn-default btn-flat">Profile</a>
+                                <a href="javascript:;" class="btn btn-default btn-flat">修改密码</a>
                             </div>
                             <div class="pull-right">
-                                <a href="javascript:;" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="javascript:;" class="btn btn-default btn-flat">注销</a>
                             </div>
                         </li>
                     </ul>

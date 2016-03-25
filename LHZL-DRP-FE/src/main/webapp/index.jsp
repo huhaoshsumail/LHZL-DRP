@@ -16,7 +16,7 @@
                 <small>概览</small>
             </h1>
             <ol class="breadcrumb">
-                <li class="active"><a href="javascript:;"><i class="fa fa-home"></i> 主页</a></li>
+                <li class="active"><a href="javascript:;"><i class="fa fa-dashboard"></i> 主页</a></li>
             </ol>
         </section>
         <section class="content">

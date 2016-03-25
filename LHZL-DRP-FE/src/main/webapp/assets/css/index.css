@@ -1,3 +1,8 @@
-.sidebar-menu {
+.sidebar-menu span{
     font-family: 'Microsoft YaHei';
+    font-size: 12px;
+}
+
+.user-footer a{
+    font-size: 12px;
 }

@@ -28,7 +28,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">莲花之旅分销系统</li>
-            <li><a href="index.jsp"><i class="fa fa-home"></i><span>主页</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span>主页</span></a></li>
             <li><a href="index.jsp"><i class="fa fa-map"></i><span>线路维护</span></a></li>
             <li class="treeview">
                 <a href="javascript:;">
@@ -53,7 +53,46 @@
                 </ul>
             </li>
             <li><a href="index.jsp"><i class="fa fa-th"></i><span>游客分配座位</span></a></li>
-            <li><a href="index.jsp"><i class="fa fa-file-text-o"></i><span>生成订单</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-file-o"></i><span>生成订单</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-file-text-o"></i><span>订单详情</span></a></li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-cubes"></i><span>供应商管理</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="index.jsp"><i class="fa fa-cube"></i><span>供应商管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-black-tie"></i><span>供应商子账户管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-lock"></i><span>供应商子账户权限分配</span></a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-sitemap"></i><span>分销商管理</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="index.jsp"><i class="fa fa-share-alt"></i><span>分销商管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-black-tie"></i><span>分销商子账户管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-lock"></i><span>分销商子账户权限分配</span></a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-files-o"></i><span>订单管理</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="index.jsp"><i class="fa fa-file-archive-o"></i><span>订单查询</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-user"></i><span>订单乘客管理功能</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-th"></i><span>订单选座管理功能</span></a></li>
+                </ul>
+            </li>
+            <li><a href="index.jsp"><i class="fa fa-search"></i><span>账单查询</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-cloud-download"></i><span>账单导出</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-copy"></i><span>线路复制</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-repeat"></i><span>产品价格覆盖</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-rmb"></i><span>产品添加分类价格</span></a></li>
+
         </ul>
     </section>
     <!-- /.sidebar -->
