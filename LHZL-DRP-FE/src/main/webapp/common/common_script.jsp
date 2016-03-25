@@ -18,3 +18,4 @@
 <script src="node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/jquery.pjax.js"></script>
 <script src="assets/js/index.js"></script>
+<script src="assets/js/demo.js"></script>

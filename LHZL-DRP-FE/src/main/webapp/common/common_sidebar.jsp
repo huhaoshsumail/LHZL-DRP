@@ -42,7 +42,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="pages/demo/index.jsp">
+                        <a href="pages/demo.jsp">
                             <i class="fa fa-circle-o"></i>
                             <span>功能项</span>
                         </a>
