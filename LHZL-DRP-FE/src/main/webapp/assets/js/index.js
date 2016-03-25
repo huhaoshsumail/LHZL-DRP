@@ -339,6 +339,9 @@
         //console.log("请求失败");
     });
 
+    //设置进度条
+    NProgress.configure({parent: '#pjax-content'});
+
     /**
      * 局部刷新
      */
@@ -348,9 +351,11 @@
 
     $(document).on('pjax:send', function () {
         //执行pjax开始，在这里添加要重载的代码，可自行添加loading动画代码。例如你已调用了NProgress，在这里添加 NProgress.start();
+        NProgress.start();
     });
     $(document).on('pjax:complete', function () {
         //执行pjax结束，在这里添加要重载的代码，可自行添加loading动画结束或隐藏代码。例如NProgress的结束代码 NProgress.done();
+        //NProgress.done();
     });
 
 })(jQuery, $.AdminLTE);
