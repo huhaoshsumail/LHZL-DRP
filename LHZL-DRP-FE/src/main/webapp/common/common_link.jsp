@@ -16,6 +16,7 @@
 <link href="node_modules/admin-lte/plugins/datepicker/datepicker3.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet">
+<link href="node_modules/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
 <link href="assets/css/index.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
