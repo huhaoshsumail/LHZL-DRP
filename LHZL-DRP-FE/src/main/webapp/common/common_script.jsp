@@ -1,7 +1,7 @@
 <script src="node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="node_modules/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>$.widget.bridge('uibutton', $.ui.button);</script>
-<script src="node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="node_modules/raphael/raphael-min.js"></script>
 <script src="node_modules/admin-lte/plugins/morris/morris.min.js"></script>
 <script src="node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script>

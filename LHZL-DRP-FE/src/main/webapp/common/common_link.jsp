@@ -6,7 +6,7 @@
 <base href="http://localhost:8080/LHZL-DRP-FE/">
 <link href="favicon.ico" rel="shortcut icon">
 <link href="node_modules/nprogress.css">
-<link href="node_modules/admin-lte/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="node_modules/ionicons/dist/css/ionicons.min.css" rel="stylesheet">
 <link href="node_modules/admin-lte/dist/css/AdminLTE.min.css" rel="stylesheet">

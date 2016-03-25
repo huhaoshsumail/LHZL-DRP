@@ -2,7 +2,8 @@
     font-family: 'Microsoft YaHei';
 }
 
+#nprogress,
 #nprogress .bar,
 #nprogress .spinner {
-    z-index: 999999;
+    z-index: 1030;
 }
