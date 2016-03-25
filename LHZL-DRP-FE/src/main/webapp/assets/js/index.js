@@ -345,7 +345,7 @@
     /**
      * 局部刷新
      */
-    $(document).pjax('.sidebar-menu a', '#pjax-content', {
+    $(document).pjax('a[target!=_blank]', '#pjax-content', {
         fragment: '#pjax-content'
     });
 
