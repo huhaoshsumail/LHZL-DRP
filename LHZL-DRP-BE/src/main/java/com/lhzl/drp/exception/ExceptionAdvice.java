@@ -48,7 +48,7 @@ public class ExceptionAdvice {
         String msg = "";
         List<ObjectError> objErrorList = bindingResult.getAllErrors();
         for (ObjectError error : objErrorList) {
-            msg += error.getDefaultMessage() + "，";
+            msg += error.getDefaultMessage() + "/";
         }
         return new Response().failure(msg);
     }
