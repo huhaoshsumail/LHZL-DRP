@@ -31,7 +31,7 @@
             <li>
                 <a href="index.jsp">
                     <i class="fa fa-home"></i>
-                    <span>首页</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li class="treeview">

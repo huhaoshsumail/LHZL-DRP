@@ -10,7 +10,18 @@
     <%@include file="common/common_sidebar.jsp" %>
 
     <div class="content-wrapper" id="pjax-content">
-        index
+        <section class="content-header">
+            <h1>
+                主页
+                <small>概览</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active"><a href="javascript:;"><i class="fa fa-home"></i> 主页</a></li>
+            </ol>
+        </section>
+        <section class="content">
+
+        </section>
     </div>
 
     <%@include file="common/common_footer.jsp" %>
