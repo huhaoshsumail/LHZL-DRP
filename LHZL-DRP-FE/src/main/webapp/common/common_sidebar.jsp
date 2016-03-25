@@ -28,27 +28,32 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">莲花之旅分销系统</li>
-            <li>
-                <a href="index.jsp">
-                    <i class="fa fa-home"></i>
-                    <span>主页</span>
-                </a>
-            </li>
+            <li><a href="index.jsp"><i class="fa fa-home"></i><span>主页</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-map"></i><span>线路维护</span></a></li>
             <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-th-list"></i>
-                    <span>功能</span>
-                    <i class="fa fa-angle-left pull-right"></i>
+                <a href="javascript:;">
+                    <i class="fa fa-th-list"></i><span>站点管理</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
-                        <a href="pages/demo/index.jsp">
-                            <i class="fa fa-circle-o"></i>
-                            <span>功能项</span>
-                        </a>
-                    </li>
+                    <li><a href="index.jsp"><i class="fa fa-map-signs"></i><span>出发/目的地管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-bus"></i><span>接送规则维护</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-long-arrow-right"></i><span>车次配置维护</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-hotel"></i><span>住宿类型维护</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-file-word-o"></i><span>线路关键字维护</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-paint-brush"></i><span>线路主题</span></a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i><span>团体管理</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="index.jsp"><i class="fa fa-th-large"></i><span>游客团体管理</span></a></li>
+                    <li><a href="index.jsp"><i class="fa fa-cloud-upload"></i><span>游客导入功能</span></a></li>
+                </ul>
+            </li>
+            <li><a href="index.jsp"><i class="fa fa-th"></i><span>游客分配座位</span></a></li>
+            <li><a href="index.jsp"><i class="fa fa-file-text-o"></i><span>生成订单</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
