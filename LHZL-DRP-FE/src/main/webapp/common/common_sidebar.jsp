@@ -29,6 +29,7 @@
         <ul class="sidebar-menu">
             <li class="header">莲花之旅分销系统</li>
             <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span>主页</span></a></li>
+            <li><a href="pages/demo/index.jsp"><i class="fa fa-lightbulb-o"></i><span>示例</span></a></li>
             <li><a href="pages/line/index.jsp"><i class="fa fa-map"></i><span>线路</span></a></li>
             <li class="treeview">
                 <a href="javascript:;">
