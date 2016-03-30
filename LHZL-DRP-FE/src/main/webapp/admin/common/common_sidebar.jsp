@@ -34,7 +34,7 @@
                     <i class="fa fa-database"></i><span>基础数据</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="admin/pages/data/dictionary/index.jsp"><i class="fa fa-book"></i><span>数据字典</span></a></li>
+                    <li><a href="admin/pages/data/book/index.jsp"><i class="fa fa-book"></i><span>数据字典</span></a></li>
                     <li><a href="admin/pages/data/location/index.jsp"><i class="fa fa-map-pin"></i><span>地点</span></a></li>
                 </ul>
             </li>
