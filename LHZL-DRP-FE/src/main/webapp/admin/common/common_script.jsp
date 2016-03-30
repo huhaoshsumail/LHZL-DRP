@@ -14,6 +14,8 @@
 <script src="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
+<script src="node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <script src="node_modules/admin-lte/dist/js/app.min.js"></script>
 <script src="node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="node_modules/nprogress/nprogress.js"></script>
