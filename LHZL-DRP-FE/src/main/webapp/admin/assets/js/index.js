@@ -333,10 +333,18 @@
     /**
      * 全局ajax事件
      */
-    $(document).ajaxSuccess(function (event, xhr, options) {
+    $(document).ajaxStart(function(){
+        NProgress.start();
+    }).ajaxSend(function(){
+
+    }).ajaxSuccess(function (event, xhr, options) {
         //console.log("请求成功");
     }).ajaxError(function (event, xhr, options, exc) {
         //console.log("请求失败");
+    }).ajaxComplete(function(){
+
+    }).ajaxStop(function(){
+        NProgress.done();
     });
 
     //设置进度条
