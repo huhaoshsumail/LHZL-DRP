@@ -21,7 +21,7 @@
 <link href="node_modules/admin-lte/plugins/datepicker/datepicker3.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet">
-<link  href="node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet">
+<link href="node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet">
 <link href="node_modules/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
 <link href="admin/assets/css/index.css" rel="stylesheet">
 
@@ -33,3 +33,27 @@
 <![endif]-->
 
 
+<script src="node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="node_modules/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script>$.widget.bridge('uibutton', $.ui.button);</script>
+<script src="node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<script src="node_modules/raphael/raphael-min.js"></script>
+<script src="node_modules/admin-lte/plugins/morris/morris.min.js"></script>
+<script src="node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="node_modules/admin-lte/plugins/knob/jquery.knob.js"></script>
+<script src="node_modules/moment/moment.js"></script>
+<script src="node_modules/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="node_modules/admin-lte/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
+<script src="node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="node_modules/admin-lte/dist/js/app.min.js"></script>
+<script src="node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="node_modules/nprogress/nprogress.js"></script>
+<script src="admin/assets/js/jquery.pjax.js"></script>
+<script src="admin/assets/js/index.js"></script>
+<script src="admin/pages/data/book/index.js"></script>
