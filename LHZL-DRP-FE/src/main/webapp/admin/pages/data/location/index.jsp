@@ -16,7 +16,7 @@
                 <small>维护</small>
             </h1>
             <ol class="breadcrumb">
-                <li class="active"><a href="javascript:;"><i class="fa fa-map"></i> 地点</a></li>
+                <li class="active"><a href="javascript:;"><i class="fa fa-map-pin"></i> 地点</a></li>
             </ol>
         </section>
         <section class="content">

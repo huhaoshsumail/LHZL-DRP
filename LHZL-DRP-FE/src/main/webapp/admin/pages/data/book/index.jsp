@@ -16,7 +16,7 @@
                 <small>数据</small>
             </h1>
             <ol class="breadcrumb">
-                <li class="active"><a href="javascript:;"><i class="fa fa-map"></i> 字典</a></li>
+                <li class="active"><a href="javascript:;"><i class="fa fa-book"></i> 字典</a></li>
             </ol>
         </section>
         <section class="content">
