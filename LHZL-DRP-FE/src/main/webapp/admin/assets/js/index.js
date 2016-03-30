@@ -330,6 +330,9 @@
 
     }
 
+    //设置进度条
+    NProgress.configure({parent: '#pjax-content'});
+
     /**
      * 全局ajax事件
      */
@@ -346,9 +349,6 @@
     }).ajaxStop(function(){
         NProgress.done();
     });
-
-    //设置进度条
-    NProgress.configure({parent: '#pjax-content'});
 
     /**
      * 局部刷新
