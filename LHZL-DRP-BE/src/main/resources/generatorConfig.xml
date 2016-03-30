@@ -14,7 +14,19 @@
                          targetProject="src\main\java"/>
         <javaClientGenerator targetPackage="com.lhzl.drp.dao"
                              targetProject="src\main\java" type="XMLMAPPER"/>
-        <!--<table schema="lhzl-drp" tableName="tbl_extendinfo" domainObjectName="Extendinfo"
+        <!--<table schema="lhzl-drp" tableName="tbl_book_code" domainObjectName="BookCode"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_book_value" domainObjectName="BookValue"
+               enableCountByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+        />
+        <table schema="lhzl-drp" tableName="tbl_extendinfo" domainObjectName="Extendinfo"
                enableCountByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"
