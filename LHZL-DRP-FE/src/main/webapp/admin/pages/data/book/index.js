@@ -3,19 +3,13 @@
  */
 var initDataBook = function () {
     $('#codeTbale').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
+        "processing": true,
+        "serverSide": true,
+        "ajax": ""
     });
     $('#valueTbale').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
+        "processing": true,
+        "serverSide": true,
+        "ajax": ""
     });
 }
