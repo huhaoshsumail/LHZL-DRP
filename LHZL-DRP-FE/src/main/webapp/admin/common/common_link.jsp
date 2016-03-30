@@ -1,9 +1,13 @@
-<%@ page contentType="text/html;charset=utf-8" %>
+<%@ page language="java" contentType="text/html;charset=utf-8" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <title>莲花之旅</title>
-<base href="http://localhost:8080/LHZL-DRP-FE/">
+<base href="<%=basePath%>">
 <link href="favicon.ico" rel="shortcut icon">
 <link href="node_modules/nprogress/nprogress.css" rel="stylesheet">
 <link href="node_modules/admin-lte/bootstrap/css/bootstrap.min.css" rel="stylesheet">
