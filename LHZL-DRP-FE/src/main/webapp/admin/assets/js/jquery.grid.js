@@ -34,14 +34,14 @@
                 }
             });
             $("#" + opts.paginationId).find(".nextPage").click(function () {
-                if (opts.pagination.pageNo < parseInt(opts.pagination.count / opts.pagination.pageSize)) {
+                if (opts.pagination.pageNo < Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
                     opts.pagination.pageNo++;
                     loadData($this, opts);
                 }
             });
             $("#" + opts.paginationId).find(".lastPage").click(function () {
-                if (opts.pagination.pageNo != parseInt(opts.pagination.count / opts.pagination.pageSize)) {
-                    opts.pagination.pageNo = parseInt(opts.pagination.count / opts.pagination.pageSize);
+                if (opts.pagination.pageNo != Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
+                    opts.pagination.pageNo = Math.ceil(opts.pagination.count / opts.pagination.pageSize);
                     loadData($this, opts);
                 }
             });
@@ -86,7 +86,7 @@
                 }
                 html += "</tbody></table>";
                 obj.find("tbody").html(html);
-                $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + parseInt(opts.pagination.count / opts.pagination.pageSize) + " 页")
+                $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + Math.ceil(opts.pagination.count / opts.pagination.pageSize) + " 页")
             }
         });
     }
