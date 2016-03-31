@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-
+                            <table id="codeTbale"></table>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -42,7 +42,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-
+                            <table id="valueTbale"></table>
                         </div>
                         <!-- /.box-body -->
                     </div>
