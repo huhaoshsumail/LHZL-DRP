@@ -2,7 +2,7 @@
  * Created by chenhao on 2016/3/30.
  */
 var initDataBook = function () {
-    window.gridApi = $("#codeTable").grid({
+    var gridApi = $("#codeTable").grid({
         ennableSelect: true,
         columns: [
             {name: "userid", display: "id", hidden: true},
