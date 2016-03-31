@@ -6,12 +6,13 @@
         "grid": function (options) {
             var opts = $.extend({}, defaluts, options);
             var timestamp = new Date().getTime();
+            opts.gridId = "gridId" + timestamp;
             opts.paginationId = "pagination" + timestamp;
             opts.paginationDesId = "paginationDesId" + timestamp;
             opts.selectAllId = "selectAllId" + timestamp;
             opts.selectName = "selectName" + timestamp;
             var $this = $(this);
-            var html = "<table class='table'><thead><tr>";
+            var html = "<table id='" + opts.gridId + "' class='table'><thead><tr>";
             if (opts.ennableSelect) {
                 html += "<th width='50px'><input id='" + opts.selectAllId + "' type='checkbox'></th>";
             }
@@ -31,7 +32,20 @@
             html += "</ul></nav>";
             $this.html(html);
             loadData($this, opts);
-            return this;
+            return {
+                getGridId: function () {
+                    return opts.gridId;
+                },
+                getSelectedRows: function () {
+                    var rows = [];
+                    $("#" + opts.gridId + " input[name='" + opts.selectName + "']").each(function (index) {
+                        if ($(this).is(':checked')) {
+                            rows.push(opts.data[index]);
+                        }
+                    });
+                    return rows;
+                }
+            };
         }
     });
 
@@ -111,6 +125,7 @@
             data: JSON.stringify(opts.ajax.params),
             success: function (result) {
                 opts.pagination.count = result.count;
+                opts.data = result.data;
                 var html = "";
                 for (var i = 0; i < result.data.length && i < opts.pagination.pageSize; i++) {
                     html += "<tr>";
