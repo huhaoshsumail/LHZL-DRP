@@ -8,8 +8,13 @@
             var timestamp = new Date().getTime();
             opts.paginationId = "pagination" + timestamp;
             opts.paginationDesId = "paginationDesId" + timestamp;
+            opts.selectAllId = "selectAllId" + timestamp;
+            opts.selectName = "selectName" + timestamp;
             var $this = $(this);
             var html = "<table class='table'><thead><tr>";
+            if (opts.ennableSelect) {
+                html += "<th><input id='" + opts.selectAllId + "' type='checkbox'></th>";
+            }
             for (var i = 0; i < opts.columns.length; i++) {
                 if (opts.columns[i]["hidden"]) {
                     html += "<th style='display: none'>" + opts.columns[i]["display"] + "</th>";
@@ -25,30 +30,6 @@
             html += "<li><a href='javascript:;' class='lastPage'>末页</a></li>";
             html += "</ul></nav>";
             $this.html(html);
-            $("#" + opts.paginationId).find(".firstPage").click(function () {
-                if (opts.pagination.pageNo != 1) {
-                    opts.pagination.pageNo = 1;
-                    loadData($this, opts);
-                }
-            });
-            $("#" + opts.paginationId).find(".prevPage").click(function () {
-                if (opts.pagination.pageNo > 1) {
-                    opts.pagination.pageNo--;
-                    loadData($this, opts);
-                }
-            });
-            $("#" + opts.paginationId).find(".nextPage").click(function () {
-                if (opts.pagination.pageNo < Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
-                    opts.pagination.pageNo++;
-                    loadData($this, opts);
-                }
-            });
-            $("#" + opts.paginationId).find(".lastPage").click(function () {
-                if (opts.pagination.pageNo != Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
-                    opts.pagination.pageNo = Math.ceil(opts.pagination.count / opts.pagination.pageSize);
-                    loadData($this, opts);
-                }
-            });
             loadData($this, opts);
         }
     });
@@ -65,6 +46,55 @@
         }
     };
 
+    function initTool(obj, opts) {
+        $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + Math.ceil(opts.pagination.count / opts.pagination.pageSize) + " 页")
+
+        $("#" + opts.paginationId).find(".firstPage").click(function () {
+            if (opts.pagination.pageNo != 1) {
+                opts.pagination.pageNo = 1;
+                loadData(obj, opts);
+            }
+        });
+        $("#" + opts.paginationId).find(".prevPage").click(function () {
+            if (opts.pagination.pageNo > 1) {
+                opts.pagination.pageNo--;
+                loadData(obj, opts);
+            }
+        });
+        $("#" + opts.paginationId).find(".nextPage").click(function () {
+            if (opts.pagination.pageNo < Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
+                opts.pagination.pageNo++;
+                loadData(obj, opts);
+            }
+        });
+        $("#" + opts.paginationId).find(".lastPage").click(function () {
+            if (opts.pagination.pageNo != Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
+                opts.pagination.pageNo = Math.ceil(opts.pagination.count / opts.pagination.pageSize);
+                loadData(obj, opts);
+            }
+        });
+        $("#" + opts.selectAllId).click(function () {
+            if ($(this).is(':checked')) {
+                $("input[name='" + opts.selectName + "']").prop("checked", "checked");
+            } else {
+                $("input[name='" + opts.selectName + "']").removeAttr("checked");
+            }
+        });
+        $("input[name='" + opts.selectName + "']").click(function () {
+            var allSelected = true;
+            $("input[name='" + opts.selectName + "']").each(function () {
+                if ($(this).is(':checked')) {
+                    allSelected = false;
+                }
+            });
+            if (allSelected) {
+                $("#" + opts.selectAllId).prop("checked", "checked");
+            } else {
+                $("#" + opts.selectAllId).removeAttr("checked");
+            }
+        });
+    }
+
     function loadData(obj, opts) {
         opts.ajax.params.pageSize = opts.pagination.pageSize;
         opts.ajax.params.pageNo = opts.pagination.pageNo;
@@ -79,6 +109,9 @@
                 var html = "";
                 for (var i = 0; i < result.data.length && i < opts.pagination.pageSize; i++) {
                     html += "<tr>";
+                    if (opts.ennableSelect) {
+                        html += "<th><input name='" + opts.selectName + "' type='checkbox'></th>";
+                    }
                     for (var j = 0; j < opts.columns.length; j++) {
                         if (opts.columns[j]["hidden"]) {
                             html += "<td style='display: none'>";
@@ -103,7 +136,7 @@
                 }
                 html += "</tbody></table>";
                 obj.find("tbody").html(html);
-                $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + Math.ceil(opts.pagination.count / opts.pagination.pageSize) + " 页")
+                initTool(obj, opts);
             }
         });
     }

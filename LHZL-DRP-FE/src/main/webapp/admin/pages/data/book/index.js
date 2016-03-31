@@ -3,6 +3,7 @@
  */
 var initDataBook = function () {
     $("#codeTable").grid({
+        ennableSelect: true,
         columns: [
             {name: "userid", display: "id", hidden: true},
             {name: "username", "display": "会员姓名"},
