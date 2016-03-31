@@ -14,4 +14,7 @@ var initDataBook = function () {
             params: {}
         }
     });
+
+    // 获取选中行
+    // gridApi.getSelectedRows();
 }
