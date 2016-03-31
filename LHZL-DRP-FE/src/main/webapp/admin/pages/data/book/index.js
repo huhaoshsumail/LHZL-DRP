@@ -4,12 +4,12 @@
 var initDataBook = function () {
     $("#codeTable").grid({
         columns: [
-            {name: "code", "display": "代码"},
-            {name: "discription", "display": "描述", template: "<span style='color: red'>value</span>"},
+            {name: "username", "display": "会员姓名"},
+            {name: "mobile", "display": "会员电话"},
         ],
-        data: [
-            {code: "A", discription: "英文字母A"},
-            {code: "B", discription: "英文字母B"}
-        ]
+        ajax: {
+            url: "http://127.0.0.1:8080/LHZL-DRP-BE/rest/userController/queryUser",
+            params: {}
+        }
     });
 }
