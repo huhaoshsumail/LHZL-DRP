@@ -10,7 +10,9 @@
     <%@include file="../../../common/common_sidebar.jsp" %>
 
     <div class="content-wrapper" id="pjax-content">
-        <script>$(function(){initDataBook();})</script>
+        <script>$(function () {
+            initDataBook();
+        })</script>
         <section class="content-header">
             <h1>
                 字典
@@ -29,20 +31,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="codeTbale" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>代码</th>
-                                    <th>描述</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>abc</td>
-                                    <td>哈哈哈</td>
-                                </tr>
-                                </tbody>
-                            </table>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -53,20 +42,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="valueTbale" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>值</th>
-                                    <th>描述</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>a</td>
-                                    <td>嘿嘿嘿</td>
-                                </tr>
-                                </tbody>
-                            </table>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
