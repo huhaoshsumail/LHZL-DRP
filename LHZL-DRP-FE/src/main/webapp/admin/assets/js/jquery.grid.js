@@ -6,16 +6,20 @@
         "grid": function (options) {
             var opts = $.extend({}, defaluts, options);
             var $this = $(this);
-            var html = "<thead><tr>";
+            var html = "<table class='table'><thead><tr>";
             for (var i = 0; i < opts.columns.length; i++) {
                 html += "<th>" + opts.columns[i]["display"] + "</th>";
             }
             html += "</tr></thead>";
-            html += "<tbody><tr>";
-            for (var i = 0; i < opts.columns.length; i++) {
-                html += "<td></td>";
+            html += "<tbody>";
+            for (var i = 0; i < opts.data.length; i++) {
+                html += "<tr>";
+                for (var j = 0; j < opts.columns.length; j++) {
+                    html += "<td>" + opts.data[i][opts.columns[j]["name"]] + "</td>"
+                }
+                html += "</tr>";
             }
-            html += "</tr></tbody>";
+            html += "</tbody></table>";
             $this.html(html);
         }
     });
