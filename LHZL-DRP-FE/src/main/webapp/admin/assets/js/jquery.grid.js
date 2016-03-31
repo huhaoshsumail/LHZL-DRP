@@ -11,7 +11,11 @@
             var $this = $(this);
             var html = "<table class='table'><thead><tr>";
             for (var i = 0; i < opts.columns.length; i++) {
-                html += "<th>" + opts.columns[i]["display"] + "</th>";
+                if (opts.columns[i]["hidden"]) {
+                    html += "<th style='display: none'>" + opts.columns[i]["display"] + "</th>";
+                } else {
+                    html += "<th>" + opts.columns[i]["display"] + "</th>";
+                }
             }
             html += "</tr></thead><tbody></tbody></table>";
             html += "<span id='" + opts.paginationDesId + "' style='float: right'>第 1 / 1 页</span><nav><ul class='pagination' id='" + opts.paginationId + "'>";
@@ -76,6 +80,11 @@
                 for (var i = 0; i < result.data.length && i < opts.pagination.pageSize; i++) {
                     html += "<tr>";
                     for (var j = 0; j < opts.columns.length; j++) {
+                        if (opts.columns[j]["hidden"]) {
+                            html += "<td style='display: none'>";
+                        } else {
+                            html += "<td>";
+                        }
                         if (opts.columns[j]["template"]) {
                             var temp = opts.columns[j]["template"];
                             while (temp.indexOf("value") > -1) {
@@ -84,10 +93,11 @@
                             while (temp.indexOf("${") > -1) {
                                 temp = temp.replace(temp.substring(temp.indexOf("${"), temp.indexOf("}") + 1), eval(temp.substring(temp.indexOf("${") + 2, temp.indexOf("}"))));
                             }
-                            html += "<td>" + temp + "</td>";
+                            html += temp;
                         } else {
-                            html += "<td>" + result.data[i][opts.columns[j]["name"]] + "</td>";
+                            html += result.data[i][opts.columns[j]["name"]];
                         }
+                        html += "</td>";
                     }
                     html += "</tr>";
                 }
