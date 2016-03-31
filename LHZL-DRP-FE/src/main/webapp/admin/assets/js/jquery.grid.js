@@ -77,7 +77,14 @@
                     html += "<tr>";
                     for (var j = 0; j < opts.columns.length; j++) {
                         if (opts.columns[j]["template"]) {
-                            html += "<td>" + opts.columns[j]["template"].replace("value", result.data[i][opts.columns[j]["name"]]) + "</td>";
+                            var temp = opts.columns[j]["template"];
+                            while (temp.indexOf("value") > -1) {
+                                temp = temp.replace("value", "'" + result.data[i][opts.columns[j]["name"]] + "'");
+                            }
+                            while (temp.indexOf("${") > -1) {
+                                temp = temp.replace(temp.substring(temp.indexOf("${"), temp.indexOf("}") + 1), eval(temp.substring(temp.indexOf("${") + 2, temp.indexOf("}"))));
+                            }
+                            html += "<td>" + temp + "</td>";
                         } else {
                             html += "<td>" + result.data[i][opts.columns[j]["name"]] + "</td>";
                         }
