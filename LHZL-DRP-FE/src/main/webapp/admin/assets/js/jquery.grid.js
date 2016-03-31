@@ -15,7 +15,11 @@
             for (var i = 0; i < opts.data.length; i++) {
                 html += "<tr>";
                 for (var j = 0; j < opts.columns.length; j++) {
-                    html += "<td>" + opts.data[i][opts.columns[j]["name"]] + "</td>"
+                    if (opts.columns[j]["template"]) {
+                        html += "<td>" + opts.columns[j]["template"].replace("value", opts.data[i][opts.columns[j]["name"]]) + "</td>";
+                    } else {
+                        html += "<td>" + opts.data[i][opts.columns[j]["name"]] + "</td>";
+                    }
                 }
                 html += "</tr>";
             }
