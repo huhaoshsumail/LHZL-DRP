@@ -50,7 +50,6 @@
     });
 
     var defaluts = {
-        enableMultiSelect: false,
         ennableSelect: false,
         columns: [],
         data: [],
