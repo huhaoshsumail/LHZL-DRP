@@ -13,7 +13,7 @@
             var $this = $(this);
             var html = "<table class='table'><thead><tr>";
             if (opts.ennableSelect) {
-                html += "<th><input id='" + opts.selectAllId + "' type='checkbox'></th>";
+                html += "<th width='50px'><input id='" + opts.selectAllId + "' type='checkbox'></th>";
             }
             for (var i = 0; i < opts.columns.length; i++) {
                 if (opts.columns[i]["hidden"]) {
@@ -31,8 +31,10 @@
             html += "</ul></nav>";
             $this.html(html);
             loadData($this, opts);
+            return this;
         }
     });
+
     var defaluts = {
         enableMultiSelect: false,
         ennableSelect: false,
@@ -47,6 +49,9 @@
     };
 
     function initTool(obj, opts) {
+
+        $("#" + opts.selectAllId).removeAttr("checked");
+
         $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + Math.ceil(opts.pagination.count / opts.pagination.pageSize) + " 页")
 
         $("#" + opts.paginationId).find(".firstPage").click(function () {
@@ -83,7 +88,7 @@
         $("input[name='" + opts.selectName + "']").click(function () {
             var allSelected = true;
             $("input[name='" + opts.selectName + "']").each(function () {
-                if ($(this).is(':checked')) {
+                if (!$(this).is(':checked')) {
                     allSelected = false;
                 }
             });
@@ -140,4 +145,5 @@
             }
         });
     }
+
 })(jQuery);
