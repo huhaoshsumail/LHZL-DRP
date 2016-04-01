@@ -67,38 +67,53 @@
 
         $("#" + opts.paginationDesId).html("第 " + opts.pagination.pageNo + " / " + Math.ceil(opts.pagination.count / opts.pagination.pageSize) + " 页")
 
-        $("#" + opts.paginationId).find(".firstPage").click(function () {
+        $("#" + opts.paginationId).find(".firstPage").parent().removeClass("disabled");
+        $("#" + opts.paginationId).find(".prevPage").parent().removeClass("disabled");
+        $("#" + opts.paginationId).find(".nextPage").parent().removeClass("disabled");
+        $("#" + opts.paginationId).find(".lastPage").parent().removeClass("disabled");
+
+        if (opts.pagination.pageNo == 1) {
+            $("#" + opts.paginationId).find(".firstPage").parent().addClass("disabled");
+            $("#" + opts.paginationId).find(".prevPage").parent().addClass("disabled");
+        }
+
+        if (opts.pagination.pageNo == Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
+            $("#" + opts.paginationId).find(".nextPage").parent().addClass("disabled");
+            $("#" + opts.paginationId).find(".lastPage").parent().addClass("disabled");
+        }
+
+        $("#" + opts.paginationId).find(".firstPage").unbind().click(function () {
             if (opts.pagination.pageNo != 1) {
                 opts.pagination.pageNo = 1;
                 loadData(obj, opts);
             }
         });
-        $("#" + opts.paginationId).find(".prevPage").click(function () {
+        $("#" + opts.paginationId).find(".prevPage").unbind().click(function () {
             if (opts.pagination.pageNo > 1) {
                 opts.pagination.pageNo--;
                 loadData(obj, opts);
             }
         });
-        $("#" + opts.paginationId).find(".nextPage").click(function () {
+        $("#" + opts.paginationId).find(".nextPage").unbind().click(function () {
             if (opts.pagination.pageNo < Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
                 opts.pagination.pageNo++;
                 loadData(obj, opts);
             }
         });
-        $("#" + opts.paginationId).find(".lastPage").click(function () {
+        $("#" + opts.paginationId).find(".lastPage").unbind().click(function () {
             if (opts.pagination.pageNo != Math.ceil(opts.pagination.count / opts.pagination.pageSize)) {
                 opts.pagination.pageNo = Math.ceil(opts.pagination.count / opts.pagination.pageSize);
                 loadData(obj, opts);
             }
         });
-        $("#" + opts.selectAllId).click(function () {
+        $("#" + opts.selectAllId).unbind().click(function () {
             if ($(this).is(':checked')) {
                 $("input[name='" + opts.selectName + "']").prop("checked", "checked");
             } else {
                 $("input[name='" + opts.selectName + "']").removeAttr("checked");
             }
         });
-        $("input[name='" + opts.selectName + "']").click(function () {
+        $("input[name='" + opts.selectName + "']").unbind().click(function () {
             var allSelected = true;
             $("input[name='" + opts.selectName + "']").each(function () {
                 if (!$(this).is(':checked')) {
