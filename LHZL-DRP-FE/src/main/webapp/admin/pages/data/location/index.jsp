@@ -10,6 +10,11 @@
     <%@include file="../../../common/common_sidebar.jsp" %>
 
     <div class="content-wrapper" id="pjax-content">
+        <script>
+            $(function () {
+                initDataLocation();
+            });
+        </script>
         <section class="content-header">
             <h1>
                 地点

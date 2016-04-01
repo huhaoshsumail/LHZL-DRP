@@ -17,4 +17,8 @@ var initDataBook = function () {
 
     // 获取选中行
     // gridApi.getSelectedRows();
+
+    $("#codeTable").click(function () {
+        console.log("book");
+    });
 }
