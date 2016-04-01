@@ -5,7 +5,7 @@
 <web-app>
     <display-name>LHZL-DRP</display-name>
     <welcome-file-list>
-        <welcome-file>font/index.jsp</welcome-file>
+        <welcome-file>front/index.jsp</welcome-file>
         <welcome-file>admin/index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
