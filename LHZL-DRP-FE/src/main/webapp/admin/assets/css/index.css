@@ -1,8 +1,15 @@
-.sidebar-menu span{
+.sidebar-menu a, .sidebar-menu a span {
     font-family: 'Microsoft YaHei';
     font-size: 12px;
 }
 
-.user-footer a{
+@media (min-width: 768px) {
+    .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {
+        top: 40px;
+        margin-left: 0;
+    }
+}
+
+.user-footer a {
     font-size: 12px;
 }
