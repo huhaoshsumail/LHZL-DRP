@@ -260,4 +260,17 @@
       AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
     </if>
   </select>
+  <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="com.lhzl.drp.model.Operatorinfo">
+    select
+    <include refid="Base_Column_List"/>
+    from Tbl_OperatorInfo
+    where 1=1
+    <if test="operpwd != null" >
+      AND operpwd = #{operpwd,jdbcType=VARCHAR}
+    </if>
+    <if test="opername != null" >
+      AND operName = #{opername,jdbcType=VARCHAR}
+    </if>
+  </select>
+
 </mapper>

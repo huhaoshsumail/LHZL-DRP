@@ -8,15 +8,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="node_modules/admin-lte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/admin-lte/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="node_modules/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="../node_modules/ionicons/dist/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="node_modules/admin-lte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../node_modules/admin-lte/dist/css/AdminLTE.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="node_modules/admin-lte/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="../node_modules/admin-lte/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="assets/css/login.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,7 +54,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                    <button type="submit" id="login" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -75,20 +75,34 @@
 <!-- /.login-box -->
 
 <!-- jQuery 2.1.4 -->
-<script src="node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<script src="../node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="node_modules/admin-lte/plugins/iCheck/icheck.min.js"></script>
+<script src="../node_modules/admin-lte/plugins/iCheck/icheck.min.js"></script>
 <script src="assets/js/login.js"></script>
 <script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
+//    $(function () {
+//        $('input').iCheck({
+//            checkboxClass: 'icheckbox_square-blue',
+//            radioClass: 'iradio_square-blue',
+//            increaseArea: '20%' // optional
+//        });
+//        $("#login").click(function () {
+//            //登录
+//            $.ajax
+//            ({
+//                url: "http://localhost:8080/LHZL-DRP-BE/rest/operatorInfoController/login",
+//                type: "post",
+//                //传送请求数据
+//                data: {},
+//                success: function (strValue) { //登录成功后返回的数据
+//                  alert("胡浩长的帅");
+//                }
+//            })
+//        })
+//    });
+
 </script>
 </body>
 </html>
