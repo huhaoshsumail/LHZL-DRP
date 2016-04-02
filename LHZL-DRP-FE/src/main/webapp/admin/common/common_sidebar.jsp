@@ -70,7 +70,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="admin/index.jsp"><i class="fa fa-cube"></i><span>供应商管理</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-black-tie"></i><span>供应商子账户管理</span></a></li>
+                    <li><a href="admin/pages/supplier/subaccount.jsp"><i class="fa fa-black-tie"></i><span>供应商子账户管理</span></a></li>
                     <li><a href="admin/index.jsp"><i class="fa fa-lock"></i><span>供应商子账户权限分配</span></a></li>
 
                 </ul>
@@ -80,8 +80,8 @@
                     <i class="fa fa-sitemap"></i><span>分销商管理</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="admin/index.jsp"><i class="fa fa-share-alt"></i><span>分销商管理</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-black-tie"></i><span>分销商子账户管理</span></a></li>
+                    <li><a href="admin/pages/distributors/management.jsp"><i class="fa fa-share-alt"></i><span>分销商管理</span></a></li>
+                    <li><a href="admin/pages/distributors/submanagement.jsp"><i class="fa fa-black-tie"></i><span>分销商子账户管理</span></a></li>
                     <li><a href="admin/index.jsp"><i class="fa fa-lock"></i><span>分销商子账户权限分配</span></a></li>
 
                 </ul>

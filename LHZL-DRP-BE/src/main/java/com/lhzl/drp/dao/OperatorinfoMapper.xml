@@ -249,4 +249,55 @@
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where operId = #{operid,jdbcType=BIGINT}
   </update>
+  <select id="queryOper" parameterType="Map" resultType="com.lhzl.drp.model.Operatorinfo">
+    select
+    <include refid="Base_Column_List"/>
+    from Tbl_OperatorInfo
+    where 1=1
+    <if test="operid != null" >
+      AND operId = #{operid,jdbcType=BIGINT}
+    </if>
+    <if test="userid != null" >
+     AND userId = #{userid,jdbcType=BIGINT}
+    </if>
+    <if test="opacct != null" >
+      AND opacct = #{opacct,jdbcType=VARCHAR}
+    </if>
+    <if test="operpwd != null" >
+      AND operpwd = #{operpwd,jdbcType=VARCHAR}
+    </if>
+    <if test="opername != null" >
+      AND operName = #{opername,jdbcType=VARCHAR}
+    </if>
+    <if test="gender != null" >
+      AND  gender = #{gender,jdbcType=VARCHAR}
+    </if>
+    <if test="resttime != null" >
+      AND restTime = #{resttime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="retrycount != null" >
+      AND retryCount = #{retrycount,jdbcType=INTEGER}
+    </if>
+    <if test="status != null" >
+      AND status = #{status,jdbcType=VARCHAR}
+    </if>
+    <if test="lastlogintime != null" >
+      AND lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="lastloginip != null" >
+      AND lastLoginIp = #{lastloginip,jdbcType=VARCHAR}
+    </if>
+    <if test="createby != null" >
+      AND createby = #{createby,jdbcType=VARCHAR}
+    </if>
+    <if test="createtime != null" >
+      AND createTime = #{createtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateby != null" >
+      AND updateby = #{updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="updatetime != null" >
+      AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
 </mapper>

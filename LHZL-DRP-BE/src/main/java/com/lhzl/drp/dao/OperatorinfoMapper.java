@@ -1,6 +1,10 @@
 package com.lhzl.drp.dao;
 
 import com.lhzl.drp.model.Operatorinfo;
+import com.lhzl.drp.model.Userinfo;
+
+import java.util.List;
+import java.util.Map;
 
 public interface OperatorinfoMapper {
     /**
@@ -50,4 +54,12 @@ public interface OperatorinfoMapper {
      * @mbggenerated Thu Mar 24 15:33:09 CST 2016
      */
     int updateByPrimaryKey(Operatorinfo record);
+
+    /**
+     * 查询操作员
+     *
+     * @param map
+     * @return
+     */
+    List<Operatorinfo> queryOper(Map<String, Object> map);
 }
