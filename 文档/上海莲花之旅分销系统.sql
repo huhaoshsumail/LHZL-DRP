@@ -1,291 +1,672 @@
-CREATE TABLE "线路主表" (
-"线路id" INT NOT NULL,
-"线路类型" CHARACTER(2) NOT NULL 'DX',
-"旅游类型" CHARACTER(3) NOT NULL,
-"系统编号" CHARACTER(30) NOT NULL,
-"自定义编号" CHARACTER(30) NULL,
-"线路起点" INT NOT NULL,
-"线路终点" INT NOT NULL,
-"主标题" CHARACTER(200) NOT NULL,
-"副标题" CHARACTER(60) NULL,
-"描述" CHARACTER(500) NULL,
-"线路主题id" CHARACTER(50) NULL,
-"关键字" INT NOT NULL,
-"天数" INT NOT NULL,
-"住宿天数" INT NOT NULL,
-"住宿类型" INT NULL,
-"住宿名称" CHARACTER(200) NULL,
-"应急电话" CHARACTER(20) NOT NULL,
-"报名截止时间" CHARACTER(8) NOT NULL,
-"周末计算在内" CHARACTER(1) NOT NULL 'N',
-"是否支持选座" CHARACTER(1) NOT NULL 'Y',
-"最小成团人数" INT NOT NULL,
-"下单是否需确认" CHARACTER NOT NULL 'N',
-"状态" CHARACTER(2) NOT NULL 'T',
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP ,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP ,
-PRIMARY KEY ("线路id") 
-);
-
-CREATE TABLE "站点管理" (
-"站点id" INT NOT NULL,
-"站点名称" CHARACTER(100) NOT NULL,
-"站点类型" CHARACTER(100) NOT NULL,
-"创建人" CHARACTER(200) NULL,
-"创建时间" DATE NULL CURRENT_TIMESTAMP ,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP ,
-PRIMARY KEY ("站点id") 
-);
-
-CREATE TABLE "目的地" (
-"目的地id" INT NOT NULL,
-PRIMARY KEY ("目的地id") 
-);
-
-CREATE TABLE "旅游类型" (
-"类型id" INT NOT NULL,
-"类型名称" CHARACTER(200) NOT NULL,
-PRIMARY KEY ("类型id") 
-);
-
-CREATE TABLE "线路主题" (
-"主题id" INT NOT NULL,
-"主题名称" CHARACTER(200) NOT NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NOT NULL 'anonymous',
-"最后修改时间" DATE NOT NULL CURRENT_TIMESTAMP ,
-PRIMARY KEY ("主题id") 
-);
-
-CREATE TABLE "线路关键字" (
-"关键字id" INT NOT NULL,
-"关键字" CHARACTER(200) NOT NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP ,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP ,
-PRIMARY KEY ("关键字id") 
-);
-
-CREATE TABLE "住宿类型" (
-"住宿id" INT NOT NULL,
-"住宿类型" CHARACTER NOT NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP ,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP ,
-PRIMARY KEY ("住宿id") 
-);
-
-CREATE TABLE "接送信息" (
-"接送信息id" INT NOT NULL,
-"线路主表id" INT NOT NULL,
-"始发站" INT NOT NULL,
-"发车时间" CHARACTER(5) NOT NULL,
-"去程是否接送" CHARACTER(1) NOT NULL 'N',
-"回程是否接送" CHARACTER(1) NOT NULL 'N',
-"创建人" CHARACTER VARYING(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER VARYING(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("接送信息id") 
-);
-
-CREATE TABLE "接送规则" (
-"接送规则id" INT NOT NULL,
-"接送标识" CHARACTER(2) NOT NULL,
-"上车点" CHARACTER(200) NOT NULL,
-"时间" CHARACTER(5) NOT NULL,
-"价格" NUMERIC(20,3) NOT NULL,
-"备注" CHARACTER(200) NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER VARYING(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("接送规则id") 
-);
-
-CREATE TABLE "线路扩展信息" (
-"扩展信息id" INT NOT NULL,
-"线路主键id" INT NOT NULL,
-"特别提醒" CHARACTER(500) NOT NULL,
-"线路特色" CHARACTER(500) NULL,
-"费用包含" CHARACTER(500) NOT NULL,
-"费用不包含" CHARACTER(500) NOT NULL,
-"补充说明" CHARACTER(500) NULL,
-"购物说明" CHARACTER(500) NULL,
-"注意事项" CHARACTER(500) NOT NULL,
-"创建人" CHARACTER VARYING(255) NOT NULL,
-"创建时间" CHARACTER VARYING(255) NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER VARYING(255) NULL 'anonymous',
-"最后修改时间" CHARACTER VARYING(255) NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("扩展信息id") 
-);
-
-CREATE TABLE "团体管理" (
-"团体id" INT NOT NULL,
-"团体编号" CHARACTER(20) NOT NULL,
-"路线id" INT NOT NULL,
-"团体名称" CHARACTER(200) NOT NULL,
-"出团开始时间" DATE NOT NULL,
-"出团结束时间" DATE NOT NULL,
-"状态" CHARACTER(1) NOT NULL 'T',
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("团体id") 
-);
-
-CREATE TABLE "游客信息表" (
-"游客信息id" INT NOT NULL,
-"团体id" INT NOT NULL,
-"旅游车次" INT NULL,
-"游客姓名" CHARACTER(200) NOT NULL,
-"成人/儿童" CHARACTER(1) NOT NULL 'M',
-"游客证件" CHARACTER(18) NULL,
-"游客座位" CHARACTER(10) NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("游客信息id") 
-);
-
-CREATE TABLE "会员表" (
-"会员id" INTEGER NOT NULL,
-"会员类型" CHARACTER(1) NOT NULL 'U',
-"会员姓名" CHARACTER(200) NOT NULL,
-"电话" CHARACTER(20) NOT NULL,
-"会员证件" CHARACTER(18) NOT NULL,
-"会员状态" CHARACTER(1) NOT NULL 'N',
-"创建人" CHARACTER(200) NULL,
-"创建时间" DATE NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("会员id") 
-);
-
-CREATE TABLE "车次配置表" (
-"车次id" INT NOT NULL,
-"车次编号" CHARACTER(20) NOT NULL,
-"车次名称" CHARACTER(20) NOT NULL,
-"车牌号" CHARACTER(10) NOT NULL,
-"创建人" CHARACTER(200) NULL,
-"创建时间" DATE NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("车次id") 
-);
-
-CREATE TABLE "操作员表" (
-"操作员id" INT NOT NULL,
-"会员id" INT NOT NULL,
-"操作员登录账户" CHARACTER(100) NOT NULL,
-"操作员密码" CHARACTER(100) NOT NULL,
-"操作员姓名" CHARACTER(200) NOT NULL,
-"操纵员性别" CHARACTER(1) NULL,
-"口令重置时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"登录错误次数" INT NOT NULL 0,
-"操作员状态" CHARACTER(1) NOT NULL 'R',
-"最后登录时间" DATE NULL CURRENT_TIMESTAMP,
-"最后登录ip" CHARACTER(15) NOT NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("操作员id") 
-);
-
-CREATE TABLE "订单表" (
-"订单id" INT NOT NULL,
-"订单编号" CHARACTER(20) NOT NULL,
-"线路id" INT NOT NULL,
-"分销商id" INT NOT NULL,
-"订单金额" NUMERIC(24,3) NULL,
-"出发日期" DATE NULL,
-"订单状态" CHARACTER(1) NULL 'D',
-"订单生成时间" DATE NULL CURRENT_TIMESTAMP,
-"创建人" CHARACTER(200) NULL,
-"创建时间" DATE NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("订单id") 
-);
-
-CREATE TABLE "付款表" (
-"付款id" INT NOT NULL,
-"付款编号" CHARACTER(20) NOT NULL,
-"自定义编号" CHARACTER(20) NULL,
-"订单id" INT NOT NULL,
-"订单应付金额" NUMERIC(24,3) NOT NULL,
-"订单实付金额" NUMERIC(24,3) NULL,
-"预付款金额" NUMERIC(24,3) NULL,
-"订单实收金额" NUMERIC(24,3) NULL,
-"预付款时间" DATE NULL,
-"尾款" NUMERIC(24,3) NULL,
-"订单应收金额" NUMERIC(24,3) NOT NULL,
-"尾款支付时间" DATE NULL,
-"付款人" CHARACTER(200) NOT NULL,
-"付款时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"付款状态" CHARACTER(1) NOT NULL 'D',
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("付款id") 
-);
-
-CREATE TABLE "日志表" (
-"日志id" INT NOT NULL,
-"操作内容" CHARACTER(500) NOT NULL,
-"操作人" CHARACTER(200) NOT NULL,
-"操作时间" DATE NOT NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("日志id") 
-);
-
-CREATE TABLE "角色表" (
-"角色id" INT NOT NULL,
-"角色名称" CHARACTER(200) NOT NULL,
-"备注" CHARACTER(500) NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("角色id") 
-);
-
-CREATE TABLE "权限表" (
-"权限id" INT NOT NULL,
-"权限名称" CHARACTER(200) NOT NULL,
-"操作名称" CHARACTER(200) NOT NULL,
-"备注" CHARACTER(500) NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-"最后修改人" CHARACTER(200) NULL 'anonymous',
-"最后修改时间" DATE NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("权限id") 
-);
-
-CREATE TABLE "角色权限表" (
-"角色权限id" INT NOT NULL,
-"角色id" INT NOT NULL,
-"权限id" INT NOT NULL,
-"创建人" CHARACTER(200) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("角色权限id") 
-);
-
-CREATE TABLE "消息通知表" (
-"消息通知id" INT NOT NULL,
-"消息类型" CHARACTER(3) NOT NULL 'ORD',
-"是否已读" CHARACTER(1) NOT NULL 'N',
-"消息内容" CHARACTER(500) NOT NULL,
-"创建时间" DATE NOT NULL CURRENT_TIMESTAMP,
-PRIMARY KEY ("消息通知id") 
-);
-
+CREATE TABLE `Tbl_LineInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '线路id',
+
+`lineType` varchar(2) NOT NULL DEFAULT 'DX' COMMENT '线路类型 - DX  短线\r\nCX  长线\r\nCJ   出境\r\nYL   邮轮\r\nMP  门票\r\nZT   整团',
+
+`tourType` varchar(3) NOT NULL COMMENT '旅游类型 - ZYX  自由行  \r\nGTY  跟团游',
+
+`lineNo` varchar(30) NOT NULL COMMENT '线路编号',
+
+`sysNO` varchar(30) NULL COMMENT '系统编号',
+
+`lineStart` bigint NOT NULL COMMENT '线路起点-与站点管理外键',
+
+`lineEnd` bigint NOT NULL COMMENT '线路目的地-与站点管理外键',
+
+`title` varchar(200) NOT NULL COMMENT '主标题',
+
+`subTitile` varchar(60) NULL COMMENT '副标题',
+
+`desc` text NULL COMMENT '描述',
+
+`lineSid` varchar(50) NULL COMMENT '线路主题-线路主题外键, 多选用逗号隔开',
+
+`keyword` bigint NOT NULL COMMENT '关键字',
+
+`days` int NOT NULL COMMENT '天数',
+
+`hotelDays` int NOT NULL COMMENT '住宿天数',
+
+`hotelType` bigint NULL COMMENT '住宿类型',
+
+`hotelName` varchar(200) NULL COMMENT '住宿名称',
+
+`tel` varchar(20) NOT NULL COMMENT '应急电话',
+
+`deadline` varchar(8) NOT NULL COMMENT '报名截止时间',
+
+`hasWeekend` varchar(1) NOT NULL DEFAULT 'N' COMMENT '周末是否计算在内-N  不计算\r\nY   计算',
+
+`cusSelect` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否支持选座-N   不支持\r\nY    支持',
+
+`min` int NOT NULL COMMENT '最小成团人数',
+
+`hasConfirm` varchar(1) NOT NULL DEFAULT 'N' COMMENT '订单是否需要确认-N   不需要确认\r\nY    需要确认',
+
+`status` varchar(2) NOT NULL DEFAULT 'T' COMMENT '状态-T   草稿\r\nS    提交\r\nA    审核中\r\nP    审核通过\r\nR    审核拒绝\r\nN    上架中\r\nF     暂停\r\nD     删除',
+
+`creatby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) ,
+
+UNIQUE INDEX `index_lineNo` (`lineNo`),
+
+UNIQUE INDEX `index_sysNO` (`sysNO`)
+
+);
+
+
+
+CREATE TABLE `Tbl_StationInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '站点id',
+
+`stationPid` bigint NOT NULL DEFAULT 0 COMMENT '站点父节点  0 为类型',
+
+`stationName` varchar(100) NOT NULL COMMENT '站点名称',
+
+`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用\r\nＮ　　不启用\r\nＹ　　启用',
+
+`creatby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_ThemeInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '主题id',
+
+`themeName` varchar(200) NOT NULL COMMENT '主题名称',
+
+`remark` varchar(500) NULL COMMENT '备注',
+
+`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '状态\r\nN  不启用\r\nY   启用',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_KeyWords` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '关键字id',
+
+`keywords` varchar(200) NOT NULL COMMENT '关键字',
+
+`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用 N  不启用   Y  启用',
+
+`createby` varchar(200) NOT NULL COMMENT '关键字',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_HotelInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '住宿id',
+
+`hotelType` varchar(1) NOT NULL COMMENT '住宿类型',
+
+`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用 N  不启用  Y   启用',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_ShuttleInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '接送信息id',
+
+`lineId` bigint NOT NULL COMMENT '线路主表id -- 线路主表外键关联',
+
+`startId` bigint NOT NULL COMMENT '始发站 - 车站管理表外键关联',
+
+`startTime` varchar(5) NOT NULL COMMENT '发车时间(xx:xx)',
+
+`trip` varchar(1) NOT NULL DEFAULT 'N' COMMENT '去程是否接送 - N   去程不接送\r\nY    去程接送',
+
+`tripId` bigint NULL COMMENT '去程接送规则id',
+
+`returnTrip` varchar(1) NOT NULL DEFAULT 'N' COMMENT '回程是否接送 - N   回程不接送\r\nY    回程接送',
+
+`returnTripId` bigint NULL COMMENT '回程接送规则id',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_Triprules` (
+
+`tripId` bigint NOT NULL AUTO_INCREMENT COMMENT '接送规则id',
+
+`tripType` varchar(2) NOT NULL COMMENT '接送规则id - QC   去程\r\nHC   回程',
+
+`busLocation` varchar(200) NOT NULL COMMENT '上车点',
+
+`starttime` varchar(5) NOT NULL COMMENT '时间',
+
+`price` numeric(20,3) NOT NULL COMMENT '价格',
+
+`remark` varchar(200) NULL COMMENT '备注',
+
+`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用\r\nN  不启用\r\nY   启用',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`tripId`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_ExtendInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '扩展信息id',
+
+`lineId` bigint NOT NULL COMMENT '线路主键id - 与线路主表外键关联',
+
+`remind` text NOT NULL COMMENT '特别提醒',
+
+`lineFeature` text NULL COMMENT '线路特色',
+
+`include` text NOT NULL COMMENT '费用包含',
+
+`notInclude` text NOT NULL COMMENT '费用不包含',
+
+`remarks` text NULL COMMENT '补充说明',
+
+`shopping` text NULL COMMENT '购物说明',
+
+`note` text NOT NULL COMMENT '注意事项',
+
+`creatby` varchar(200) NOT NULL COMMENT '创建人',
+
+`creatTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_GroupInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '团体id',
+
+`groupNo` varchar(20) NOT NULL COMMENT '团体编号',
+
+`lineId` bigint NOT NULL COMMENT '线路编号-路线主表外键关联',
+
+`groupName` varchar(200) NOT NULL COMMENT '团体名称',
+
+`groupStart` datetime NOT NULL COMMENT '出团开始时间',
+
+`groupEnd` datetime NOT NULL COMMENT '出团结束时间',
+
+`status` varchar(1) NOT NULL DEFAULT 'T' COMMENT '状态-T     草稿\r\nA     审核中\r\nP     审核通过\r\nF      审核失败',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_TouristInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '游客信息id',
+
+`groupId` bigint NOT NULL COMMENT '团体id',
+
+`trainId` bigint NULL COMMENT '旅游车次',
+
+`tourName` varchar(200) NOT NULL COMMENT '游客姓名',
+
+`isChildren` varchar(1) NOT NULL DEFAULT 'M' COMMENT '成人/儿童 - M     成人\r\nC      儿童',
+
+`IDCard` varchar(18) NULL COMMENT '游客证件',
+
+`tourSeat` varchar(10) NULL COMMENT '游客座位',
+
+`creatby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_UserInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '会员id',
+
+`userType` varchar(1) NOT NULL DEFAULT 'U' COMMENT '会员类型 - G   供应商\r\nF    分销商\r\nU   普通用户\r\nL    莲花之旅运维管理员',
+
+`userPid` bigint NOT NULL DEFAULT 0 COMMENT '分销商的供应商id',
+
+`username` varchar(200) NOT NULL COMMENT '会员姓名',
+
+`mobile` varchar(20) NOT NULL COMMENT '电话',
+
+`IDCard` varchar(18) NOT NULL COMMENT '会员证件',
+
+`status` varchar(1) NOT NULL DEFAULT 'N' COMMENT '会员状态 - N     正常会员\r\nF      冻结会员\r\nA       异常会员\r\nD      删除   软删除',
+
+`createby` varchar(200) NULL COMMENT '创建人',
+
+`createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_TrainInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '车次id',
+
+`trainNo` varchar(20) NOT NULL COMMENT '车次编号',
+
+`trainName` varchar(20) NOT NULL COMMENT '车次名称',
+
+`plateNum` varchar(10) NOT NULL COMMENT '车牌号',
+
+`status` varchar(1) NOT NULL DEFAULT 'N' COMMENT '状态   N  正常    D  停用   T  出行',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_OperatorInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '操作员id',
+
+`userId` bigint NOT NULL COMMENT '会员id',
+
+`opacct` varchar(100) NOT NULL COMMENT '操作员登录账户',
+
+`operpwd` varchar(100) NOT NULL COMMENT '操作员密码 - 密码将采用SHA-256做数据指纹，不能直接保存密码.',
+
+`operName` varchar(200) NOT NULL COMMENT '操作员姓名',
+
+`gender` varchar(1) NULL COMMENT '操纵员性别 - M    男\r\nW    女',
+
+`restTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '口令重置时间',
+
+`retryCount` int NOT NULL DEFAULT 0 COMMENT '登录错误次数',
+
+`status` varchar(1) NOT NULL DEFAULT 'R' COMMENT '操作员状态 - R    待审核\r\nA    正在审核\r\nP    审核通过\r\nR     审核拒绝\r\nN    正常\r\nF     冻结\r\nB     异常\r\nD    软删除',
+
+`lastLoginTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后登录时间',
+
+`lastLoginIp` varchar(15) NOT NULL COMMENT '最后登录ip',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) ,
+
+UNIQUE INDEX `index_opacct` (`opacct`)
+
+);
+
+
+
+CREATE TABLE `Tbl_OrderInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单编号',
+
+`orderNo` varchar(20) NOT NULL COMMENT '订单编号',
+
+`lineId` bigint NOT NULL COMMENT '线路id',
+
+`drpid` bigint NOT NULL COMMENT '分销商id',
+
+`ordamt` numeric(24,3) NULL COMMENT '订单金额',
+
+`startTime` datetime NULL COMMENT '出发日期',
+
+`status` varchar(1) NULL DEFAULT 'D' COMMENT '订单状态 - D     订单草稿\r\nS      订单提交\r\nA      正在审核\r\nP      审核通过\r\nF      审核拒绝\r\nE      订单执行中\r\nC      订单确认\r\n',
+
+`orderTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '订单生成时间',
+
+`createby` varchar(200) NULL COMMENT '创建人',
+
+`createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_PayInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '付款id',
+
+`payNo` varchar(20) NOT NULL COMMENT '付款编号',
+
+`cusNo` varchar(20) NULL COMMENT '自定义编号',
+
+`orderId` bigint NOT NULL COMMENT '订单id',
+
+`orderAmt` numeric(24,3) NOT NULL COMMENT '订单应付金额',
+
+`payAmt` numeric(24,3) NULL COMMENT '订单实付金额',
+
+`prepaidAmt` numeric(24,3) NULL COMMENT '订单预付金额',
+
+`prepaidTime` datetime NULL COMMENT '预付款时间',
+
+`finalAmt` numeric(24,3) NULL COMMENT '尾款',
+
+`finalTime` datetime NULL COMMENT '尾款支付时间',
+
+`payer` varchar(200) NOT NULL COMMENT '付款人',
+
+`payTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '付款时间',
+
+`status` varchar(1) NOT NULL DEFAULT 'D' COMMENT '付款状态 - D     付款草稿\r\nS      付款提交\r\nA      正在审核\r\nP      审核通过\r\nF      审核拒绝\r\nP      支付成功\r\n\r\n',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_LogInfo` (
+
+`logId` bigint NOT NULL AUTO_INCREMENT COMMENT '日志id',
+
+`logCont` text NOT NULL COMMENT '操作内容',
+
+`createby` varchar(200) NOT NULL COMMENT '操作人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
+
+PRIMARY KEY (`logId`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_RoleInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色id',
+
+`userId` bigint NOT NULL COMMENT '用户id',
+
+`roleName` varchar(200) NOT NULL COMMENT '角色名称',
+
+`flag` varchar(1) NULL DEFAULT 'S' COMMENT '角色标识--\'S\' 系统创建   \'U\'  用户创建',
+
+`remark` varchar(300) NULL COMMENT '备注',
+
+`creatby` varchar(200) NOT NULL COMMENT '创建人',
+
+`creatTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_PermissionInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '权限id',
+
+`pmsnName` varchar(200) NOT NULL COMMENT '权限名称',
+
+`actionName` varchar(200) NOT NULL COMMENT '操作名称',
+
+`remark` text NULL COMMENT '备注',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_RolePermissionInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色权限id',
+
+`roleId` bigint NOT NULL COMMENT '角色id',
+
+`pmsnId` bigint NOT NULL COMMENT '权限id',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL COMMENT '最后修改人',
+
+`updateTime` datetime NULL COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_MessageInfo` (
+
+`msgId` bigint NOT NULL AUTO_INCREMENT COMMENT '消息通知id',
+
+`msgType` varchar(3) NOT NULL DEFAULT 'ORD' COMMENT '消息类型 - ORD   订单相关\r\nLNE    线路相关\r\n',
+
+`isRead` varchar(1) NOT NULL DEFAULT 'N' COMMENT '是否已读 - N      未读\r\nY       已读',
+
+`message` text NOT NULL COMMENT '消息内容',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+PRIMARY KEY (`msgId`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_RolePmsnInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '操作员角色id',
+
+`roleid` bigint NULL COMMENT '角色id',
+
+`oprtid` bigint NULL COMMENT '操作员id',
+
+`createby` varchar(200) NULL COMMENT '创建人',
+
+`createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+CREATE TABLE `Tbl_LineAmtsInfo` (
+
+`id` bigint NOT NULL AUTO_INCREMENT COMMENT '线路金额表id',
+
+`lineId` bigint NOT NULL COMMENT '线路id',
+
+`tripDate` date NOT NULL COMMENT '出团日期',
+
+`tripPrice` numeric(24,5) NOT NULL COMMENT '金额',
+
+`remark` varchar(500) NULL COMMENT '备注',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
+
+PRIMARY KEY (`id`) 
+
+);
+
+
+
+
+
+ALTER TABLE `Tbl_OperatorInfo` ADD CONSTRAINT `fk_userid` FOREIGN KEY (`userId`) REFERENCES `Tbl_UserInfo` (`id`);
+
+ALTER TABLE `Tbl_RolePmsnInfo` ADD CONSTRAINT `fk_roleid` FOREIGN KEY (`roleid`) REFERENCES `Tbl_RoleInfo` (`id`);
+
+ALTER TABLE `Tbl_RolePmsnInfo` ADD CONSTRAINT `fk_oprtid` FOREIGN KEY (`oprtid`) REFERENCES `Tbl_OperatorInfo` (`id`);
+
+ALTER TABLE `Tbl_RolePermissionInfo` ADD CONSTRAINT `fk_rlpm_roleid` FOREIGN KEY (`roleId`) REFERENCES `Tbl_RoleInfo` (`id`);
+
+ALTER TABLE `Tbl_RolePermissionInfo` ADD CONSTRAINT `fk_pmsnid` FOREIGN KEY (`pmsnId`) REFERENCES `Tbl_PermissionInfo` (`id`);
+
+ALTER TABLE `Tbl_ExtendInfo` ADD CONSTRAINT `fk_ext_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
+
+ALTER TABLE `Tbl_PayInfo` ADD CONSTRAINT `fk_pay_orderid` FOREIGN KEY (`orderId`) REFERENCES `Tbl_OrderInfo` (`id`);
+
+ALTER TABLE `Tbl_TouristInfo` ADD CONSTRAINT `fk_tour_groupid` FOREIGN KEY (`groupId`) REFERENCES `Tbl_GroupInfo` (`id`);
+
+ALTER TABLE `Tbl_ShuttleInfo` ADD CONSTRAINT `fk_shut_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
+
+ALTER TABLE `Tbl_ShuttleInfo` ADD CONSTRAINT `fk_shut_startid` FOREIGN KEY (`startId`) REFERENCES `Tbl_StationInfo` (`id`);
+
+ALTER TABLE `Tbl_OrderInfo` ADD CONSTRAINT `fk_order_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
+
+ALTER TABLE `Tbl_OrderInfo` ADD CONSTRAINT `fk_order_drpid` FOREIGN KEY (`drpid`) REFERENCES `Tbl_UserInfo` (`id`);
+
+ALTER TABLE `Tbl_GroupInfo` ADD CONSTRAINT `fk_group_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
+
+ALTER TABLE `Tbl_LineInfo` ADD CONSTRAINT `fk_line_keywords` FOREIGN KEY (`keyword`) REFERENCES `Tbl_KeyWords` (`id`);
+
+ALTER TABLE `Tbl_TouristInfo` ADD CONSTRAINT `fk_tour_trainid` FOREIGN KEY (`trainId`) REFERENCES `Tbl_TrainInfo` (`id`);
+
+ALTER TABLE `Tbl_LineAmtsInfo` ADD CONSTRAINT `fk_amt_lineId` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
+
+ALTER TABLE `Tbl_RoleInfo` ADD CONSTRAINT `fk_role_userid` FOREIGN KEY (`userId`) REFERENCES `Tbl_UserInfo` (`id`);
+
+
+
