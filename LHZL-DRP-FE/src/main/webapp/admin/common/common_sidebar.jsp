@@ -44,12 +44,12 @@
                     <i class="fa fa-th-list"></i><span>站点管理</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="admin/index.jsp"><i class="fa fa-map-signs"></i><span>出发/目的地管理</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-bus"></i><span>接送规则维护</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-long-arrow-right"></i><span>车次配置维护</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-hotel"></i><span>住宿类型维护</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-file-word-o"></i><span>线路关键字维护</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-paint-brush"></i><span>线路主题</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/depdesmanagement/depdesmanagement.jsp"><i class="fa fa-map-signs"></i><span>出发/目的地管理</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/shuttlerule/shuttlerule.jsp"><i class="fa fa-bus"></i><span>接送规则维护</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/trainconfig/trainconfig.jsp"><i class="fa fa-long-arrow-right"></i><span>车次配置维护</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/accommodationtype/accommodationtype.jsp"><i class="fa fa-hotel"></i><span>住宿类型维护</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/linekey/linekey.jsp"><i class="fa fa-file-word-o"></i><span>线路关键字维护</span></a></li>
+                    <li><a href="admin/pages/sitemaintenance/linetheme/linetheme.jsp"><i class="fa fa-paint-brush"></i><span>线路主题</span></a></li>
                 </ul>
             </li>
             <li class="treeview">

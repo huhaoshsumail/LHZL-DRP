@@ -59,3 +59,9 @@
 <script src="admin/pages/supplier/subaccount.js"></script>
 <script src="admin/pages/distributors/management.js"></script>
 <script src="admin/pages/distributors/submanagement.js"></script>
+<script src="admin/pages/sitemaintenance/accommodationtype/accommodationtype.js"></script>
+<script src="admin/pages/sitemaintenance/depdesmanagement/depdesmanagement.js"></script>
+<script src="admin/pages/sitemaintenance/linekey/linekey.js"></script>
+<script src="admin/pages/sitemaintenance/linetheme/linetheme.js"></script>
+<script src="admin/pages/sitemaintenance/shuttlerule/shuttlerule.js"></script>
+<script src="admin/pages/sitemaintenance/trainconfig/trainconfig.js"></script>
