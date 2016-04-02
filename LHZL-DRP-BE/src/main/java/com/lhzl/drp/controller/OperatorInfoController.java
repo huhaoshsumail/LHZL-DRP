@@ -25,7 +25,7 @@ public class OperatorInfoController {
     public Response login(Operatorinfo oi) {
         int count = operatorinfoService.login(oi);
         if (count > 0) {
-            return new Response().success("登录成功");
+            return new Response().success(token);
         } else {
             return new Response().failure("登录失败");
         }
