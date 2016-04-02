@@ -68,6 +68,9 @@
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener </listener-class>
+    </listener>
 
     <!--springMVC-->
     <servlet>
