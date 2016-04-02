@@ -29,7 +29,6 @@ public class BookCodeController {
     @Autowired
     private BookCodeService bookCodeService;
 
-
     @RequestMapping("/queryBookCode")
     @ResponseBody
     public Response queryBookCode(@RequestBody Map<String, Object> map) {

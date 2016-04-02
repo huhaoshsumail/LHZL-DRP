@@ -3,6 +3,7 @@ package com.lhzl.drp.service;
 import com.lhzl.drp.dao.BookCodeMapper;
 import com.lhzl.drp.model.BookCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
 /**
  * Created by chenhao on 2016/4/2.
  */
+@Service("bookCodeService")
 public class BookCodeServiceImpl implements BookCodeService {
 
     @Autowired
