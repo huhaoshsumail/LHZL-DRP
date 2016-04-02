@@ -65,6 +65,9 @@ public class SecurityController {
                 case 2:
                     res = new Response().failure("该角色名称已存在!");
                     break;
+                case 3:
+                    res = new Response().failure("该角色不能修改!");
+                    break;
                 case -1:
                     res = new Response().failure("服务器异常, 请重试!");
                     break;
@@ -92,6 +95,9 @@ public class SecurityController {
                     break;
                 case 1:
                     res = new Response().success("删除成功!");
+                    break;
+                case 2:
+                    res = new Response().failure("该角色不能删除!");
                     break;
                 case -1:
                     res = new Response().failure("服务器异常, 请重试!");

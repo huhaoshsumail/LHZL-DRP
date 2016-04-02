@@ -21,12 +21,18 @@ var initRoleData = function () {
                 }
             }},
             {id: "delRoles", text: '删除', action: function(){
-                var selected = gridApi.getSelectedRows()[0];
-                if (selected != null) {
-                    var data = {id: selected.id};
-                    var url = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/securityController/delRole";
-                    postAjax('POST', url, JSON.stringify( data ));
-                }
+                layer.confirm('确定要删除该角色吗？', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){
+                    var selected = gridApi.getSelectedRows()[0];
+                    if (selected != null) {
+                        var data = {id: selected.id};
+                        var url = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/securityController/delRole";
+                        postAjax('POST', url, JSON.stringify( data ));
+                    }
+                }, function(){
+                    layer.close();
+                });
             }}
         ],
         columns: [

@@ -56,6 +56,11 @@ public class SecurityServiceImpl implements SecurityService {
                     role.setCreattime(role.getUpdatetime());
                     result = this.roleinfoMapper.insert(role);
                 } else {
+                    Roleinfo roleinfo = this.roleinfoMapper.selectByPrimaryKey(role.getId());
+                    if ("S".equals(roleinfo.getFlag())) {
+                        result = 3;
+                        return result;
+                    }
                     result = this.roleinfoMapper.updateByPrimaryKey(role);
                 }
             }
