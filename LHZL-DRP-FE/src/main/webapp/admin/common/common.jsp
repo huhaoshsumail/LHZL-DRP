@@ -65,3 +65,9 @@
 <script src="admin/pages/sitemaintenance/linetheme/linetheme.js"></script>
 <script src="admin/pages/sitemaintenance/shuttlerule/shuttlerule.js"></script>
 <script src="admin/pages/sitemaintenance/trainconfig/trainconfig.js"></script>
+
+<%--相关配置--%>
+<script>
+    //后端地址
+    window.serviceUrl = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/";
+</script>
