@@ -13,3 +13,13 @@
 .user-footer a {
     font-size: 12px;
 }
+
+.box-header-btns{
+    float: right;
+}
+
+.box-header-btns span{
+    font-size: 12px;
+    font-family: 'Microsoft YaHei';
+    margin-left: 2px;
+}

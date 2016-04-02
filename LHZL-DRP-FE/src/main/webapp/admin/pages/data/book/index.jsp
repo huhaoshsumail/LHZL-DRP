@@ -30,6 +30,11 @@
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">代码</h3>
+                            <div class="btn-group box-header-btns" role="group" aria-label="操作">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i><span>新增</span></button>
+                                <button type="button" class="btn btn-primary"><i class="fa fa-repeat"></i><span>修改</span></button>
+                                <button type="button" class="btn btn-primary"><i class="fa fa-remove"></i><span>删除</span></button>
+                            </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
