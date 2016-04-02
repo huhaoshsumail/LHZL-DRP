@@ -161,4 +161,41 @@
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="queryUser" parameterType="Map" resultType="com.lhzl.drp.model.Userinfo">
+    select
+    <include refid="Base_Column_List"/>
+    from tbl_userinfo
+    where 1=1
+    <if test="userid != null">
+      AND userid = #{userid,jdbcType=BIGINT}
+    </if>
+    <if test="usertype != null">
+      AND userType = #{usertype,jdbcType=VARCHAR}
+    </if>
+    <if test="username != null">
+      AND username = #{username,jdbcType=VARCHAR}
+    </if>
+    <if test="mobile != null">
+      AND mobile = #{mobile,jdbcType=VARCHAR}
+    </if>
+    <if test="idcard != null">
+      AND IDCard = #{idcard,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null">
+      AND status = #{status,jdbcType=VARCHAR}
+    </if>
+    <if test="createby != null">
+      AND createby = #{createby,jdbcType=VARCHAR}
+    </if>
+    <if test="createtime != null">
+      AND createTime = #{createtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateby != null">
+      AND updateby = #{updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="updatetime != null">
+      AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
 </mapper>
