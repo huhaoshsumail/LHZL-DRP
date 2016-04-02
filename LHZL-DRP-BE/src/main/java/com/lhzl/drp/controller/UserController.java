@@ -1,11 +1,8 @@
 package com.lhzl.drp.controller;
 
-import com.lhzl.drp.model.Operatorinfo;
 import com.lhzl.drp.model.Userinfo;
 import com.lhzl.drp.service.UserService;
 import com.lhzl.drp.model.Response;
-import com.lhzl.drp.util.Contains;
-import com.lhzl.drp.util.SessionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +34,7 @@ public class UserController {
 
     @RequestMapping("/queryUser")
     @ResponseBody
-    public Response queryUser(@RequestBody Map<String, Object> map,HttpServletRequest request) {
-        //举个例子获取user信息
-        Operatorinfo oi= (Operatorinfo)request.getSession().getAttribute(Contains.Login.operatorinfo);
+    public Response queryUser(@RequestBody Map<String, Object> map) {
         List<Userinfo> users = userService.queryUser(map);
         Response res = new Response().success(users);
         if (map.containsKey("count")) {

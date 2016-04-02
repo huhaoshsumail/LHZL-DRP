@@ -16,7 +16,7 @@ public class Base64Util {
     public static byte[] decode(String base64) throws Exception {
         return Base64.decode(base64.getBytes());
     }
-   
+
     /**
      * <p>
      * 二进制数据编码为BASE64字符串

@@ -51,7 +51,7 @@
 <script src="node_modules/admin-lte/dist/js/app.min.js"></script>
 <script src="node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="node_modules/nprogress/nprogress.js"></script>
-<script src="admin/assets/js/layer.js"></script>
+<script src="node_modules/layer-dialog/layer.js"></script>
 <script src="admin/assets/js/jquery.pjax.js"></script>
 <script src="admin/assets/js/jquery.grid.js"></script>
 <script src="admin/assets/js/index.js"></script>

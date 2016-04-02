@@ -7,6 +7,7 @@
     "font-awesome": "^4.5.0",
     "html5shiv": "^3.7.3",
     "ionicons": "^3.0.0-alpha.3",
+    "layer-dialog": "^2.1.0",
     "magnific-popup": "^1.1.0",
     "moment": "^2.12.0",
     "nprogress": "^0.2.0",

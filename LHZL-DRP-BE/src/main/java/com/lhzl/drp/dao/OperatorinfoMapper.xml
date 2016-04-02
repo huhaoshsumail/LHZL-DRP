@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.OperatorinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Operatorinfo" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="userId" property="userid" jdbcType="BIGINT" />
-    <result column="opacct" property="opacct" jdbcType="VARCHAR" />
-    <result column="operpwd" property="operpwd" jdbcType="VARCHAR" />
-    <result column="operName" property="opername" jdbcType="VARCHAR" />
-    <result column="gender" property="gender" jdbcType="VARCHAR" />
-    <result column="restTime" property="resttime" jdbcType="TIMESTAMP" />
-    <result column="retryCount" property="retrycount" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="lastLoginTime" property="lastlogintime" jdbcType="TIMESTAMP" />
-    <result column="lastLoginIp" property="lastloginip" jdbcType="VARCHAR" />
-    <result column="createby" property="createby" jdbcType="VARCHAR" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="updateby" property="updateby" jdbcType="VARCHAR" />
-    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.lhzl.drp.dao.OperatorinfoMapper">
+    <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Operatorinfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="userId" property="userid" jdbcType="BIGINT"/>
+        <result column="opacct" property="opacct" jdbcType="VARCHAR"/>
+        <result column="operpwd" property="operpwd" jdbcType="VARCHAR"/>
+        <result column="operName" property="opername" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="restTime" property="resttime" jdbcType="TIMESTAMP"/>
+        <result column="retryCount" property="retrycount" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="lastLoginTime" property="lastlogintime" jdbcType="TIMESTAMP"/>
+        <result column="lastLoginIp" property="lastloginip" jdbcType="VARCHAR"/>
+        <result column="createby" property="createby" jdbcType="VARCHAR"/>
+        <result column="createTime" property="createtime" jdbcType="TIMESTAMP"/>
+        <result column="updateby" property="updateby" jdbcType="VARCHAR"/>
+        <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, userId, opacct, operpwd, operName, gender, restTime, retryCount, status, lastLoginTime, 
     lastLoginIp, createby, createTime, updateby, updateTime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from tbl_operatorinfo
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from tbl_operatorinfo
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tbl_operatorinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Operatorinfo" >
+    <insert id="insert" parameterType="com.lhzl.drp.model.Operatorinfo">
     insert into tbl_operatorinfo (id, userId, opacct, 
       operpwd, operName, gender, 
       restTime, retryCount, status, 
@@ -46,152 +46,152 @@
       #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Operatorinfo" >
-    insert into tbl_operatorinfo
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userid != null" >
-        userId,
-      </if>
-      <if test="opacct != null" >
-        opacct,
-      </if>
-      <if test="operpwd != null" >
-        operpwd,
-      </if>
-      <if test="opername != null" >
-        operName,
-      </if>
-      <if test="gender != null" >
-        gender,
-      </if>
-      <if test="resttime != null" >
-        restTime,
-      </if>
-      <if test="retrycount != null" >
-        retryCount,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="lastlogintime != null" >
-        lastLoginTime,
-      </if>
-      <if test="lastloginip != null" >
-        lastLoginIp,
-      </if>
-      <if test="createby != null" >
-        createby,
-      </if>
-      <if test="createtime != null" >
-        createTime,
-      </if>
-      <if test="updateby != null" >
-        updateby,
-      </if>
-      <if test="updatetime != null" >
-        updateTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=BIGINT},
-      </if>
-      <if test="opacct != null" >
-        #{opacct,jdbcType=VARCHAR},
-      </if>
-      <if test="operpwd != null" >
-        #{operpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="opername != null" >
-        #{opername,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null" >
-        #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="resttime != null" >
-        #{resttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="retrycount != null" >
-        #{retrycount,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="lastlogintime != null" >
-        #{lastlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastloginip != null" >
-        #{lastloginip,jdbcType=VARCHAR},
-      </if>
-      <if test="createby != null" >
-        #{createby,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateby != null" >
-        #{updateby,jdbcType=VARCHAR},
-      </if>
-      <if test="updatetime != null" >
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Operatorinfo" >
-    update tbl_operatorinfo
-    <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=BIGINT},
-      </if>
-      <if test="opacct != null" >
-        opacct = #{opacct,jdbcType=VARCHAR},
-      </if>
-      <if test="operpwd != null" >
-        operpwd = #{operpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="opername != null" >
-        operName = #{opername,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null" >
-        gender = #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="resttime != null" >
-        restTime = #{resttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="retrycount != null" >
-        retryCount = #{retrycount,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="lastlogintime != null" >
-        lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastloginip != null" >
-        lastLoginIp = #{lastloginip,jdbcType=VARCHAR},
-      </if>
-      <if test="createby != null" >
-        createby = #{createby,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateby != null" >
-        updateby = #{updateby,jdbcType=VARCHAR},
-      </if>
-      <if test="updatetime != null" >
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Operatorinfo" >
+    <insert id="insertSelective" parameterType="com.lhzl.drp.model.Operatorinfo">
+        insert into tbl_operatorinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="opacct != null">
+                opacct,
+            </if>
+            <if test="operpwd != null">
+                operpwd,
+            </if>
+            <if test="opername != null">
+                operName,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="resttime != null">
+                restTime,
+            </if>
+            <if test="retrycount != null">
+                retryCount,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="lastlogintime != null">
+                lastLoginTime,
+            </if>
+            <if test="lastloginip != null">
+                lastLoginIp,
+            </if>
+            <if test="createby != null">
+                createby,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updateby != null">
+                updateby,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="opacct != null">
+                #{opacct,jdbcType=VARCHAR},
+            </if>
+            <if test="operpwd != null">
+                #{operpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="opername != null">
+                #{opername,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="resttime != null">
+                #{resttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="retrycount != null">
+                #{retrycount,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="lastlogintime != null">
+                #{lastlogintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastloginip != null">
+                #{lastloginip,jdbcType=VARCHAR},
+            </if>
+            <if test="createby != null">
+                #{createby,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateby != null">
+                #{updateby,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Operatorinfo">
+        update tbl_operatorinfo
+        <set>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="opacct != null">
+                opacct = #{opacct,jdbcType=VARCHAR},
+            </if>
+            <if test="operpwd != null">
+                operpwd = #{operpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="opername != null">
+                operName = #{opername,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="resttime != null">
+                restTime = #{resttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="retrycount != null">
+                retryCount = #{retrycount,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="lastlogintime != null">
+                lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastloginip != null">
+                lastLoginIp = #{lastloginip,jdbcType=VARCHAR},
+            </if>
+            <if test="createby != null">
+                createby = #{createby,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateby != null">
+                updateby = #{updateby,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Operatorinfo">
     update tbl_operatorinfo
     set userId = #{userid,jdbcType=BIGINT},
       opacct = #{opacct,jdbcType=VARCHAR},
@@ -209,68 +209,66 @@
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="queryOper" parameterType="Map" resultType="com.lhzl.drp.model.Operatorinfo">
+    <select id="queryOper" parameterType="Map" resultType="com.lhzl.drp.model.Operatorinfo">
+        select
+        <include refid="Base_Column_List"/>
+        from Tbl_OperatorInfo
+        where 1=1
+        <if test="id != null">
+            AND id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="userid != null">
+            AND userId = #{userid,jdbcType=BIGINT}
+        </if>
+        <if test="opacct != null">
+            AND opacct = #{opacct,jdbcType=VARCHAR}
+        </if>
+        <if test="operpwd != null">
+            AND operpwd = #{operpwd,jdbcType=VARCHAR}
+        </if>
+        <if test="opername != null">
+            AND operName = #{opername,jdbcType=VARCHAR}
+        </if>
+        <if test="gender != null">
+            AND gender = #{gender,jdbcType=VARCHAR}
+        </if>
+        <if test="resttime != null">
+            AND restTime = #{resttime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="retrycount != null">
+            AND retryCount = #{retrycount,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            AND status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="lastlogintime != null">
+            AND lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="lastloginip != null">
+            AND lastLoginIp = #{lastloginip,jdbcType=VARCHAR}
+        </if>
+        <if test="createby != null">
+            AND createby = #{createby,jdbcType=VARCHAR}
+        </if>
+        <if test="createtime != null">
+            AND createTime = #{createtime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateby != null">
+            AND updateby = #{updateby,jdbcType=VARCHAR}
+        </if>
+        <if test="updatetime != null">
+            AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
+        </if>
+    </select>
+    
+    <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="java.lang.Integer">
     select
-    <include refid="Base_Column_List"/>
+    COUNT(*)
     from Tbl_OperatorInfo
-    where 1=1
-    <if test="id != null" >
-      AND id = #{id,jdbcType=BIGINT}
-    </if>
-    <if test="userid != null" >
-     AND userId = #{userid,jdbcType=BIGINT}
-    </if>
-    <if test="opacct != null" >
-      AND opacct = #{opacct,jdbcType=VARCHAR}
-    </if>
-    <if test="operpwd != null" >
+    where
+     status = 'N'
       AND operpwd = #{operpwd,jdbcType=VARCHAR}
-    </if>
-    <if test="opername != null" >
       AND operName = #{opername,jdbcType=VARCHAR}
-    </if>
-    <if test="gender != null" >
-      AND  gender = #{gender,jdbcType=VARCHAR}
-    </if>
-    <if test="resttime != null" >
-      AND restTime = #{resttime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="retrycount != null" >
-      AND retryCount = #{retrycount,jdbcType=INTEGER}
-    </if>
-    <if test="status != null" >
-      AND status = #{status,jdbcType=VARCHAR}
-    </if>
-    <if test="lastlogintime != null" >
-      AND lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="lastloginip != null" >
-      AND lastLoginIp = #{lastloginip,jdbcType=VARCHAR}
-    </if>
-    <if test="createby != null" >
-      AND createby = #{createby,jdbcType=VARCHAR}
-    </if>
-    <if test="createtime != null" >
-      AND createTime = #{createtime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="updateby != null" >
-      AND updateby = #{updateby,jdbcType=VARCHAR}
-    </if>
-    <if test="updatetime != null" >
-      AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
-    </if>
-  </select>
-  <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="com.lhzl.drp.model.Operatorinfo">
-    select
-    <include refid="Base_Column_List"/>
-    from Tbl_OperatorInfo
-    where 1=1
-    <if test="operpwd != null" >
-      AND operpwd = #{operpwd,jdbcType=VARCHAR}
-    </if>
-    <if test="opername != null" >
-      AND operName = #{opername,jdbcType=VARCHAR}
-    </if>
   </select>
 
 </mapper>
