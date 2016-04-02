@@ -3,22 +3,16 @@ package com.lhzl.drp.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Orderinfo {
+public class LineAmtsInfo {
     private Long id;
-
-    private String orderno;
 
     private Long lineid;
 
-    private Long drpid;
+    private Date tripdate;
 
-    private BigDecimal ordamt;
+    private BigDecimal tripprice;
 
-    private Date starttime;
-
-    private String status;
-
-    private Date ordertime;
+    private String remark;
 
     private String createby;
 
@@ -36,14 +30,6 @@ public class Orderinfo {
         this.id = id;
     }
 
-    public String getOrderno() {
-        return orderno;
-    }
-
-    public void setOrderno(String orderno) {
-        this.orderno = orderno == null ? null : orderno.trim();
-    }
-
     public Long getLineid() {
         return lineid;
     }
@@ -52,44 +38,28 @@ public class Orderinfo {
         this.lineid = lineid;
     }
 
-    public Long getDrpid() {
-        return drpid;
+    public Date getTripdate() {
+        return tripdate;
     }
 
-    public void setDrpid(Long drpid) {
-        this.drpid = drpid;
+    public void setTripdate(Date tripdate) {
+        this.tripdate = tripdate;
     }
 
-    public BigDecimal getOrdamt() {
-        return ordamt;
+    public BigDecimal getTripprice() {
+        return tripprice;
     }
 
-    public void setOrdamt(BigDecimal ordamt) {
-        this.ordamt = ordamt;
+    public void setTripprice(BigDecimal tripprice) {
+        this.tripprice = tripprice;
     }
 
-    public Date getStarttime() {
-        return starttime;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setStarttime(Date starttime) {
-        this.starttime = starttime;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
-
-    public Date getOrdertime() {
-        return ordertime;
-    }
-
-    public void setOrdertime(Date ordertime) {
-        this.ordertime = ordertime;
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public String getCreateby() {

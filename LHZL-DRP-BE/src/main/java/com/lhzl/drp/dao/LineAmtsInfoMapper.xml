@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.ThemeinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Themeinfo" >
+<mapper namespace="com.lhzl.drp.dao.LineAmtsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.LineAmtsInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="themeName" property="themename" jdbcType="VARCHAR" />
+    <result column="lineId" property="lineid" jdbcType="BIGINT" />
+    <result column="tripDate" property="tripdate" jdbcType="DATE" />
+    <result column="tripPrice" property="tripprice" jdbcType="DECIMAL" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="createby" property="createby" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, themeName, remark, status, createby, createTime, updateby, updateTime
+    id, lineId, tripDate, tripPrice, remark, createby, createTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tbl_themeinfo
+    from tbl_lineamtsinfo
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tbl_themeinfo
+    delete from tbl_lineamtsinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Themeinfo" >
-    insert into tbl_themeinfo (id, themeName, remark, 
-      status, createby, createTime, 
-      updateby, updateTime)
-    values (#{id,jdbcType=BIGINT}, #{themename,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.lhzl.drp.model.LineAmtsInfo" >
+    insert into tbl_lineamtsinfo (id, lineId, tripDate, 
+      tripPrice, remark, createby, 
+      createTime, updateby, updateTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{lineid,jdbcType=BIGINT}, #{tripdate,jdbcType=DATE}, 
+      #{tripprice,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Themeinfo" >
-    insert into tbl_themeinfo
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.LineAmtsInfo" >
+    insert into tbl_lineamtsinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="themename != null" >
-        themeName,
+      <if test="lineid != null" >
+        lineId,
+      </if>
+      <if test="tripdate != null" >
+        tripDate,
+      </if>
+      <if test="tripprice != null" >
+        tripPrice,
       </if>
       <if test="remark != null" >
         remark,
-      </if>
-      <if test="status != null" >
-        status,
       </if>
       <if test="createby != null" >
         createby,
@@ -64,14 +70,17 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="themename != null" >
-        #{themename,jdbcType=VARCHAR},
+      <if test="lineid != null" >
+        #{lineid,jdbcType=BIGINT},
+      </if>
+      <if test="tripdate != null" >
+        #{tripdate,jdbcType=DATE},
+      </if>
+      <if test="tripprice != null" >
+        #{tripprice,jdbcType=DECIMAL},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
       </if>
       <if test="createby != null" >
         #{createby,jdbcType=VARCHAR},
@@ -87,17 +96,20 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Themeinfo" >
-    update tbl_themeinfo
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.LineAmtsInfo" >
+    update tbl_lineamtsinfo
     <set >
-      <if test="themename != null" >
-        themeName = #{themename,jdbcType=VARCHAR},
+      <if test="lineid != null" >
+        lineId = #{lineid,jdbcType=BIGINT},
+      </if>
+      <if test="tripdate != null" >
+        tripDate = #{tripdate,jdbcType=DATE},
+      </if>
+      <if test="tripprice != null" >
+        tripPrice = #{tripprice,jdbcType=DECIMAL},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
       </if>
       <if test="createby != null" >
         createby = #{createby,jdbcType=VARCHAR},
@@ -114,11 +126,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Themeinfo" >
-    update tbl_themeinfo
-    set themeName = #{themename,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.LineAmtsInfo" >
+    update tbl_lineamtsinfo
+    set lineId = #{lineid,jdbcType=BIGINT},
+      tripDate = #{tripdate,jdbcType=DATE},
+      tripPrice = #{tripprice,jdbcType=DECIMAL},
       remark = #{remark,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
       createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
