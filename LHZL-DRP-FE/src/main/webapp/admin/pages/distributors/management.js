@@ -5,7 +5,7 @@ var initDataOperAndUser = function () {
     var gridApi = $("#codeTable").grid({
         ennableSelect: true,
         columns: [
-            {name: "userid", display: "id", hidden: true},
+            {name: "id", display: "id", hidden: true},
             {name: "username", "display": "会员姓名"},
             {name: "mobile", "display": "会员电话", template: "<span style='color: red'>${parseInt(value)+1}</span>"},
         ],

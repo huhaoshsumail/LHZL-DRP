@@ -5,7 +5,7 @@ var initDataOper = function () {
     var gridApi = $("#codeTable").grid({
         ennableSelect: true,
         columns: [
-            {name: "operid", display: "operid", hidden: true},
+            {name: "id", display: "id", hidden: true},
             {name: "userid", display: "userid", hidden: true},
             {name: "userid", "display": "所属供应商"},
             {name: "oppacct", "display": "操作员账户"},
@@ -17,6 +17,6 @@ var initDataOper = function () {
             params: {}
         }
     });
-    
+
 
 }

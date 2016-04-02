@@ -214,8 +214,8 @@
     <include refid="Base_Column_List"/>
     from Tbl_OperatorInfo
     where 1=1
-    <if test="operid != null" >
-      AND operId = #{operid,jdbcType=BIGINT}
+    <if test="id != null" >
+      AND id = #{id,jdbcType=BIGINT}
     </if>
     <if test="userid != null" >
      AND userId = #{userid,jdbcType=BIGINT}

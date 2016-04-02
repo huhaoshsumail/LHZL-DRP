@@ -167,8 +167,8 @@
     <include refid="Base_Column_List"/>
     from tbl_userinfo
     where 1=1
-    <if test="userid != null">
-      AND userid = #{userid,jdbcType=BIGINT}
+    <if test="id != null">
+      AND id = #{id,jdbcType=BIGINT}
     </if>
     <if test="usertype != null">
       AND userType = #{usertype,jdbcType=VARCHAR}
