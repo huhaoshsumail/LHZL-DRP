@@ -35,30 +35,28 @@
     <div class="login-box-body">
         <p class="login-box-msg">分销系统</p>
 
-        <form action="index.jsp" method="post">
-            <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="账号">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="密码">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label class="remember">
-                            <input type="checkbox"> 记住账号
-                        </label>
-                    </div>
+        <div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="账号" id="opername">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="密码" id="operpwd">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label class="remember">
+                        <input type="checkbox"> 记住账号
+                    </label>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button id="login" class="btn btn-primary btn-block btn-flat">登录</button>
-                </div>
-                <!-- /.col -->
             </div>
-        </form>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <button id="login" class="btn btn-primary btn-block btn-flat">登录</button>
+            </div>
+            <!-- /.col -->
+        </div>
 
         <div class="social-auth-links text-center">
             <p>- OR -</p>

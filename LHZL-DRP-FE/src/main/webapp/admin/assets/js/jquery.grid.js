@@ -17,13 +17,13 @@
             if (opts.buttons != null) {
                 for (var i = 0; i < opts.buttons.length; i++) {
                     var btn_id = opts.buttons[i]["id"];
-                    html += "<input type='button' id='" + btn_id + "' style='margin:0 5px;' class='btn btn-default' value='"+ opts.buttons[i]["text"] +"'/>";
+                    html += "<input type='button' id='" + btn_id + "' style='margin:0 5px;' class='btn btn-default' value='" + opts.buttons[i]["text"] + "'/>";
                     if (opts.buttons[i]["action"] != null)
                         $(document).on('click', '#' + btn_id, eval(opts.buttons[i]["action"]));
                 }
             }
             /*********************update by chenjinyi*************************/
-            //var html = "<table id='" + opts.gridId + "' class='table'><thead><tr>";
+                //var html = "<table id='" + opts.gridId + "' class='table'><thead><tr>";
             html += "<table id='" + opts.gridId + "' class='table'><thead><tr>";
             if (opts.ennableSelect) {
                 html += "<th width='50px'><input id='" + opts.selectAllId + "' type='checkbox'></th>";
@@ -153,6 +153,7 @@
             contentType: "application/json",
             data: JSON.stringify(opts.ajax.params),
             success: function (result) {
+                if (!result.data) return;
                 opts.pagination.count = result.count;
                 opts.data = result.data;
                 var html = "";

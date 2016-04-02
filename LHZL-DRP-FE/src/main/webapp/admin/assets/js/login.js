@@ -10,10 +10,17 @@ $(function () {
         ({
             url: "http://localhost:8080/LHZL-DRP-BE/rest/operatorInfoController/login",
             type: "post",
-            //传送请求数据
-            data: {},
-            success: function (strValue) { //登录成功后返回的数据
-                alert("胡浩长的帅");
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                opername: $("#opername").val(),
+                operpwd: $("#operpwd").val()
+            }),
+            success: function (result) { //登录成功后返回的数据
+                if (result.meta.success) {
+                    sessionStorage.setItem("token", result.data.token);
+                    window.location.href = "index.jsp";
+                }
             }
         })
     })

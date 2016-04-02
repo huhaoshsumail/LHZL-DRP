@@ -10,7 +10,7 @@ var initDataBook = function () {
             {name: "description", "display": "描述"},
         ],
         ajax: {
-            url: window.serviceUrl + "bookCodeController/queryBookCode",
+            url: window.serviceUrl + "bookCodeController/queryBookCode?token=" + sessionStorage.getItem("token"),
             params: {}
         }
     });

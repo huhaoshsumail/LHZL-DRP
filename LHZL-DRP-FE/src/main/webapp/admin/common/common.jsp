@@ -71,5 +71,5 @@
 <%--相关配置--%>
 <script>
     //后端地址
-    window.serviceUrl = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/";
+    window.serviceUrl = "http://localhost:8080/LHZL-DRP-BE/rest/";
 </script>
