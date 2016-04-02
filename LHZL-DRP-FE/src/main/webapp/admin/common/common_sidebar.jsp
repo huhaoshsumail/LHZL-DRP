@@ -61,6 +61,15 @@
                     <li><a href="admin/index.jsp"><i class="fa fa-cloud-upload"></i><span>游客导入功能</span></a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-user-md"></i><span>角色权限</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="admin/pages/rolepmsn/roles/roles.jsp"><i class="fa fa-th-large"></i><span>角色管理</span></a></li>
+                    <li><a href="admin/index.jsp"><i class="fa fa-cloud-upload"></i><span>权限管理</span></a></li>
+                </ul>
+            </li>
             <li><a href="admin/index.jsp"><i class="fa fa-th"></i><span>游客分配座位</span></a></li>
             <li><a href="admin/index.jsp"><i class="fa fa-file-o"></i><span>生成订单</span></a></li>
             <li><a href="admin/index.jsp"><i class="fa fa-file-text-o"></i><span>订单详情</span></a></li>

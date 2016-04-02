@@ -18,4 +18,6 @@ public interface RoleinfoMapper {
     int updateByPrimaryKey(Roleinfo record);
 
     List<Roleinfo> selectByUid(Long userid);
+
+    int existRoleName(long userid, String roleName);
 }

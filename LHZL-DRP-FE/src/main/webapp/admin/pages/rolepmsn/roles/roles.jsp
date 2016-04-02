@@ -14,6 +14,7 @@
         <script>
             $(function () {
                 initRoleData();
+                $('.roleForm').hide();
             });
         </script>
         <section class="content-header">
@@ -34,18 +35,27 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div id="rolesTable">1123123</div>
+                            <div id="rolesTable"></div>
                         </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">值</h3>
-                        </div>
-                        <!-- /.box-header -->
+                    <div class="box roleForm">
                         <div class="box-body">
-                            <div id="valueTable"></div>
+                            <div id="valueTable">
+                                <form id="roleForm" class="form-inline">
+                                    <input type="hidden" class="form-control" id="roleid" name="roleid">
+                                    <div class="form-group">
+                                        <label class="sr-only">角色名称</label>
+                                        <input type="text" class="form-control" id="rolename" name="rolename" placeholder="角色名称">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">备注</label>
+                                        <input type="text" class="form-control" id="remark" name="remark" placeholder="备注">
+                                    </div>
+                                    <button type="button" id="saveRoleBtn" class="btn btn-default">保存</button>
+                                </form>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>

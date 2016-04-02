@@ -9,6 +9,8 @@ public class Roleinfo {
 
     private String rolename;
 
+    private String flag;
+
     private String remark;
 
     private String creatby;
@@ -41,6 +43,14 @@ public class Roleinfo {
 
     public void setRolename(String rolename) {
         this.rolename = rolename == null ? null : rolename.trim();
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag == null ? null : flag.trim();
     }
 
     public String getRemark() {

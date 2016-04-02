@@ -14,6 +14,11 @@ public class Response {
         return this;
     }
 
+    public Response success(String message) {
+        this.meta = new Meta(true, message);
+        return this;
+    }
+
     public Response success(Object data) {
         this.meta = new Meta(true, OK);
         this.data = data;

@@ -12,7 +12,19 @@
             opts.selectAllId = "selectAllId" + timestamp;
             opts.selectName = "selectName" + timestamp;
             var $this = $(this);
-            var html = "<table id='" + opts.gridId + "' class='table'><thead><tr>";
+            /*********************update by chenjinyi*************************/
+            var html = "";
+            if (opts.buttons != null) {
+                for (var i = 0; i < opts.buttons.length; i++) {
+                    var btn_id = opts.buttons[i]["id"];
+                    html += "<input type='button' id='" + btn_id + "' style='margin:0 5px;' class='btn btn-default' value='"+ opts.buttons[i]["text"] +"'/>";
+                    if (opts.buttons[i]["action"] != null)
+                        $(document).on('click', '#' + btn_id, eval(opts.buttons[i]["action"]));
+                }
+            }
+            /*********************update by chenjinyi*************************/
+            //var html = "<table id='" + opts.gridId + "' class='table'><thead><tr>";
+            html += "<table id='" + opts.gridId + "' class='table'><thead><tr>";
             if (opts.ennableSelect) {
                 html += "<th width='50px'><input id='" + opts.selectAllId + "' type='checkbox'></th>";
             }
@@ -36,6 +48,9 @@
                 getGridId: function () {
                     return opts.gridId;
                 },
+                reload: function () {
+                    loadData($this, opts);
+                },
                 getSelectedRows: function () {
                     var rows = [];
                     $("#" + opts.gridId + " input[name='" + opts.selectName + "']").each(function (index) {
@@ -55,7 +70,7 @@
         data: [],
         pagination: {
             pageSizes: [5, 10, 30, 50, 100],
-            pageSize: 5,
+            pageSize: 15,
             pageNo: 1,
             count: 0
         }

@@ -5,6 +5,7 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="userId" property="userid" jdbcType="BIGINT" />
     <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="creatby" property="creatby" jdbcType="VARCHAR" />
     <result column="creatTime" property="creattime" jdbcType="TIMESTAMP" />
@@ -12,7 +13,7 @@
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userId, roleName, remark, creatby, creatTime, updateby, updateTime
+    id, userId, roleName, flag, remark, creatby, creatTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -26,11 +27,13 @@
   </delete>
   <insert id="insert" parameterType="com.lhzl.drp.model.Roleinfo" >
     insert into tbl_roleinfo (id, userId, roleName, 
-      remark, creatby, creatTime, 
-      updateby, updateTime)
+      flag, remark, creatby, 
+      creatTime, updateby, updateTime
+      )
     values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, 
-      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, 
+      #{creattime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lhzl.drp.model.Roleinfo" >
     insert into tbl_roleinfo
@@ -43,6 +46,9 @@
       </if>
       <if test="rolename != null" >
         roleName,
+      </if>
+      <if test="flag != null" >
+        flag,
       </if>
       <if test="remark != null" >
         remark,
@@ -70,6 +76,9 @@
       <if test="rolename != null" >
         #{rolename,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
@@ -96,6 +105,9 @@
       <if test="rolename != null" >
         roleName = #{rolename,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -118,9 +130,8 @@
     update tbl_roleinfo
     set userId = #{userid,jdbcType=BIGINT},
       roleName = #{rolename,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      creatby = #{creatby,jdbcType=VARCHAR},
-      creatTime = #{creattime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
@@ -130,5 +141,9 @@
     <include refid="Base_Column_List" />
     from tbl_roleinfo
     where userId = #{userid,jdbcType=BIGINT}
+  </select>
+  <select id="existRoleName" resultType="java.lang.Integer" >
+    select count(*) from tbl_roleinfo
+    where userId = #{0} and roleName = #{1}
   </select>
 </mapper>

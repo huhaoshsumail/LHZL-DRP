@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +19,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/securityController")
 public class SecurityController {
-
     private static final Logger logger = LoggerFactory.getLogger(SecurityController.class);
 
     @Autowired
@@ -38,13 +35,70 @@ public class SecurityController {
         Response res = null;
         try{
             long userId = 1;
-            List<Roleinfo> roles = securityService.roleList(userId);
-             res = new Response().success(roles);
+            List<Roleinfo> roles = this.securityService.roleList(userId);
+            res = new Response().success(roles);
             if (map.containsKey("count")) {
-                res.setCount((Integer) map.get("count"));
+                res.setCount(roles.size());
             }
         } catch (Exception e) {
             this.logger.error("查询角色列表异常", e);
+        }
+        return res;
+    }
+
+    /**
+     * 保存角色信息
+     * @param roleinfo 角色model
+     * @return  保存结果
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/saveRole", produces="application/json")
+    @ResponseBody
+    public Response saveRole(@RequestBody Roleinfo roleinfo) {
+        Response res = null;
+        try {
+            roleinfo.setUserid(1L);
+            int result = this.securityService.saveRole(roleinfo);
+            switch (result) {
+                case 1:
+                    res = new Response().success("保存成功!");
+                    break;
+                case 2:
+                    res = new Response().failure("该角色名称已存在!");
+                    break;
+                case -1:
+                    res = new Response().failure("服务器异常, 请重试!");
+                    break;
+            }
+        } catch (Exception e) {
+            this.logger.error("保存角色异常", e);
+        }
+        return res;
+    }
+
+    /**
+     * 删除角色
+     * @param roleinfo 角色
+     * @return  删除结果
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/delRole", produces="application/json")
+    @ResponseBody
+    public Response delRole(@RequestBody Roleinfo roleinfo) {
+        Response res = null;
+        try {
+            int result = this.securityService.delRole(roleinfo.getId());
+            switch (result) {
+                case 0:
+                    res = new Response().failure("删除角色不存在!");
+                    break;
+                case 1:
+                    res = new Response().success("删除成功!");
+                    break;
+                case -1:
+                    res = new Response().failure("服务器异常, 请重试!");
+                    break;
+            }
+        } catch (Exception e) {
+            this.logger.error("保存角色异常", e);
         }
         return res;
     }
