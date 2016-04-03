@@ -261,14 +261,12 @@
         </if>
     </select>
     
-    <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="java.lang.Integer">
+    <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="com.lhzl.drp.model.Operatorinfo">
     select
-    COUNT(*)
+        <include refid="Base_Column_List"/>
     from Tbl_OperatorInfo
     where
      status = 'N'
-      AND operpwd = #{operpwd,jdbcType=VARCHAR}
-      AND operName = #{opername,jdbcType=VARCHAR}
   </select>
 
 </mapper>

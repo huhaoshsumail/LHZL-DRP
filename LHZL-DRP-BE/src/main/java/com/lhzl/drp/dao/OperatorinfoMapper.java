@@ -28,5 +28,5 @@ public interface OperatorinfoMapper {
     List<Operatorinfo> queryOper(Map<String, Object> map);
 
 
-    int login(Operatorinfo oi);
+    Operatorinfo login(Operatorinfo oi);
 }
