@@ -34,4 +34,5 @@
         <property name="jmxNamePrefix" value="youyuan"/>
         <property name="blockWhenExhausted" value="false"/>
     </bean>
+
 </beans>

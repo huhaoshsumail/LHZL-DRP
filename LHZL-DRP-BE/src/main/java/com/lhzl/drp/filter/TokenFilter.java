@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
+import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 public class TokenFilter implements Filter {
 
-    @Autowired
+    @Resource
     private ShardedJedisPool shardedJedisPool;
 
     @Override
@@ -28,7 +29,7 @@ public class TokenFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        if (request.getRequestURL().indexOf("login") > -1) {
+        /*if (request.getRequestURL().indexOf("login") > -1) {
             String token = request.getParameter("token");
             ShardedJedis shardedJedis = shardedJedisPool.getResource();
             String tokenKey = "token:" + token;
@@ -43,12 +44,20 @@ public class TokenFilter implements Filter {
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
-        }
-
+        }*/
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
 
+    }
+
+    public ShardedJedisPool getShardedJedisPool() {
+        return shardedJedisPool;
+    }
+
+    public void setShardedJedisPool(ShardedJedisPool shardedJedisPool) {
+        this.shardedJedisPool = shardedJedisPool;
     }
 }
