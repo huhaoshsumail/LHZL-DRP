@@ -23,7 +23,7 @@
     <context:component-scan base-package="com.lhzl.drp.exception"/>
 
     <!--扫描工具-->
-    <context:component-scan base-package="com.lhzl.drp.util"/>
+    <context:component-scan base-package="com.lhzl.drp.filter"/>
 
     <!--导入mybatis配置文件-->
     <import resource="classpath:spring-mybatis.xml"/>
