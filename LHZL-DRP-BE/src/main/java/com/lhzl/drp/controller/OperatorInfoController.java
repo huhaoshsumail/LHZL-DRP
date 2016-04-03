@@ -10,9 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 //操作员类
 @Controller
@@ -22,15 +25,30 @@ public class OperatorInfoController {
     private static final Logger logger = LoggerFactory.getLogger(OperatorInfoController.class);
 
     @Autowired
-    private OperatorinfoService operatorinfoService;
-
-    private String token = "123456";
+    private OperatorinfoService opeatorinfoService;
+    @Autowired
+    private ShardedJedisPool shardedJedisPoolS;
 
     @RequestMapping("/login")
     @ResponseBody
     public Response login(@RequestBody Operatorinfo oi) {
-        int count = operatorinfoService.login(oi);
+        int count = opeatorinfoService.login(oi);
         if (count > 0) {
+            ShardedJedis shardedJedis = shardedJedisPoolS.getResource();
+            String skey = "session:" + oi.getOpername();
+            String token = UUID.randomUUID().toString();
+            if (shardedJedis.exists(skey)) {
+                String oldtoken = shardedJedis.get(skey);
+                shardedJedis.del(skey);
+                shardedJedis.del("token:" + oldtoken);
+            }
+            if (shardedJedis.setnx(skey, token) == 1) {
+                shardedJedis.expire(skey, 3600 * 24);
+                shardedJedis.hset("token:" + token, "username", oi.getOpername());
+                shardedJedis.expire("token:" + token, 3600 * 24);
+            } else {
+                token = shardedJedis.get(skey);
+            }
             Map<String, Object> data = new HashMap<>();
             data.put("token", token);
             return new Response().success(data);
