@@ -27,14 +27,14 @@ public class OperatorInfoController {
     @Autowired
     private OperatorinfoService opeatorinfoService;
     @Autowired
-    private ShardedJedisPool shardedJedisPoolS;
+    private ShardedJedisPool shardedJedisPool;
 
     @RequestMapping("/login")
     @ResponseBody
     public Response login(@RequestBody Operatorinfo oi) {
         int count = opeatorinfoService.login(oi);
         if (count > 0) {
-            ShardedJedis shardedJedis = shardedJedisPoolS.getResource();
+            ShardedJedis shardedJedis = shardedJedisPool.getResource();
             String skey = "session:" + oi.getOpername();
             String token = UUID.randomUUID().toString();
             if (shardedJedis.exists(skey)) {
