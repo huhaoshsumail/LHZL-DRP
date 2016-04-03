@@ -18,7 +18,7 @@ $(function () {
             }),
             success: function (result) { //登录成功后返回的数据
                 if (result.meta.success) {
-                    sessionStorage.setItem("token", result.data.token);
+                    localStorage.setItem("token", result.data.token);
                     window.location.href = "index.jsp";
                 }
             }
