@@ -260,13 +260,15 @@
             AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
         </if>
     </select>
-    
-    <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="com.lhzl.drp.model.Operatorinfo">
+
+    <select id="login" parameterType="com.lhzl.drp.model.Operatorinfo" resultType="java.lang.Integer">
     select
-        <include refid="Base_Column_List"/>
+    COUNT(*)
     from Tbl_OperatorInfo
     where
      status = 'N'
+      AND operpwd = #{operpwd,jdbcType=VARCHAR}
+      AND operName = #{opername,jdbcType=VARCHAR}
   </select>
 
 </mapper>

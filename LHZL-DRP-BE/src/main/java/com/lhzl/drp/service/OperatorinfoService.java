@@ -8,5 +8,5 @@ import java.util.Map;
 
 public interface OperatorinfoService {
 
-    public Operatorinfo login(Operatorinfo oi);
+    public int login(Operatorinfo oi);
 }

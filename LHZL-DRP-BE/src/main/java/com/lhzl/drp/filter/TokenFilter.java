@@ -23,7 +23,7 @@ public class TokenFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String token = request.getParameter("token");
-       /* if ((token == null || "".equals(token)) && request.getRequestURL().indexOf("login") == -1) {
+        if ((token == null || "".equals(token) || "null".equals(token)) && request.getRequestURL().indexOf("login") == -1) {
             ObjectMapper objectMapper = new ObjectMapper();
             String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
             response.getWriter().print(result);
@@ -31,8 +31,7 @@ public class TokenFilter implements Filter {
             response.getWriter().close();
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
-        }*/
-        filterChain.doFilter(servletRequest, servletResponse);
+        }
     }
 
     @Override
