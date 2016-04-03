@@ -17,7 +17,7 @@ import java.io.IOException;
 public class TokenFilter implements Filter {
 
     @Autowired
-    private ShardedJedisPool shardedJedisPoolS;
+    private ShardedJedisPool shardedJedisPool;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,7 +30,7 @@ public class TokenFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         if (request.getRequestURL().indexOf("login") > -1) {
             String token = request.getParameter("token");
-            ShardedJedis shardedJedis = shardedJedisPoolS.getResource();
+            ShardedJedis shardedJedis = shardedJedisPool.getResource();
             String tokenKey = "token:" + token;
             if (!shardedJedis.exists(tokenKey)) {
                 ObjectMapper objectMapper = new ObjectMapper();
