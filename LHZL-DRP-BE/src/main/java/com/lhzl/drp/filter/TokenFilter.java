@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class TokenFilter implements Filter {
 
-    @Resource
+    @Autowired
     private ShardedJedisPool shardedJedisPool;
 
     @Override
@@ -46,6 +46,7 @@ public class TokenFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }*/
         filterChain.doFilter(servletRequest, servletResponse);
+
     }
 
     @Override
