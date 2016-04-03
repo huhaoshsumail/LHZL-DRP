@@ -18,7 +18,7 @@ public class OperatorServiceImpl implements OperatorinfoService {
 
 
     @Override
-    public int login(Operatorinfo oi) {
+    public Operatorinfo login(Operatorinfo oi) {
         return operatorinfoMapper.login(oi);
     }
 
