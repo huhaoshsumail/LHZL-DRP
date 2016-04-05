@@ -36,7 +36,7 @@
         <p class="login-box-msg">分销系统</p>
 
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="账号" id="opername">
+            <input type="email" class="form-control" placeholder="账号" id="opacct">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">

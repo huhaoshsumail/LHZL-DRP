@@ -35,7 +35,7 @@ public class OperatorInfoController {
         int count = opeatorinfoService.login(oi);
         if (count > 0) {
             ShardedJedis shardedJedis = shardedJedisPool.getResource();
-            String skey = "session:" + oi.getOpername();
+            String skey = "session:" + oi.getOpacct();
             String token = UUID.randomUUID().toString();
             if (shardedJedis.exists(skey)) {
                 String oldtoken = shardedJedis.get(skey);
@@ -44,7 +44,7 @@ public class OperatorInfoController {
             }
             if (shardedJedis.setnx(skey, token) == 1) {
                 shardedJedis.expire(skey, 3600 * 24);
-                shardedJedis.hset("token:" + token, "username", oi.getOpername());
+                shardedJedis.hset("token:" + token, "opacct", oi.getOpacct());
                 shardedJedis.expire("token:" + token, 3600 * 24);
             } else {
                 token = shardedJedis.get(skey);

@@ -13,7 +13,7 @@ $(function () {
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
-                opername: $("#opername").val(),
+                opername: $("#opacct").val(),
                 operpwd: $("#operpwd").val()
             }),
             success: function (result) { //登录成功后返回的数据
