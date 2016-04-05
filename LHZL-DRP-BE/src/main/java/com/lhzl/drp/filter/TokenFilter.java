@@ -3,75 +3,46 @@ package com.lhzl.drp.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lhzl.drp.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
-import javax.annotation.Resource;
-import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Created by chenhao on 2016/4/3.
  */
-public class TokenFilter implements Filter {
+public class TokenFilter extends HandlerInterceptorAdapter {
 
     @Autowired
     private ShardedJedisPool shardedJedisPool;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        /*if (request.getRequestURL().indexOf("login") > -1) {
-            String token = request.getParameter("token");
-            ShardedJedis shardedJedis = shardedJedisPool.getResource();
-            String tokenKey = "token:" + token;
-            if (!shardedJedis.exists(tokenKey)) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
-                response.getWriter().print(result);
-                response.getWriter().flush();
-                response.getWriter().close();
-            } else {
-                filterChain.doFilter(servletRequest, servletResponse);
-            }
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String token = request.getParameter("token");
+        ShardedJedis shardedJedis = shardedJedisPool.getResource();
+        String tokenKey = "token:" + token;
+        if (!shardedJedis.exists(tokenKey)) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
+            response.getWriter().print(result);
+            response.getWriter().flush();
+            response.getWriter().close();
+            return false;
         } else {
-            filterChain.doFilter(servletRequest, servletResponse);
-        }*/
-        if (request.getRequestURL().indexOf("login") == -1) {
-            String token = request.getParameter("token");
-            if (token == null || "".equals(token)) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
-                response.getWriter().print(result);
-                response.getWriter().flush();
-                response.getWriter().close();
-            } else {
-                filterChain.doFilter(servletRequest, servletResponse);
-            }
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
+            return true;
         }
-
     }
 
     @Override
-    public void destroy() {
-
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        super.postHandle(request, response, handler, modelAndView);
     }
 
-    public ShardedJedisPool getShardedJedisPool() {
-        return shardedJedisPool;
-    }
-
-    public void setShardedJedisPool(ShardedJedisPool shardedJedisPool) {
-        this.shardedJedisPool = shardedJedisPool;
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        super.afterCompletion(request, response, handler, ex);
     }
 }

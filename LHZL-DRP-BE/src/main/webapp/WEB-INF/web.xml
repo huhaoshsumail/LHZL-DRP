@@ -65,14 +65,14 @@
     </filter-mapping>
 
     <!--token拦截器-->
-    <filter>
+    <!--<filter>
         <filter-name>tokenFilter</filter-name>
         <filter-class>com.lhzl.drp.filter.TokenFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>tokenFilter</filter-name>
         <url-pattern>/rest/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <!-- Log4j监听器 -->
     <listener>
