@@ -4,6 +4,7 @@ import com.lhzl.drp.model.BookCode;
 import com.lhzl.drp.model.Response;
 import com.lhzl.drp.model.Userinfo;
 import com.lhzl.drp.service.BookCodeService;
+import com.lhzl.drp.util.DataBaseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,8 @@ public class BookCodeController {
 
     @Autowired
     private BookCodeService bookCodeService;
+    @Autowired
+    private HttpServletRequest request;
 
     @RequestMapping("/queryBookCode")
     @ResponseBody
@@ -50,6 +54,7 @@ public class BookCodeController {
     @RequestMapping("/insertBookCode")
     @ResponseBody
     public Response insertBookCode(@RequestBody @Valid BookCode bookCode) {
+        DataBaseUtil.setCreateInfo(bookCode, (String) request.getAttribute("opacct"));
         bookCodeService.insertBookCode(bookCode);
         return new Response().success();
     }
@@ -57,6 +62,7 @@ public class BookCodeController {
     @RequestMapping("/updateUser")
     @ResponseBody
     public Response updateBookCode(@RequestBody @Valid BookCode bookCode) {
+        DataBaseUtil.setCreateInfo(bookCode, (String) request.getAttribute("opacct"));
         bookCodeService.updateBookCode(bookCode);
         return new Response().success();
     }

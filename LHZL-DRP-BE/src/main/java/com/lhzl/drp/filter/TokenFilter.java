@@ -33,6 +33,8 @@ public class TokenFilter extends HandlerInterceptorAdapter {
                 response.getWriter().close();
                 return false;
             } else {
+                String opacct = shardedJedis.hget(tokenKey, "opacct");
+                request.setAttribute("opacct", opacct);
                 return true;
             }
         } else {
