@@ -21,19 +21,24 @@ public class TokenFilter extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getParameter("token");
-        ShardedJedis shardedJedis = shardedJedisPool.getResource();
-        String tokenKey = "token:" + token;
-        if (!shardedJedis.exists(tokenKey)) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
-            response.getWriter().print(result);
-            response.getWriter().flush();
-            response.getWriter().close();
-            return false;
+        if (request.getRequestURL().indexOf("login") == -1) {
+            String token = request.getParameter("token");
+            ShardedJedis shardedJedis = shardedJedisPool.getResource();
+            String tokenKey = "token:" + token;
+            if (!shardedJedis.exists(tokenKey)) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
+                response.getWriter().print(result);
+                response.getWriter().flush();
+                response.getWriter().close();
+                return false;
+            } else {
+                return true;
+            }
         } else {
             return true;
         }
+
     }
 
     @Override
