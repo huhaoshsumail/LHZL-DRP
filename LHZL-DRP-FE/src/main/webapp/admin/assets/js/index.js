@@ -354,7 +354,7 @@
      * 全局ajax事件
      */
     $(document).ajaxStart(function () {
-        //NProgress.start();
+        NProgress.start();
     }).ajaxSend(function () {
 
     }).ajaxSuccess(function (event, xhr, options) {
@@ -367,7 +367,7 @@
     }).ajaxComplete(function () {
 
     }).ajaxStop(function () {
-        //NProgress.done();
+        NProgress.done();
     });
 
     /**

@@ -69,8 +69,8 @@
         columns: [],
         data: [],
         pagination: {
-            pageSizes: [5, 10, 30, 50, 100],
-            pageSize: 15,
+            pageSizes: [10, 20, 30, 50, 100],
+            pageSize: 10,
             pageNo: 1,
             count: 0
         }
