@@ -36,7 +36,7 @@
         <p class="login-box-msg">分销系统</p>
 
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="账号" id="opacct">
+            <input type="text" class="form-control" placeholder="账号" id="opacct">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -73,7 +73,7 @@
 <!-- /.login-box -->
 
 <!-- jQuery 2.1.4 -->
-<script src="../node_modules/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../node_modules/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->

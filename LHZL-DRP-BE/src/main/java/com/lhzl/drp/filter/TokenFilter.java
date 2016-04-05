@@ -45,7 +45,20 @@ public class TokenFilter implements Filter {
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }*/
-        filterChain.doFilter(servletRequest, servletResponse);
+        if (request.getRequestURL().indexOf("login") == -1) {
+            String token = request.getParameter("token");
+            if (token == null || "".equals(token)) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                String result = objectMapper.writeValueAsString(new Response().failure("BAD_TOKEN"));
+                response.getWriter().print(result);
+                response.getWriter().flush();
+                response.getWriter().close();
+            } else {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
 
     }
 
