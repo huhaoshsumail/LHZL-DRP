@@ -268,7 +268,7 @@
     where
      status = 'N'
       AND operpwd = #{operpwd,jdbcType=VARCHAR}
-      AND operName = #{opername,jdbcType=VARCHAR}
+      AND opacct = #{opacct,jdbcType=VARCHAR}
   </select>
 
 </mapper>
