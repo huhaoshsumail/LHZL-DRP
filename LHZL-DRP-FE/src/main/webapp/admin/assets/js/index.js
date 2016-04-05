@@ -387,7 +387,7 @@
     });
 
     //序列化表单数据为json对象
-    $.fn.serializeObject = function () {
+    $.fn.form2object = function () {
         var o = {};
         var a = this.serializeArray();
         $.each(a, function () {
@@ -401,6 +401,16 @@
             }
         });
         return o;
+    };
+
+    //对象转表单
+    $.fn.object2form = function (obj) {
+        for (var key in obj) {
+            $(this).find("#" + key).val(obj[key]);
+            $(this).find("input[name='" + key + "']").val(obj[key]);
+            $(this).find("textarea[name='" + key + "']").val(obj[key]);
+            $(this).find("select[name='" + key + "']").val(obj[key]);
+        }
     };
 
 })(jQuery, $.AdminLTE);

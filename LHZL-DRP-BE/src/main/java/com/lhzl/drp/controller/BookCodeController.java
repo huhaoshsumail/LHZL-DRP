@@ -59,7 +59,7 @@ public class BookCodeController {
         return new Response().success();
     }
 
-    @RequestMapping("/updateUser")
+    @RequestMapping("/updateBookCode")
     @ResponseBody
     public Response updateBookCode(@RequestBody @Valid BookCode bookCode) {
         DataBaseUtil.setCreateInfo(bookCode, (String) request.getAttribute("opacct"));
@@ -69,8 +69,10 @@ public class BookCodeController {
 
     @RequestMapping("/deleteBookCode")
     @ResponseBody
-    public Response deleteUser(long codeid) {
-        bookCodeService.deleteBookCode(codeid);
+    public Response deleteUser(@RequestBody long[] codeids) {
+        for (int i = 0; i < codeids.length; i++) {
+            bookCodeService.deleteBookCode(codeids[i]);
+        }
         return new Response().success();
     }
 

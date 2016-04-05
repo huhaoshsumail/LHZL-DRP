@@ -31,8 +31,7 @@
                         <div class="box-header">
                             <h3 class="box-title">代码</h3>
                             <div class="btn-group box-header-btns" role="group" aria-label="操作">
-                                <button id="insertCode" data-toggle="modal" data-target="#codeModal" type="button"
-                                        class="btn btn-primary"><i
+                                <button id="insertCode" type="button" class="btn btn-primary"><i
                                         class="fa fa-edit"></i><span>新增</span></button>
                                 <button id="updateCode" type="button" class="btn btn-primary"><i
                                         class="fa fa-repeat"></i><span>修改</span></button>
@@ -74,20 +73,23 @@
                 </div>
                 <div class="modal-body">
                     <form>
+                        <input id="codeid" name="codeid" hidden readonly>
                         <div class="form-group">
                             <label for="code">代码</label>
                             <input type="text" id="code" name="code" class="form-control" placeholder="代码">
                         </div>
                         <div class="form-group">
                             <label for="description">描述</label>
-                            <input type="text" id="description" name="description" class="form-control" placeholder="描述">
+                            <input type="text" id="description" name="description" class="form-control"
+                                   placeholder="描述">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="btn-span">关闭</span>
                     </button>
-                    <button id="saveCode" type="button" class="btn btn-primary"><span class="btn-span">保存</span></button>
+                    <button id="saveCode" type="button" class="btn btn-primary"><span class="btn-span">保存</span>
+                    </button>
                 </div>
             </div>
         </div>
