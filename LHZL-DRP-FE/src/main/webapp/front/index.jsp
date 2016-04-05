@@ -9,6 +9,6 @@
     <base href="<%=basePath%>">
 </head>
 <body>
-
+    前端部分...
 </body>
 </html>
