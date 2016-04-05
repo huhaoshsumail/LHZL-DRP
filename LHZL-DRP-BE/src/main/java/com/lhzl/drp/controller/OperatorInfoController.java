@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
@@ -55,5 +56,21 @@ public class OperatorInfoController {
         } else {
             return new Response().failure("登录失败");
         }
+    }
+
+    @RequestMapping("/logout")
+    @ResponseBody
+    public Response logout(String token) {
+        ShardedJedis shardedJedis = shardedJedisPool.getResource();
+        String tKey = "token:" + token;
+        String skey = "session:" + shardedJedis.hget(tKey, "opacct");
+        if (shardedJedis.exists(tKey)) {
+            shardedJedis.del(tKey);
+        }
+        if (shardedJedis.exists(skey)) {
+            shardedJedis.del(skey);
+        }
+        return new Response().success();
+
     }
 }

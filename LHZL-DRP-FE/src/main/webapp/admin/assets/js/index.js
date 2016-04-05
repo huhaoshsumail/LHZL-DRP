@@ -330,6 +330,21 @@
             }
 
         }
+
+        /**
+         * 退出登录
+         */
+        $("#logoutBtn").click(function () {
+            $.ajax({
+                url: window.serviceUrl + "operatorInfoController/logout?token=" + (localStorage.getItem("token") || ""),
+                success: function (result) { //登录成功后返回的数据
+                    if (result.meta.success) {
+                        window.location.href = "admin/login.jsp";
+                    }
+                }
+            });
+        });
+
     })
 
     //设置进度条

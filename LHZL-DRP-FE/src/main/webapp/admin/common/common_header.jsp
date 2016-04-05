@@ -123,7 +123,7 @@
                                 <a href="javascript:;" class="btn btn-default btn-flat">修改密码</a>
                             </div>
                             <div class="pull-right">
-                                <a href="javascript:;" class="btn btn-default btn-flat">注销</a>
+                                <a href="javascript:;" id="logoutBtn" class="btn btn-default btn-flat">注销</a>
                             </div>
                         </li>
                     </ul>
