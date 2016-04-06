@@ -31,6 +31,8 @@
                         <div class="box-header">
                             <h3 class="box-title">代码</h3>
                             <div class="btn-group box-header-btns" role="group" aria-label="操作">
+                                <button id="queryCode" type="button" class="btn btn-primary"><i
+                                        class="fa fa-search"></i><span>查询</span></button>
                                 <button id="insertCode" type="button" class="btn btn-primary"><i
                                         class="fa fa-edit"></i><span>新增</span></button>
                                 <button id="updateCode" type="button" class="btn btn-primary"><i

@@ -161,7 +161,7 @@
         <include refid="Base_Column_List"/>
         from tbl_book_code
         where 1=1
-        <if test="codeId != null">
+        <if test="codeid != null">
             codeId = #{codeid,jdbcType=BIGINT}
         </if>
         <if test="code != null">

@@ -48,7 +48,11 @@
                 getGridId: function () {
                     return opts.gridId;
                 },
-                reload: function () {
+                reload: function (params) {
+                    opts.pagination.pageNo = 1;
+                    if (params) {
+                        opts.ajax.params = params;
+                    }
                     loadData($this, opts);
                 },
                 getSelectedRows: function () {

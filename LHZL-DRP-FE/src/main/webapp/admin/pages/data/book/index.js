@@ -2,6 +2,7 @@
  * Created by chenhao on 2016/3/30.
  */
 var initDataBook = function () {
+
     //初始化codeGrid
     var gridApi = $("#codeTable").grid({
         ennableSelect: true,
@@ -16,12 +17,14 @@ var initDataBook = function () {
         }
     });
 
-    //关闭codeModal
-    $("#codeModal").on("hidden.bs.modal", function () {
-        $(this).find("input,textarea,select").val('').end();
+
+    //查询code
+    $("#queryCode").click(function () {
+        gridApi.reload({codeid: 1});
     });
 
-    //新增codeModal
+
+    //新增code
     $("#insertCode").click(function () {
         $("#codeModal").modal('show');
         //保存codeModal
@@ -40,7 +43,7 @@ var initDataBook = function () {
         });
     });
 
-    //修改codeModal
+    //修改code
     $("#updateCode").click(function () {
         if (gridApi.getSelectedRows().length != 1) {
             alert("请选择一条数据");
@@ -88,6 +91,11 @@ var initDataBook = function () {
                 $('#codeModal').modal('hide');
             }
         })
+    });
+
+    //关闭codeModal
+    $("#codeModal").on("hidden.bs.modal", function () {
+        $(this).find("input,textarea,select").val('').end();
     });
 
 }
