@@ -79,35 +79,35 @@
                 <!-- /.col -->
             </div>
         </section>
-    </div>
-
-    <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeFormLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="codeFormLabel">字典代码</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input id="codeid" name="codeid" hidden readonly>
-                        <div class="form-group">
-                            <label for="code">代码</label>
-                            <input type="text" id="code" name="code" class="form-control" placeholder="代码">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">描述</label>
-                            <input type="text" id="description" name="description" class="form-control"
-                                   placeholder="描述">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="btn-span">关闭</span>
-                    </button>
-                    <button id="saveCode" type="button" class="btn btn-primary"><span class="btn-span">保存</span>
-                    </button>
+        <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeFormLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="codeFormLabel">字典代码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input id="codeid" name="codeid" hidden readonly>
+                            <div class="form-group">
+                                <label for="code">代码</label>
+                                <input type="text" id="code" name="code" class="form-control" placeholder="代码">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">描述</label>
+                                <input type="text" id="description" name="description" class="form-control"
+                                       placeholder="描述">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span
+                                class="btn-span">关闭</span>
+                        </button>
+                        <button id="saveCode" type="button" class="btn btn-primary"><span class="btn-span">保存</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
