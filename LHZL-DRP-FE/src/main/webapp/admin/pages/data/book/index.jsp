@@ -90,7 +90,7 @@
                     <h4 class="modal-title" id="codeFormLabel">字典代码</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form>
                         <input id="codeid" name="codeid" hidden readonly>
                         <div class="form-group">
                             <label for="code">代码</label>
