@@ -19,6 +19,9 @@ var initDataBook = function () {
         ajax: {
             url: window.serviceUrl + "bookCodeController/queryBookCode?token=" + (localStorage.getItem("token") || ""),
             params: {}
+        },
+        callback: function () {
+            $("#valueTable").html("");
         }
     });
 
@@ -115,8 +118,85 @@ function initDataBookValue(codeid) {
             {name: "description", display: "描述"},
         ],
         ajax: {
-            url: window.serviceUrl + "bookCodeController/queryBookValueByCodeid?token=" + (localStorage.getItem("token") || ""),
+            url: window.serviceUrl + "bookCodeController/queryBookValue?token=" + (localStorage.getItem("token") || ""),
             params: {codeid: codeid}
         }
     });
+
+
+    //新增value
+    $("#insertValue").unbind().click(function () {
+        $("#valueModal").modal('show');
+        $("#valueModal form input[name='codeid']").val(codeid);
+        //保存ValueModal
+        $("#saveValue").unbind().click(function () {
+            $.ajax({
+                url: window.serviceUrl + "bookCodeController/insertBookValue?token=" + localStorage.getItem("token"),
+                type: "post",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify($("#valueModal form").form2object()),
+                success: function (result) {
+                    valueGridApi.reload();
+                    $('#valueModal').modal('hide');
+                }
+            })
+        });
+    });
+
+    //修改value
+    $("#updateValue").click(function () {
+        if (valueGridApi.getSelectedRows().length != 1) {
+            alert("请选择一条数据");
+            return false;
+        }
+        //打开codeModal
+        $("#valueModal").modal('show');
+        //加载数据
+        var data = valueGridApi.getSelectedRows()[0];
+        $("#valueModal form").object2form(data);
+        //保存valueModal
+        $("#saveValue").unbind().click(function () {
+            $.ajax({
+                url: window.serviceUrl + "bookCodeController/updateBookValue?token=" + localStorage.getItem("token"),
+                type: "post",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify($("#valueModal form").form2object()),
+                success: function (result) {
+                    valueGridApi.reload();
+                    $('#valueModal').modal('hide');
+                }
+            })
+        });
+    });
+
+    //删除value
+    $("#deleteValue").unbind().click(function () {
+        if (valueGridApi.getSelectedRows().length == 0) {
+            alert("请选择至少一条数据");
+            return false;
+        }
+        var ids = [];
+        for (var i = 0; i < valueGridApi.getSelectedRows().length; i++) {
+            ids.push(valueGridApi.getSelectedRows()[i]["valueid"]);
+        }
+        $.ajax({
+            url: window.serviceUrl + "bookCodeController/deleteBookValue?token=" + localStorage.getItem("token"),
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(ids),
+            success: function (result) {
+                valueGridApi.reload();
+                $('#valueModal').modal('hide');
+            }
+        })
+    });
+
+    //关闭codeModal
+    $("#valueModal").unbind().on("hidden.bs.modal", function () {
+        $(this).find("input,textarea,select").val('').end();
+    });
+
 }

@@ -51,4 +51,24 @@ public class BookCodeServiceImpl implements BookCodeService {
         return bookValueMapper.queryBookValue(map);
     }
 
+    @Override
+    public void insertBookValue(BookValue bookValue) {
+        bookValueMapper.insert(bookValue);
+    }
+
+    @Override
+    public void updateBookValue(BookValue bookValue) {
+        bookValueMapper.updateByPrimaryKey(bookValue);
+    }
+
+    @Override
+    public void deleteBookValue(long valueid) {
+        bookValueMapper.deleteByPrimaryKey(valueid);
+    }
+
+    @Override
+    public void deleteBookValueByCodeid(long codeid) {
+        bookValueMapper.deleteBookValueByCodeid(codeid);
+    }
+
 }

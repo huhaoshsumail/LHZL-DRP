@@ -69,16 +69,17 @@ public class BookCodeController {
 
     @RequestMapping("/deleteBookCode")
     @ResponseBody
-    public Response deleteUser(@RequestBody long[] codeids) {
+    public Response deleteBookCode(@RequestBody long[] codeids) {
         for (int i = 0; i < codeids.length; i++) {
             bookCodeService.deleteBookCode(codeids[i]);
+            bookCodeService.deleteBookValueByCodeid(codeids[i]);
         }
         return new Response().success();
     }
 
-    @RequestMapping("/queryBookValueByCodeid")
+    @RequestMapping("/queryBookValue")
     @ResponseBody
-    public Response queryBookValueByCodeid(@RequestBody Map<String, Object> map) {
+    public Response queryBookValue(@RequestBody Map<String, Object> map) {
         List<BookValue> bookValues = bookCodeService.queryBookValue(map);
         Response res = new Response().success(bookValues);
         if (map.containsKey("count")) {
@@ -87,4 +88,28 @@ public class BookCodeController {
         return res;
     }
 
+    @RequestMapping("/insertBookValue")
+    @ResponseBody
+    public Response insertBookValue(@RequestBody @Valid BookValue bookValue) {
+        DataBaseUtil.setCreateInfo(bookValue, (String) request.getAttribute("opacct"));
+        bookCodeService.insertBookValue(bookValue);
+        return new Response().success();
+    }
+
+    @RequestMapping("/updateBookValue")
+    @ResponseBody
+    public Response updateBookValue(@RequestBody @Valid BookValue bookValue) {
+        DataBaseUtil.setCreateInfo(bookValue, (String) request.getAttribute("opacct"));
+        bookCodeService.updateBookValue(bookValue);
+        return new Response().success();
+    }
+
+    @RequestMapping("/deleteBookValue")
+    @ResponseBody
+    public Response deleteBookValue(@RequestBody long[] valueids) {
+        for (int i = 0; i < valueids.length; i++) {
+            bookCodeService.deleteBookValue(valueids[i]);
+        }
+        return new Response().success();
+    }
 }

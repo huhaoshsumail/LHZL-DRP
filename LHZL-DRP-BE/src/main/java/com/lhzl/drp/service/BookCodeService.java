@@ -22,4 +22,13 @@ public interface BookCodeService {
     public void deleteBookCode(long codeid);
 
     public List<BookValue> queryBookValue(Map<String, Object> map);
+
+    public void insertBookValue(BookValue bookValue);
+
+    public void updateBookValue(BookValue bookValue);
+
+    public void deleteBookValue(long valueid);
+
+    public void deleteBookValueByCodeid(long codeid);
+
 }

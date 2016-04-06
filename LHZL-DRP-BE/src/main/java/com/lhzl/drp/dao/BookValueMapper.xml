@@ -184,4 +184,9 @@
             and description = #{description,jdbcType=VARCHAR}
         </if>
     </select>
+
+    <delete id="deleteBookValueByCodeid" parameterType="java.lang.Long">
+        delete from tbl_book_value
+        where codeId = #{codeid,jdbcType=BIGINT}
+    </delete>
 </mapper>

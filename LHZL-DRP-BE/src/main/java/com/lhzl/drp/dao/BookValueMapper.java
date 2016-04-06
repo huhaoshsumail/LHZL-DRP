@@ -61,4 +61,11 @@ public interface BookValueMapper {
      * @return
      */
     List<BookValue> queryBookValue(Map<String, Object> map);
+
+    /**
+     * 删除代码对应的值
+     *
+     * @param codeid
+     */
+    void deleteBookValueByCodeid(long codeid);
 }
