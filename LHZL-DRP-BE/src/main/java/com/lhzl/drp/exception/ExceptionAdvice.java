@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -94,10 +95,18 @@ public class ExceptionAdvice {
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(MySQLSyntaxErrorException.class)
-    public Response handleException(MySQLSyntaxErrorException e) {
+    public Response handleMySQLSyntaxErrorException(MySQLSyntaxErrorException e) {
         logger.error("数据库异常", e);
         //return new Response().failure(e.getMessage());
         return new Response().failure("数据库异常");
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(JedisConnectionException.class)
+    public Response handleJedisConnectionException(JedisConnectionException e) {
+        logger.error("Redis缓存服务器异常", e);
+        //return new Response().failure(e.getMessage());
+        return new Response().failure("缓存服务器异常");
     }
 
     /**
