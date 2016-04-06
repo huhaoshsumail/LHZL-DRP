@@ -1,8 +1,8 @@
 package com.lhzl.drp.controller;
 
 import com.lhzl.drp.model.BookCode;
+import com.lhzl.drp.model.BookValue;
 import com.lhzl.drp.model.Response;
-import com.lhzl.drp.model.Userinfo;
 import com.lhzl.drp.service.BookCodeService;
 import com.lhzl.drp.util.DataBaseUtil;
 import org.slf4j.Logger;
@@ -29,9 +29,9 @@ public class BookCodeController {
     private static final Logger logger = LoggerFactory.getLogger(BookCodeController.class);
 
     @Autowired
-    private BookCodeService bookCodeService;
-    @Autowired
     private HttpServletRequest request;
+    @Autowired
+    private BookCodeService bookCodeService;
 
     @RequestMapping("/queryBookCode")
     @ResponseBody
@@ -74,6 +74,17 @@ public class BookCodeController {
             bookCodeService.deleteBookCode(codeids[i]);
         }
         return new Response().success();
+    }
+
+    @RequestMapping("/queryBookValueByCodeid")
+    @ResponseBody
+    public Response queryBookValueByCodeid(@RequestBody Map<String, Object> map) {
+        List<BookValue> bookValues = bookCodeService.queryBookValue(map);
+        Response res = new Response().success(bookValues);
+        if (map.containsKey("count")) {
+            res.setCount((Integer) map.get("count"));
+        }
+        return res;
     }
 
 }

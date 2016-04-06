@@ -4,12 +4,17 @@
 var initDataBook = function () {
 
     //初始化codeGrid
-    var gridApi = $("#codeTable").grid({
+    var codeGridApi = $("#codeTable").grid({
         ennableSelect: true,
         columns: [
             {name: "codeid", display: "codeid", hidden: true},
             {name: "code", "display": "代码"},
             {name: "description", "display": "描述"},
+            {
+                name: "codeid",
+                display: "操作",
+                template: "<button class='btn btn-primary' onclick='initDataBookValue(\"${value}\")'>查看值</button>"
+            }
         ],
         ajax: {
             url: window.serviceUrl + "bookCodeController/queryBookCode?token=" + (localStorage.getItem("token") || ""),
@@ -20,7 +25,7 @@ var initDataBook = function () {
 
     //查询code
     $("#queryCode").click(function () {
-        gridApi.reload($("#codeForm").form2object());
+        codeGridApi.reload($("#codeForm").form2object());
     });
 
 
@@ -36,7 +41,7 @@ var initDataBook = function () {
                 contentType: "application/json",
                 data: JSON.stringify($("#codeModal form").form2object()),
                 success: function (result) {
-                    gridApi.reload();
+                    codeGridApi.reload();
                     $('#codeModal').modal('hide');
                 }
             })
@@ -45,14 +50,14 @@ var initDataBook = function () {
 
     //修改code
     $("#updateCode").click(function () {
-        if (gridApi.getSelectedRows().length != 1) {
+        if (codeGridApi.getSelectedRows().length != 1) {
             alert("请选择一条数据");
             return false;
         }
         //打开codeModal
         $("#codeModal").modal('show');
         //加载数据
-        var data = gridApi.getSelectedRows()[0];
+        var data = codeGridApi.getSelectedRows()[0];
         $("#codeModal form").object2form(data);
         //保存codeModal
         $("#saveCode").unbind().click(function () {
@@ -63,7 +68,7 @@ var initDataBook = function () {
                 contentType: "application/json",
                 data: JSON.stringify($("#codeModal form").form2object()),
                 success: function (result) {
-                    gridApi.reload();
+                    codeGridApi.reload();
                     $('#codeModal').modal('hide');
                 }
             })
@@ -72,13 +77,13 @@ var initDataBook = function () {
 
     //删除code
     $("#deleteCode").click(function () {
-        if (gridApi.getSelectedRows().length == 0) {
+        if (codeGridApi.getSelectedRows().length == 0) {
             alert("请选择至少一条数据");
             return false;
         }
         var ids = [];
-        for (var i = 0; i < gridApi.getSelectedRows().length; i++) {
-            ids.push(gridApi.getSelectedRows()[i]["codeid"]);
+        for (var i = 0; i < codeGridApi.getSelectedRows().length; i++) {
+            ids.push(codeGridApi.getSelectedRows()[i]["codeid"]);
         }
         $.ajax({
             url: window.serviceUrl + "bookCodeController/deleteBookCode?token=" + localStorage.getItem("token"),
@@ -87,7 +92,7 @@ var initDataBook = function () {
             contentType: "application/json",
             data: JSON.stringify(ids),
             success: function (result) {
-                gridApi.reload();
+                codeGridApi.reload();
                 $('#codeModal').modal('hide');
             }
         })
@@ -98,4 +103,20 @@ var initDataBook = function () {
         $(this).find("input,textarea,select").val('').end();
     });
 
+}
+
+//查询代码对于的值
+function initDataBookValue(codeid) {
+    var valueGridApi = $("#valueTable").grid({
+        ennableSelect: true,
+        columns: [
+            {name: "valueid", display: "valueid", hidden: true},
+            {name: "value", display: "值"},
+            {name: "description", display: "描述"},
+        ],
+        ajax: {
+            url: window.serviceUrl + "bookCodeController/queryBookValueByCodeid?token=" + (localStorage.getItem("token") || ""),
+            params: {codeid: codeid}
+        }
+    });
 }

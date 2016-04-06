@@ -1,7 +1,9 @@
 package com.lhzl.drp.service;
 
 import com.lhzl.drp.dao.BookCodeMapper;
+import com.lhzl.drp.dao.BookValueMapper;
 import com.lhzl.drp.model.BookCode;
+import com.lhzl.drp.model.BookValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class BookCodeServiceImpl implements BookCodeService {
 
     @Autowired
     public BookCodeMapper bookCodeMapper;
+    @Autowired
+    public BookValueMapper bookValueMapper;
 
     @Override
     public BookCode queryBookCodeById(long codeid) {
@@ -40,6 +44,11 @@ public class BookCodeServiceImpl implements BookCodeService {
     @Override
     public void deleteBookCode(long codeid) {
         bookCodeMapper.deleteByPrimaryKey(codeid);
+    }
+
+    @Override
+    public List<BookValue> queryBookValue(Map<String, Object> map) {
+        return bookValueMapper.queryBookValue(map);
     }
 
 }

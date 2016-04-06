@@ -1,6 +1,7 @@
 package com.lhzl.drp.service;
 
 import com.lhzl.drp.model.BookCode;
+import com.lhzl.drp.model.BookValue;
 
 import java.util.List;
 import java.util.Map;
@@ -19,4 +20,6 @@ public interface BookCodeService {
     public void updateBookCode(BookCode bookCode);
 
     public void deleteBookCode(long codeid);
+
+    public List<BookValue> queryBookValue(Map<String, Object> map);
 }
