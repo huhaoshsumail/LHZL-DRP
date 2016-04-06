@@ -194,7 +194,7 @@
                 html += "</tbody></table>";
                 obj.find("tbody").html(html);
                 initTool(obj, opts);
-                eval(opts.callback);
+                eval(opts.callback());
             }
         });
     }
