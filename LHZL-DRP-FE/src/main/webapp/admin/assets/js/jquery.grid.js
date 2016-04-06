@@ -77,6 +77,9 @@
             pageSize: 10,
             pageNo: 1,
             count: 0
+        },
+        callback: function () {
+            //console.log("操作成功");
         }
     };
 
@@ -191,6 +194,7 @@
                 html += "</tbody></table>";
                 obj.find("tbody").html(html);
                 initTool(obj, opts);
+                eval(opts.callback);
             }
         });
     }

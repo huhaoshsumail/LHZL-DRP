@@ -22,6 +22,9 @@ var initDataBook = function () {
         },
         callback: function () {
             $("#valueTable").html("");
+            $("#insertValue").unbind();
+            $("#updateValue").unbind();
+            $("#deleteValue").unbind();
         }
     });
 
