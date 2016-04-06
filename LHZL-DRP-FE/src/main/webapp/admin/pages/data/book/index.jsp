@@ -10,11 +10,7 @@
     <%@include file="../../../common/common_sidebar.jsp" %>
 
     <div class="content-wrapper" id="pjax-content">
-        <script>
-            $(function () {
-                initDataBook();
-            });
-        </script>
+        <script src="admin/pages/data/book/index.js"></script>
         <section class="content-header">
             <h1>
                 字典

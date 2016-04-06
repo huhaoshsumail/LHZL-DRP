@@ -1,8 +1,7 @@
 /**
  * Created by chenhao on 2016/3/30.
  */
-var initDataBook = function () {
-
+$(function () {
     //初始化codeGrid
     var gridApi = $("#codeTable").grid({
         ennableSelect: true,
@@ -98,4 +97,4 @@ var initDataBook = function () {
         $(this).find("input,textarea,select").val('').end();
     });
 
-}
+})

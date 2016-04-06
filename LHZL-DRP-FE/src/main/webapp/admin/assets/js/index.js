@@ -360,7 +360,7 @@
     }).ajaxSuccess(function (event, xhr, options) {
         //console.log("请求成功");
         if (xhr.responseJSON && xhr.responseJSON.meta && xhr.responseJSON.meta.message == "BAD_TOKEN") {
-            window.location.href = "admin/login.jsp";
+            window.location.href = document.getElementsByTagName("base")[0].getAttribute("href") + "admin/login.jsp";
         }
     }).ajaxError(function (event, xhr, options, exc) {
         //console.log("请求失败");
