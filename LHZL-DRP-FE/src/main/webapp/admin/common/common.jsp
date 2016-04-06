@@ -56,6 +56,7 @@
 <script src="admin/assets/js/jquery.grid.js"></script>
 <script src="admin/assets/js/index.js"></script>
 
+<script src="admin/pages/data/book/index.js"></script>
 <script src="admin/pages/data/location/index.js"></script>
 <script src="admin/pages/supplier/subaccount.js"></script>
 <script src="admin/pages/distributors/management.js"></script>
