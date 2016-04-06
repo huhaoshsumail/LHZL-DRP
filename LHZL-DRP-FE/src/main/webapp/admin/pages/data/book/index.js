@@ -20,7 +20,7 @@ var initDataBook = function () {
 
     //查询code
     $("#queryCode").click(function () {
-        gridApi.reload({codeid: 1});
+        gridApi.reload();
     });
 
 

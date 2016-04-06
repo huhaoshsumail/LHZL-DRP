@@ -162,13 +162,13 @@
         from tbl_book_code
         where 1=1
         <if test="codeid != null">
-            codeId = #{codeid,jdbcType=BIGINT}
+            and codeId = #{codeid,jdbcType=BIGINT}
         </if>
         <if test="code != null">
-            code = #{code,jdbcType=VARCHAR},
+            and code = #{code,jdbcType=VARCHAR}
         </if>
         <if test="description != null">
-            description = #{description,jdbcType=VARCHAR},
+            and description = #{description,jdbcType=VARCHAR}
         </if>
 
     </select>
