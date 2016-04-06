@@ -40,6 +40,22 @@
                                 <button id="deleteCode" type="button" class="btn btn-primary"><i
                                         class="fa fa-remove"></i><span>删除</span></button>
                             </div>
+                            <hr>
+                            <form id="codeForm">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">代码</span>
+                                        <input name="code" type="text" class="form-control" placeholder="code">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">描述</span>
+                                        <input name="description" type="text" class="form-control"
+                                               placeholder="description">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -74,7 +90,7 @@
                     <h4 class="modal-title" id="codeFormLabel">字典代码</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form class="form-horizontal">
                         <input id="codeid" name="codeid" hidden readonly>
                         <div class="form-group">
                             <label for="code">代码</label>

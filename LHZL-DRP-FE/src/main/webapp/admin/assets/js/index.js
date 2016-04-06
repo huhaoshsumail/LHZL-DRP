@@ -386,18 +386,13 @@
         NProgress.done();
     });
 
-    //序列化表单数据为json对象
+    //表单转对象
     $.fn.form2object = function () {
         var o = {};
         var a = this.serializeArray();
         $.each(a, function () {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
+            if (this.value) {
+                o[this.name] = this.value;
             }
         });
         return o;
@@ -406,7 +401,6 @@
     //对象转表单
     $.fn.object2form = function (obj) {
         for (var key in obj) {
-            $(this).find("#" + key).val(obj[key]);
             $(this).find("input[name='" + key + "']").val(obj[key]);
             $(this).find("textarea[name='" + key + "']").val(obj[key]);
             $(this).find("select[name='" + key + "']").val(obj[key]);
