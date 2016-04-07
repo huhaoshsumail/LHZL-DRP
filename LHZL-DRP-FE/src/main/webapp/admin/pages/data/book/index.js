@@ -13,7 +13,7 @@ var initDataBook = function () {
             {
                 name: "codeid",
                 display: "操作",
-                template: "<button class='btn btn-primary' onclick='initDataBookValue(\"${value}\")'>查看值</button>"
+                template: "<button class='btn btn-primary' onclick='initDataBookValue(\"${value}\")'><span class='btn-span'>查看值</span></button>"
             }
         ],
         ajax: {
