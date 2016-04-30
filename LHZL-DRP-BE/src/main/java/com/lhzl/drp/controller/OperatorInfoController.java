@@ -1,6 +1,6 @@
 package com.lhzl.drp.controller;
 
-import com.lhzl.drp.model.Operatorinfo;
+import com.lhzl.drp.model.OperatorInfo;
 import com.lhzl.drp.model.Response;
 import com.lhzl.drp.service.OperatorinfoService;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
@@ -32,7 +31,7 @@ public class OperatorInfoController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Response login(@RequestBody Operatorinfo oi) {
+    public Response login(@RequestBody OperatorInfo oi) {
         int count = opeatorinfoService.login(oi);
         if (count > 0) {
             ShardedJedis shardedJedis = shardedJedisPool.getResource();

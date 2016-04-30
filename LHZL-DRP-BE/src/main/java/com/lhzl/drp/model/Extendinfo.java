@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Extendinfo {
+public class ExtendInfo {
     private Long id;
 
     private Long lineid;

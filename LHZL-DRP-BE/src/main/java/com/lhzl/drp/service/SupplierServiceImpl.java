@@ -1,9 +1,7 @@
 package com.lhzl.drp.service;
 
-import com.lhzl.drp.dao.OperatorinfoMapper;
-import com.lhzl.drp.dao.UserinfoMapper;
-import com.lhzl.drp.model.Operatorinfo;
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.dao.OperatorInfoMapper;
+import com.lhzl.drp.model.OperatorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,25 +12,25 @@ import java.util.Map;
 public class SupplierServiceImpl implements SupplierService {
 
     @Autowired
-    public OperatorinfoMapper operinfoMapper;
+    public OperatorInfoMapper operinfoMapper;
 
     @Override
-    public Operatorinfo queryOperById(long id) {
+    public OperatorInfo queryOperById(long id) {
         return operinfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<Operatorinfo> queryOper(Map<String, Object> map) {
+    public List<OperatorInfo> queryOper(Map<String, Object> map) {
         return operinfoMapper.queryOper(map);
     }
 
     @Override
-    public void insertOper(Operatorinfo oper) {
+    public void insertOper(OperatorInfo oper) {
         operinfoMapper.insert(oper);
     }
 
     @Override
-    public void updateOper(Operatorinfo oper) {
+    public void updateOper(OperatorInfo oper) {
         operinfoMapper.updateByPrimaryKey(oper);
     }
 

@@ -1,31 +1,23 @@
 /**
  * Created by chenjinyi on 2016年4月2日15:34:03
  */
-var initRoleData = function () {
-    var gridApi = $("#rolesTable").grid({
+var initPmsnData = function () {
+    var gridApi = $("#pmsnsTable").grid({
         ennableSelect: true,
         buttons: [
             {id: "addRoles", text: "添加", action: function(){
-                $('.roleForm').show();
-                $("#roleForm input[name='id']").val(0);
-                $("#roleForm input[name='rolename']").val('');
-                $("#roleForm input[name='remark']").val('');
+                $('.pmsnForm').show();
+                $("#pmsnForm input[name='roleid']").val(0);
+                $("#pmsnForm input[name='rolename']").val('');
+                $("#pmsnForm input[name='remark']").val('');
             }},
             {id: "updRoles", text: '修改', action: function(){
                 var selected = gridApi.getSelectedRows()[0];
                 if (selected != null) {
-                    $('.roleForm').show();
-                    $("#roleForm input[name='id']").val(selected.id);
-                    $("#roleForm input[name='rolename']").val(selected.rolename);
-                    $("#roleForm input[name='remark']").val(selected.remark);
-                } else {
-                    layer.alert(
-                        "请先选择一条记录",
-                        {
-                            title : '提示',
-                            icon : 3
-                        }
-                    )
+                    $('.pmsnForm').show();
+                    $("#pmsnForm input[name='roleid']").val(selected.id);
+                    $("#pmsnForm input[name='rolename']").val(selected.rolename);
+                    $("#pmsnForm input[name='remark']").val(selected.remark);
                 }
             }},
             {id: "delRoles", text: '删除', action: function(){
@@ -35,7 +27,7 @@ var initRoleData = function () {
                     var selected = gridApi.getSelectedRows()[0];
                     if (selected != null) {
                         var data = {id: selected.id};
-                        var url = window.serviceUrl + "securityController/delRole?token=" + (localStorage.getItem("token")||"");
+                        var url = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/securityController/delRole";
                         postAjax('POST', url, JSON.stringify( data ))
                     }
                 }, function () {
@@ -45,17 +37,18 @@ var initRoleData = function () {
         ],
         columns: [
             {name: "id", display: "id", hidden: true},
-            {name: "rolename", "display": "角色姓名"},
+            {name: "pmsnname", "display": "权限名称"},
+            {name: "actionname", "display": "操作"},
             {name: "remark", "display": "备注"}
         ],
         ajax: {
-            url: window.serviceUrl + "securityController/roleList?token=" + (localStorage.getItem("token")||""),
+            url: "http://127.0.0.1:8080/LHZL-DRP-BE/rest/securityController/pmsnList",
             params: {}
         }
     });
 
     $("#saveRoleBtn").click(function(){
-        var url = window.serviceUrl + "securityController/saveRole?token=" + (localStorage.getItem("token")||"");
+        var url = "http://127.0.0.1:8080/LHZL-DRP-BE/rest/securityController/saveRole";
         var roleinfo = Roleinfo.getValueText();
         postAjax('POST', url, JSON.stringify( roleinfo ));
     });
@@ -97,7 +90,7 @@ var initRoleData = function () {
     var Roleinfo = function() {
 
         var config = {
-            roleIdSelector: '#id',
+            roleIdSelector: '#roleid',
             roleNameSelector: '#rolename',
             remarkSelector: '#remark'
         }

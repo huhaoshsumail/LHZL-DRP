@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Shuttleinfo {
+public class ShuttleInfo {
     private Long id;
 
     private Long lineid;

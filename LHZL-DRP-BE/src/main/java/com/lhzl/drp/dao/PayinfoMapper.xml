@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.PayinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Payinfo" >
+<mapper namespace="com.lhzl.drp.dao.PayInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.PayInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="payNo" property="payno" jdbcType="VARCHAR" />
     <result column="cusNo" property="cusno" jdbcType="VARCHAR" />
@@ -9,6 +9,7 @@
     <result column="orderAmt" property="orderamt" jdbcType="DECIMAL" />
     <result column="payAmt" property="payamt" jdbcType="DECIMAL" />
     <result column="prepaidAmt" property="prepaidamt" jdbcType="DECIMAL" />
+    <result column="orderRebate" property="orderrebate" jdbcType="DECIMAL" />
     <result column="prepaidTime" property="prepaidtime" jdbcType="TIMESTAMP" />
     <result column="finalAmt" property="finalamt" jdbcType="DECIMAL" />
     <result column="finalTime" property="finaltime" jdbcType="TIMESTAMP" />
@@ -21,8 +22,8 @@
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, payNo, cusNo, orderId, orderAmt, payAmt, prepaidAmt, prepaidTime, finalAmt, finalTime, 
-    payer, payTime, status, createby, createTime, updateby, updateTime
+    id, payNo, cusNo, orderId, orderAmt, payAmt, prepaidAmt, orderRebate, prepaidTime, 
+    finalAmt, finalTime, payer, payTime, status, createby, createTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -34,21 +35,23 @@
     delete from tbl_payinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Payinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.PayInfo" >
     insert into tbl_payinfo (id, payNo, cusNo, 
       orderId, orderAmt, payAmt, 
-      prepaidAmt, prepaidTime, finalAmt, 
-      finalTime, payer, payTime, 
-      status, createby, createTime, 
-      updateby, updateTime)
+      prepaidAmt, orderRebate, prepaidTime, 
+      finalAmt, finalTime, payer, 
+      payTime, status, createby, 
+      createTime, updateby, updateTime
+      )
     values (#{id,jdbcType=BIGINT}, #{payno,jdbcType=VARCHAR}, #{cusno,jdbcType=VARCHAR}, 
       #{orderid,jdbcType=BIGINT}, #{orderamt,jdbcType=DECIMAL}, #{payamt,jdbcType=DECIMAL}, 
-      #{prepaidamt,jdbcType=DECIMAL}, #{prepaidtime,jdbcType=TIMESTAMP}, #{finalamt,jdbcType=DECIMAL}, 
-      #{finaltime,jdbcType=TIMESTAMP}, #{payer,jdbcType=VARCHAR}, #{paytime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+      #{prepaidamt,jdbcType=DECIMAL}, #{orderrebate,jdbcType=DECIMAL}, #{prepaidtime,jdbcType=TIMESTAMP}, 
+      #{finalamt,jdbcType=DECIMAL}, #{finaltime,jdbcType=TIMESTAMP}, #{payer,jdbcType=VARCHAR}, 
+      #{paytime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Payinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.PayInfo" >
     insert into tbl_payinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -71,6 +74,9 @@
       </if>
       <if test="prepaidamt != null" >
         prepaidAmt,
+      </if>
+      <if test="orderrebate != null" >
+        orderRebate,
       </if>
       <if test="prepaidtime != null" >
         prepaidTime,
@@ -125,6 +131,9 @@
       <if test="prepaidamt != null" >
         #{prepaidamt,jdbcType=DECIMAL},
       </if>
+      <if test="orderrebate != null" >
+        #{orderrebate,jdbcType=DECIMAL},
+      </if>
       <if test="prepaidtime != null" >
         #{prepaidtime,jdbcType=TIMESTAMP},
       </if>
@@ -157,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Payinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.PayInfo" >
     update tbl_payinfo
     <set >
       <if test="payno != null" >
@@ -177,6 +186,9 @@
       </if>
       <if test="prepaidamt != null" >
         prepaidAmt = #{prepaidamt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderrebate != null" >
+        orderRebate = #{orderrebate,jdbcType=DECIMAL},
       </if>
       <if test="prepaidtime != null" >
         prepaidTime = #{prepaidtime,jdbcType=TIMESTAMP},
@@ -211,7 +223,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Payinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.PayInfo" >
     update tbl_payinfo
     set payNo = #{payno,jdbcType=VARCHAR},
       cusNo = #{cusno,jdbcType=VARCHAR},
@@ -219,6 +231,7 @@
       orderAmt = #{orderamt,jdbcType=DECIMAL},
       payAmt = #{payamt,jdbcType=DECIMAL},
       prepaidAmt = #{prepaidamt,jdbcType=DECIMAL},
+      orderRebate = #{orderrebate,jdbcType=DECIMAL},
       prepaidTime = #{prepaidtime,jdbcType=TIMESTAMP},
       finalAmt = #{finalamt,jdbcType=DECIMAL},
       finalTime = #{finaltime,jdbcType=TIMESTAMP},

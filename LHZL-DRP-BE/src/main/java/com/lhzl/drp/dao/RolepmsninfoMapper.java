@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Rolepmsninfo;
+import com.lhzl.drp.model.RolepmsnInfo;
 
-public interface RolepmsninfoMapper {
+public interface RolepmsnInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Rolepmsninfo record);
+    int insert(RolepmsnInfo record);
 
-    int insertSelective(Rolepmsninfo record);
+    int insertSelective(RolepmsnInfo record);
 
-    Rolepmsninfo selectByPrimaryKey(Long id);
+    RolepmsnInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Rolepmsninfo record);
+    int updateByPrimaryKeySelective(RolepmsnInfo record);
 
-    int updateByPrimaryKey(Rolepmsninfo record);
+    int updateByPrimaryKey(RolepmsnInfo record);
 }

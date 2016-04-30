@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.ShuttleinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Shuttleinfo" >
+<mapper namespace="com.lhzl.drp.dao.ShuttleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.ShuttleInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="lineId" property="lineid" jdbcType="BIGINT" />
     <result column="startId" property="startid" jdbcType="BIGINT" />
@@ -29,7 +29,7 @@
     delete from tbl_shuttleinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Shuttleinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.ShuttleInfo" >
     insert into tbl_shuttleinfo (id, lineId, startId, 
       startTime, trip, tripId, 
       returnTrip, returnTripId, createby, 
@@ -41,7 +41,7 @@
       #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Shuttleinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.ShuttleInfo" >
     insert into tbl_shuttleinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -120,7 +120,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Shuttleinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.ShuttleInfo" >
     update tbl_shuttleinfo
     <set >
       <if test="lineid != null" >
@@ -159,7 +159,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Shuttleinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.ShuttleInfo" >
     update tbl_shuttleinfo
     set lineId = #{lineid,jdbcType=BIGINT},
       startId = #{startid,jdbcType=BIGINT},

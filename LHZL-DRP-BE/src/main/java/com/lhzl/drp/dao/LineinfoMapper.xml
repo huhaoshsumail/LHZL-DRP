@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.LineinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Lineinfo" >
+<mapper namespace="com.lhzl.drp.dao.LineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.LineInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="lineType" property="linetype" jdbcType="VARCHAR" />
     <result column="tourType" property="tourtype" jdbcType="VARCHAR" />
@@ -22,6 +22,9 @@
     <result column="hasWeekend" property="hasweekend" jdbcType="VARCHAR" />
     <result column="cusSelect" property="cusselect" jdbcType="VARCHAR" />
     <result column="min" property="min" jdbcType="INTEGER" />
+    <result column="rebate" property="rebate" jdbcType="DECIMAL" />
+    <result column="trainType" property="traintype" jdbcType="BIGINT" />
+    <result column="trainNo" property="trainno" jdbcType="VARCHAR" />
     <result column="hasConfirm" property="hasconfirm" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="creatby" property="creatby" jdbcType="VARCHAR" />
@@ -29,13 +32,14 @@
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.Lineinfo" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.LineInfo" extends="BaseResultMap" >
     <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, lineType, tourType, lineNo, sysNO, lineStart, lineEnd, title, subTitile, lineSid, 
     keyword, days, hotelDays, hotelType, hotelName, tel, deadline, hasWeekend, cusSelect, 
-    min, hasConfirm, status, creatby, createTime, updateby, updateTime
+    min, rebate, trainType, trainNo, hasConfirm, status, creatby, createTime, updateby, 
+    updateTime
   </sql>
   <sql id="Blob_Column_List" >
     desc
@@ -52,14 +56,15 @@
     delete from tbl_lineinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Lineinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.LineInfo" >
     insert into tbl_lineinfo (id, lineType, tourType, 
       lineNo, sysNO, lineStart, 
       lineEnd, title, subTitile, 
       lineSid, keyword, days, 
       hotelDays, hotelType, hotelName, 
       tel, deadline, hasWeekend, 
-      cusSelect, min, hasConfirm, 
+      cusSelect, min, rebate, 
+      trainType, trainNo, hasConfirm, 
       status, creatby, createTime, 
       updateby, updateTime, desc
       )
@@ -69,12 +74,13 @@
       #{linesid,jdbcType=VARCHAR}, #{keyword,jdbcType=BIGINT}, #{days,jdbcType=INTEGER}, 
       #{hoteldays,jdbcType=INTEGER}, #{hoteltype,jdbcType=BIGINT}, #{hotelname,jdbcType=VARCHAR}, 
       #{tel,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR}, #{hasweekend,jdbcType=VARCHAR}, 
-      #{cusselect,jdbcType=VARCHAR}, #{min,jdbcType=INTEGER}, #{hasconfirm,jdbcType=VARCHAR}, 
+      #{cusselect,jdbcType=VARCHAR}, #{min,jdbcType=INTEGER}, #{rebate,jdbcType=DECIMAL}, 
+      #{traintype,jdbcType=BIGINT}, #{trainno,jdbcType=VARCHAR}, #{hasconfirm,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Lineinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.LineInfo" >
     insert into tbl_lineinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -136,6 +142,15 @@
       </if>
       <if test="min != null" >
         min,
+      </if>
+      <if test="rebate != null" >
+        rebate,
+      </if>
+      <if test="traintype != null" >
+        trainType,
+      </if>
+      <if test="trainno != null" >
+        trainNo,
       </if>
       <if test="hasconfirm != null" >
         hasConfirm,
@@ -220,6 +235,15 @@
       <if test="min != null" >
         #{min,jdbcType=INTEGER},
       </if>
+      <if test="rebate != null" >
+        #{rebate,jdbcType=DECIMAL},
+      </if>
+      <if test="traintype != null" >
+        #{traintype,jdbcType=BIGINT},
+      </if>
+      <if test="trainno != null" >
+        #{trainno,jdbcType=VARCHAR},
+      </if>
       <if test="hasconfirm != null" >
         #{hasconfirm,jdbcType=VARCHAR},
       </if>
@@ -243,7 +267,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Lineinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.LineInfo" >
     update tbl_lineinfo
     <set >
       <if test="linetype != null" >
@@ -303,6 +327,15 @@
       <if test="min != null" >
         min = #{min,jdbcType=INTEGER},
       </if>
+      <if test="rebate != null" >
+        rebate = #{rebate,jdbcType=DECIMAL},
+      </if>
+      <if test="traintype != null" >
+        trainType = #{traintype,jdbcType=BIGINT},
+      </if>
+      <if test="trainno != null" >
+        trainNo = #{trainno,jdbcType=VARCHAR},
+      </if>
       <if test="hasconfirm != null" >
         hasConfirm = #{hasconfirm,jdbcType=VARCHAR},
       </if>
@@ -327,7 +360,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.Lineinfo" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.LineInfo" >
     update tbl_lineinfo
     set lineType = #{linetype,jdbcType=VARCHAR},
       tourType = #{tourtype,jdbcType=VARCHAR},
@@ -348,6 +381,9 @@
       hasWeekend = #{hasweekend,jdbcType=VARCHAR},
       cusSelect = #{cusselect,jdbcType=VARCHAR},
       min = #{min,jdbcType=INTEGER},
+      rebate = #{rebate,jdbcType=DECIMAL},
+      trainType = #{traintype,jdbcType=BIGINT},
+      trainNo = #{trainno,jdbcType=VARCHAR},
       hasConfirm = #{hasconfirm,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       creatby = #{creatby,jdbcType=VARCHAR},
@@ -357,7 +393,7 @@
       desc = #{desc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Lineinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.LineInfo" >
     update tbl_lineinfo
     set lineType = #{linetype,jdbcType=VARCHAR},
       tourType = #{tourtype,jdbcType=VARCHAR},
@@ -378,6 +414,9 @@
       hasWeekend = #{hasweekend,jdbcType=VARCHAR},
       cusSelect = #{cusselect,jdbcType=VARCHAR},
       min = #{min,jdbcType=INTEGER},
+      rebate = #{rebate,jdbcType=DECIMAL},
+      trainType = #{traintype,jdbcType=BIGINT},
+      trainNo = #{trainno,jdbcType=VARCHAR},
       hasConfirm = #{hasconfirm,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       creatby = #{creatby,jdbcType=VARCHAR},

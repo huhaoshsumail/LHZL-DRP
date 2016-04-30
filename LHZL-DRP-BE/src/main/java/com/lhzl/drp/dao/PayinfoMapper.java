@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Payinfo;
+import com.lhzl.drp.model.PayInfo;
 
-public interface PayinfoMapper {
+public interface PayInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Payinfo record);
+    int insert(PayInfo record);
 
-    int insertSelective(Payinfo record);
+    int insertSelective(PayInfo record);
 
-    Payinfo selectByPrimaryKey(Long id);
+    PayInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Payinfo record);
+    int updateByPrimaryKeySelective(PayInfo record);
 
-    int updateByPrimaryKey(Payinfo record);
+    int updateByPrimaryKey(PayInfo record);
 }

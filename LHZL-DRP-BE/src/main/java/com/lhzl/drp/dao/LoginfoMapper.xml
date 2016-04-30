@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.LoginfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Loginfo" >
+<mapper namespace="com.lhzl.drp.dao.LogInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.LogInfo" >
     <id column="logId" property="logid" jdbcType="BIGINT" />
     <result column="createby" property="createby" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.Loginfo" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.LogInfo" extends="BaseResultMap" >
     <result column="logCont" property="logcont" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -27,13 +27,13 @@
     delete from tbl_loginfo
     where logId = #{logid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Loginfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.LogInfo" >
     insert into tbl_loginfo (logId, createby, createTime, 
       logCont)
     values (#{logid,jdbcType=BIGINT}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{logcont,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Loginfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.LogInfo" >
     insert into tbl_loginfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="logid != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Loginfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.LogInfo" >
     update tbl_loginfo
     <set >
       <if test="createby != null" >
@@ -79,14 +79,14 @@
     </set>
     where logId = #{logid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.Loginfo" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.LogInfo" >
     update tbl_loginfo
     set createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       logCont = #{logcont,jdbcType=LONGVARCHAR}
     where logId = #{logid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Loginfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.LogInfo" >
     update tbl_loginfo
     set createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP}

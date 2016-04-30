@@ -1,14 +1,18 @@
 package com.lhzl.drp.controller;
 
+import com.lhzl.drp.model.PermissionInfo;
 import com.lhzl.drp.model.Response;
-import com.lhzl.drp.model.Roleinfo;
+import com.lhzl.drp.model.RoleInfo;
+import com.lhzl.drp.service.OperatorinfoService;
 import com.lhzl.drp.service.SecurityService;
+import com.lhzl.drp.util.DataBaseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +28,12 @@ public class SecurityController {
     @Autowired
     private SecurityService securityService;
 
+    @Autowired
+    private OperatorinfoService operatorinfoService;
+
+    @Autowired
+    private HttpServletRequest request;
+
     /**
      * 角色列表查询
      * @param map map
@@ -35,7 +45,7 @@ public class SecurityController {
         Response res = null;
         try{
             long userId = 1;
-            List<Roleinfo> roles = this.securityService.roleList(userId);
+            List<RoleInfo> roles = this.securityService.roleList(userId);
             res = new Response().success(roles);
             if (map.containsKey("count")) {
                 res.setCount(roles.size());
@@ -53,10 +63,11 @@ public class SecurityController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/saveRole", produces="application/json")
     @ResponseBody
-    public Response saveRole(@RequestBody Roleinfo roleinfo) {
+    public Response saveRole(@RequestBody RoleInfo roleinfo) {
         Response res = null;
         try {
-            roleinfo.setUserid(1L);
+            roleinfo.setUserid(operatorinfoService.getOperByAcct((String) request.getAttribute("opacct")).getUserid());
+            DataBaseUtil.setUpdateInfo(roleinfo, (String) request.getAttribute("opacct"));
             int result = this.securityService.saveRole(roleinfo);
             switch (result) {
                 case 1:
@@ -85,9 +96,10 @@ public class SecurityController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/delRole", produces="application/json")
     @ResponseBody
-    public Response delRole(@RequestBody Roleinfo roleinfo) {
+    public Response delRole(@RequestBody RoleInfo roleinfo) {
         Response res = null;
         try {
+            DataBaseUtil.setUpdateInfo(roleinfo, (String) request.getAttribute("opacct"));
             int result = this.securityService.delRole(roleinfo.getId());
             switch (result) {
                 case 0:
@@ -105,6 +117,27 @@ public class SecurityController {
             }
         } catch (Exception e) {
             this.logger.error("保存角色异常", e);
+        }
+        return res;
+    }
+
+    /**
+     * 权限列表查询
+     * @param map map
+     * @return 权限列表
+     */
+    @RequestMapping("/pmsnList")
+    @ResponseBody
+    public Response pmsnList(@RequestBody Map<String, Object> map) {
+        Response res = null;
+        try{
+            List<PermissionInfo> roles = this.securityService.pmsnList();
+            res = new Response().success(roles);
+            if (map.containsKey("count")) {
+                res.setCount(roles.size());
+            }
+        } catch (Exception e) {
+            this.logger.error("查询权限列表异常", e);
         }
         return res;
     }

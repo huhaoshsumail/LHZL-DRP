@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Messageinfo {
+public class MessageInfo {
     private Long msgid;
 
     private String msgtype;

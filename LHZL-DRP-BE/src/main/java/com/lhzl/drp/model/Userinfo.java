@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Userinfo {
+public class UserInfo {
     private Long id;
 
     private String usertype;

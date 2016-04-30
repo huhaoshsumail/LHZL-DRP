@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.ExtendinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Extendinfo" >
+<mapper namespace="com.lhzl.drp.dao.ExtendInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.ExtendInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="lineId" property="lineid" jdbcType="BIGINT" />
     <result column="creatby" property="creatby" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.ExtendinfoWithBLOBs" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.ExtendInfoWithBLOBs" extends="BaseResultMap" >
     <result column="remind" property="remind" jdbcType="LONGVARCHAR" />
     <result column="lineFeature" property="linefeature" jdbcType="LONGVARCHAR" />
     <result column="include" property="include" jdbcType="LONGVARCHAR" />
@@ -36,7 +36,7 @@
     delete from tbl_extendinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.ExtendinfoWithBLOBs" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.ExtendInfoWithBLOBs" >
     insert into tbl_extendinfo (id, lineId, creatby, 
       creatTime, updateby, updateTime, 
       remind, lineFeature, include, 
@@ -48,7 +48,7 @@
       #{notinclude,jdbcType=LONGVARCHAR}, #{remarks,jdbcType=LONGVARCHAR}, #{shopping,jdbcType=LONGVARCHAR}, 
       #{note,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.ExtendinfoWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.ExtendInfoWithBLOBs" >
     insert into tbl_extendinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -133,7 +133,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.ExtendinfoWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.ExtendInfoWithBLOBs" >
     update tbl_extendinfo
     <set >
       <if test="lineid != null" >
@@ -175,7 +175,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.ExtendinfoWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.ExtendInfoWithBLOBs" >
     update tbl_extendinfo
     set lineId = #{lineid,jdbcType=BIGINT},
       creatby = #{creatby,jdbcType=VARCHAR},
@@ -191,7 +191,7 @@
       note = #{note,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Extendinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.ExtendInfo" >
     update tbl_extendinfo
     set lineId = #{lineid,jdbcType=BIGINT},
       creatby = #{creatby,jdbcType=VARCHAR},

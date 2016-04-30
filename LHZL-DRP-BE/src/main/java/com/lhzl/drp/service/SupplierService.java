@@ -1,20 +1,19 @@
 package com.lhzl.drp.service;
 
-import com.lhzl.drp.model.Operatorinfo;
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.model.OperatorInfo;
 
 import java.util.List;
 import java.util.Map;
 
 public interface SupplierService {
 
-    Operatorinfo queryOperById(long id);
+    OperatorInfo queryOperById(long id);
 
-    List<Operatorinfo> queryOper(Map<String, Object> map);
+    List<OperatorInfo> queryOper(Map<String, Object> map);
 
-    void insertOper(Operatorinfo oper);
+    void insertOper(OperatorInfo oper);
 
-    void updateOper(Operatorinfo oper);
+    void updateOper(OperatorInfo oper);
 
     void deleteOper(long id);
 }

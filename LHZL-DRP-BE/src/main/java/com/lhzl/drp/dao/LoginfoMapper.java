@@ -1,19 +1,19 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Loginfo;
+import com.lhzl.drp.model.LogInfo;
 
-public interface LoginfoMapper {
+public interface LogInfoMapper {
     int deleteByPrimaryKey(Long logid);
 
-    int insert(Loginfo record);
+    int insert(LogInfo record);
 
-    int insertSelective(Loginfo record);
+    int insertSelective(LogInfo record);
 
-    Loginfo selectByPrimaryKey(Long logid);
+    LogInfo selectByPrimaryKey(Long logid);
 
-    int updateByPrimaryKeySelective(Loginfo record);
+    int updateByPrimaryKeySelective(LogInfo record);
 
-    int updateByPrimaryKeyWithBLOBs(Loginfo record);
+    int updateByPrimaryKeyWithBLOBs(LogInfo record);
 
-    int updateByPrimaryKey(Loginfo record);
+    int updateByPrimaryKey(LogInfo record);
 }

@@ -3,7 +3,7 @@ package com.lhzl.drp.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Orderinfo {
+public class OrderInfo {
     private Long id;
 
     private String orderno;
@@ -11,6 +11,14 @@ public class Orderinfo {
     private Long lineid;
 
     private Long drpid;
+
+    private String guide;
+
+    private String guidetel;
+
+    private String driver;
+
+    private String drivertel;
 
     private BigDecimal ordamt;
 
@@ -58,6 +66,38 @@ public class Orderinfo {
 
     public void setDrpid(Long drpid) {
         this.drpid = drpid;
+    }
+
+    public String getGuide() {
+        return guide;
+    }
+
+    public void setGuide(String guide) {
+        this.guide = guide == null ? null : guide.trim();
+    }
+
+    public String getGuidetel() {
+        return guidetel;
+    }
+
+    public void setGuidetel(String guidetel) {
+        this.guidetel = guidetel == null ? null : guidetel.trim();
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver == null ? null : driver.trim();
+    }
+
+    public String getDrivertel() {
+        return drivertel;
+    }
+
+    public void setDrivertel(String drivertel) {
+        this.drivertel = drivertel == null ? null : drivertel.trim();
     }
 
     public BigDecimal getOrdamt() {

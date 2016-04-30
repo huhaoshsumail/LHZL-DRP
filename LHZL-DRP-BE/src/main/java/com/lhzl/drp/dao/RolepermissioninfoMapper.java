@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Rolepermissioninfo;
+import com.lhzl.drp.model.RolePermissionInfo;
 
-public interface RolepermissioninfoMapper {
+public interface RolePermissionInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Rolepermissioninfo record);
+    int insert(RolePermissionInfo record);
 
-    int insertSelective(Rolepermissioninfo record);
+    int insertSelective(RolePermissionInfo record);
 
-    Rolepermissioninfo selectByPrimaryKey(Long id);
+    RolePermissionInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Rolepermissioninfo record);
+    int updateByPrimaryKeySelective(RolePermissionInfo record);
 
-    int updateByPrimaryKey(Rolepermissioninfo record);
+    int updateByPrimaryKey(RolePermissionInfo record);
 }

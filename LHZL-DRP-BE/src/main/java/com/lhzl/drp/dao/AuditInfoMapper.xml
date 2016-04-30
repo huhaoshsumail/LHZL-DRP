@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhzl.drp.dao.AuditInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.AuditInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="auditType" property="audittype" jdbcType="VARCHAR" />
+    <result column="referenceId" property="referenceid" jdbcType="BIGINT" />
+    <result column="userid" property="userid" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updteby" property="updteby" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, auditType, referenceId, userid, title, status, remark, createby, createTime, 
+    updteby, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_auditinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_auditinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lhzl.drp.model.AuditInfo" >
+    insert into tbl_auditinfo (id, auditType, referenceId, 
+      userid, title, status, 
+      remark, createby, createTime, 
+      updteby, updateTime)
+    values (#{id,jdbcType=BIGINT}, #{audittype,jdbcType=VARCHAR}, #{referenceid,jdbcType=BIGINT}, 
+      #{userid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updteby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.AuditInfo" >
+    insert into tbl_auditinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="audittype != null" >
+        auditType,
+      </if>
+      <if test="referenceid != null" >
+        referenceId,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createby != null" >
+        createby,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updteby != null" >
+        updteby,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="audittype != null" >
+        #{audittype,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceid != null" >
+        #{referenceid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updteby != null" >
+        #{updteby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.AuditInfo" >
+    update tbl_auditinfo
+    <set >
+      <if test="audittype != null" >
+        auditType = #{audittype,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceid != null" >
+        referenceId = #{referenceid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updteby != null" >
+        updteby = #{updteby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.AuditInfo" >
+    update tbl_auditinfo
+    set auditType = #{audittype,jdbcType=VARCHAR},
+      referenceId = #{referenceid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updteby = #{updteby,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

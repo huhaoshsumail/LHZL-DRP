@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Stationinfo;
+import com.lhzl.drp.model.StationInfo;
 
-public interface StationinfoMapper {
+public interface StationInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Stationinfo record);
+    int insert(StationInfo record);
 
-    int insertSelective(Stationinfo record);
+    int insertSelective(StationInfo record);
 
-    Stationinfo selectByPrimaryKey(Long id);
+    StationInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Stationinfo record);
+    int updateByPrimaryKeySelective(StationInfo record);
 
-    int updateByPrimaryKey(Stationinfo record);
+    int updateByPrimaryKey(StationInfo record);
 }

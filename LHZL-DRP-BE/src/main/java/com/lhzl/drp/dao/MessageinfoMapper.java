@@ -1,19 +1,19 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Messageinfo;
+import com.lhzl.drp.model.MessageInfo;
 
-public interface MessageinfoMapper {
+public interface MessageInfoMapper {
     int deleteByPrimaryKey(Long msgid);
 
-    int insert(Messageinfo record);
+    int insert(MessageInfo record);
 
-    int insertSelective(Messageinfo record);
+    int insertSelective(MessageInfo record);
 
-    Messageinfo selectByPrimaryKey(Long msgid);
+    MessageInfo selectByPrimaryKey(Long msgid);
 
-    int updateByPrimaryKeySelective(Messageinfo record);
+    int updateByPrimaryKeySelective(MessageInfo record);
 
-    int updateByPrimaryKeyWithBLOBs(Messageinfo record);
+    int updateByPrimaryKeyWithBLOBs(MessageInfo record);
 
-    int updateByPrimaryKey(Messageinfo record);
+    int updateByPrimaryKey(MessageInfo record);
 }

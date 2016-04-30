@@ -1,6 +1,6 @@
 package com.lhzl.drp.model;
 
-public class ExtendinfoWithBLOBs extends Extendinfo {
+public class ExtendInfoWithBLOBs extends ExtendInfo {
     private String remind;
 
     private String linefeature;

@@ -55,6 +55,7 @@ public class BookCodeController {
     @ResponseBody
     public Response insertBookCode(@RequestBody @Valid BookCode bookCode) {
         DataBaseUtil.setCreateInfo(bookCode, (String) request.getAttribute("opacct"));
+        DataBaseUtil.setUpdateInfo(bookCode, (String) request.getAttribute("opacct"));
         bookCodeService.insertBookCode(bookCode);
         return new Response().success();
     }

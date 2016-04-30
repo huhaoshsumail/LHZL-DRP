@@ -1,7 +1,7 @@
 package com.lhzl.drp.service;
 
-import com.lhzl.drp.dao.UserinfoMapper;
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.dao.UserInfoMapper;
+import com.lhzl.drp.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,25 +12,25 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    public UserinfoMapper userinfoMapper;
+    public UserInfoMapper userinfoMapper;
 
     @Override
-    public Userinfo queryUserById(long id) {
+    public UserInfo queryUserById(long id) {
         return userinfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<Userinfo> queryUser(Map<String, Object> map) {
+    public List<UserInfo> queryUser(Map<String, Object> map) {
         return userinfoMapper.queryUser(map);
     }
 
     @Override
-    public void insertUser(Userinfo user) {
+    public void insertUser(UserInfo user) {
         userinfoMapper.insert(user);
     }
 
     @Override
-    public void updateUser(Userinfo user) {
+    public void updateUser(UserInfo user) {
         userinfoMapper.updateByPrimaryKey(user);
     }
 

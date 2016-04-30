@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <%@include file="../../../common/common.jsp" %>
-    <script src="admin/pages/rolepmsn/roles/roles.js"></script>
+    <script src="admin/pages/rolepmsn/pmsns/pmsns.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -13,17 +13,17 @@
     <div class="content-wrapper" id="pjax-content">
         <script>
             $(function () {
-                initRoleData();
-                $('.roleForm').hide();
+                initPmsnData();
+                $('.pmsnForm').hide();
             });
         </script>
         <section class="content-header">
             <h1>
                 角色权限
-                <small>角色管理</small>
+                <small>权限管理</small>
             </h1>
             <ol class="breadcrumb">
-                <li class="active"><a href="javascript:;"><i class="fa fa-user-md"></i>角色管理</a></li>
+                <li class="active"><a href="javascript:;"><i class="fa fa-user-md"></i>权限管理</a></li>
             </ol>
         </section>
         <section class="content">
@@ -31,29 +31,33 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">角色</h3>
+                            <h3 class="box-title">权限</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div id="rolesTable"></div>
+                            <div id="pmsnsTable"></div>
                         </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-                    <div class="box roleForm">
+                    <div class="box pmsnForm">
                         <div class="box-body">
                             <div id="valueTable">
-                                <form id="roleForm" class="form-inline">
+                                <form id="pmsnForm" class="form-inline">
                                     <input type="hidden" class="form-control" id="id" name="id">
                                     <div class="form-group">
-                                        <label class="sr-only">角色名称</label>
-                                        <input type="text" class="form-control" id="rolename" name="rolename" placeholder="角色名称">
+                                        <label class="sr-only">权限名称</label>
+                                        <input type="text" class="form-control" id="pmsnname" name="pmsnname" placeholder="权限名称">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">操作名称</label>
+                                        <input type="text" class="form-control" id="actionname" name="actionname" placeholder="操作名称">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">备注</label>
                                         <input type="text" class="form-control" id="remark" name="remark" placeholder="备注">
                                     </div>
-                                    <button type="button" id="saveRoleBtn" class="btn btn-default">保存</button>
+                                    <button type="button" id="savePmsnBtn" class="btn btn-default">保存</button>
                                 </form>
                             </div>
                         </div>

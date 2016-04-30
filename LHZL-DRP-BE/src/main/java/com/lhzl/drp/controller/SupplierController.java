@@ -1,10 +1,8 @@
 package com.lhzl.drp.controller;
 
-import com.lhzl.drp.model.Operatorinfo;
+import com.lhzl.drp.model.OperatorInfo;
 import com.lhzl.drp.model.Response;
-import com.lhzl.drp.model.Userinfo;
 import com.lhzl.drp.service.SupplierService;
-import com.lhzl.drp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +27,14 @@ public class SupplierController {
     @RequestMapping("/queryOperById")
     @ResponseBody
     public Response queryOperById(long id) {
-        Operatorinfo oper = supplierService.queryOperById(id);
+        OperatorInfo oper = supplierService.queryOperById(id);
         return new Response().success(oper);
     }
 
     @RequestMapping("/queryOper")
     @ResponseBody
     public Response queryOper(@RequestBody Map<String, Object> map) {
-        List<Operatorinfo> opers = supplierService.queryOper(map);
+        List<OperatorInfo> opers = supplierService.queryOper(map);
         Response res = new Response().success(opers);
 //        if (map.containsKey("count")) {
 //            res.setCount((Integer) map.get("count"));
@@ -46,14 +44,14 @@ public class SupplierController {
 
     @RequestMapping("/insertOper")
     @ResponseBody
-    public Response insertOper(@RequestBody @Valid Operatorinfo oper) {
+    public Response insertOper(@RequestBody @Valid OperatorInfo oper) {
         supplierService.insertOper(oper);
         return new Response().success();
     }
 
     @RequestMapping("/updateOper")
     @ResponseBody
-    public Response updateOper(@RequestBody @Valid Operatorinfo oper) {
+    public Response updateOper(@RequestBody @Valid OperatorInfo oper) {
         supplierService.updateOper(oper);
         return new Response().success();
     }

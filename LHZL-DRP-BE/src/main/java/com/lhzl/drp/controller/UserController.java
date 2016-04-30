@@ -1,6 +1,6 @@
 package com.lhzl.drp.controller;
 
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.model.UserInfo;
 import com.lhzl.drp.service.UserService;
 import com.lhzl.drp.model.Response;
 import org.slf4j.Logger;
@@ -28,14 +28,14 @@ public class UserController {
     @RequestMapping("queryUserById")
     @ResponseBody
     public Response queryUserById(long id) {
-        Userinfo user = userService.queryUserById(id);
+        UserInfo user = userService.queryUserById(id);
         return new Response().success(user);
     }
 
     @RequestMapping("/queryUser")
     @ResponseBody
     public Response queryUser(@RequestBody Map<String, Object> map) {
-        List<Userinfo> users = userService.queryUser(map);
+        List<UserInfo> users = userService.queryUser(map);
         Response res = new Response().success(users);
         if (map.containsKey("count")) {
             res.setCount((Integer) map.get("count"));
@@ -45,14 +45,14 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public Response insertUser(@RequestBody @Valid Userinfo user) {
+    public Response insertUser(@RequestBody @Valid UserInfo user) {
         userService.insertUser(user);
         return new Response().success();
     }
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Response updateUser(@RequestBody @Valid Userinfo user) {
+    public Response updateUser(@RequestBody @Valid UserInfo user) {
         userService.updateUser(user);
         return new Response().success();
     }

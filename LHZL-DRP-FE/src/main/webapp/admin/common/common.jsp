@@ -20,7 +20,6 @@
 <link href="node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/datepicker/datepicker3.css" rel="stylesheet">
 <link href="node_modules/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
-<link href="node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet">
 <link href="node_modules/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
 <link href="admin/assets/css/index.css" rel="stylesheet">
 

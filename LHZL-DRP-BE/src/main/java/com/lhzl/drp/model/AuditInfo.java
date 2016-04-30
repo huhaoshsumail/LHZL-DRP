@@ -2,14 +2,18 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class RoleInfo {
+public class AuditInfo {
     private Long id;
+
+    private String audittype;
+
+    private Long referenceid;
 
     private Long userid;
 
-    private String rolename;
+    private String title;
 
-    private String flag;
+    private String status;
 
     private String remark;
 
@@ -17,7 +21,7 @@ public class RoleInfo {
 
     private Date createtime;
 
-    private String updateby;
+    private String updteby;
 
     private Date updatetime;
 
@@ -29,6 +33,22 @@ public class RoleInfo {
         this.id = id;
     }
 
+    public String getAudittype() {
+        return audittype;
+    }
+
+    public void setAudittype(String audittype) {
+        this.audittype = audittype == null ? null : audittype.trim();
+    }
+
+    public Long getReferenceid() {
+        return referenceid;
+    }
+
+    public void setReferenceid(Long referenceid) {
+        this.referenceid = referenceid;
+    }
+
     public Long getUserid() {
         return userid;
     }
@@ -37,20 +57,20 @@ public class RoleInfo {
         this.userid = userid;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getTitle() {
+        return title;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename == null ? null : rolename.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public String getFlag() {
-        return flag;
+    public String getStatus() {
+        return status;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag == null ? null : flag.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public String getRemark() {
@@ -77,12 +97,12 @@ public class RoleInfo {
         this.createtime = createtime;
     }
 
-    public String getUpdateby() {
-        return updateby;
+    public String getUpdteby() {
+        return updteby;
     }
 
-    public void setUpdateby(String updateby) {
-        this.updateby = updateby == null ? null : updateby.trim();
+    public void setUpdteby(String updteby) {
+        this.updteby = updteby == null ? null : updteby.trim();
     }
 
     public Date getUpdatetime() {

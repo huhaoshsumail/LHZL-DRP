@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.MessageinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Messageinfo" >
+<mapper namespace="com.lhzl.drp.dao.MessageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.MessageInfo" >
     <id column="msgId" property="msgid" jdbcType="BIGINT" />
     <result column="msgType" property="msgtype" jdbcType="VARCHAR" />
     <result column="isRead" property="isread" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.Messageinfo" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.MessageInfo" extends="BaseResultMap" >
     <result column="message" property="message" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -28,13 +28,13 @@
     delete from tbl_messageinfo
     where msgId = #{msgid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Messageinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.MessageInfo" >
     insert into tbl_messageinfo (msgId, msgType, isRead, 
       createTime, message)
     values (#{msgid,jdbcType=BIGINT}, #{msgtype,jdbcType=VARCHAR}, #{isread,jdbcType=VARCHAR}, 
       #{createtime,jdbcType=TIMESTAMP}, #{message,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Messageinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.MessageInfo" >
     insert into tbl_messageinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="msgid != null" >
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Messageinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.MessageInfo" >
     update tbl_messageinfo
     <set >
       <if test="msgtype != null" >
@@ -89,7 +89,7 @@
     </set>
     where msgId = #{msgid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.Messageinfo" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.MessageInfo" >
     update tbl_messageinfo
     set msgType = #{msgtype,jdbcType=VARCHAR},
       isRead = #{isread,jdbcType=VARCHAR},
@@ -97,7 +97,7 @@
       message = #{message,jdbcType=LONGVARCHAR}
     where msgId = #{msgid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Messageinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.MessageInfo" >
     update tbl_messageinfo
     set msgType = #{msgtype,jdbcType=VARCHAR},
       isRead = #{isread,jdbcType=VARCHAR},

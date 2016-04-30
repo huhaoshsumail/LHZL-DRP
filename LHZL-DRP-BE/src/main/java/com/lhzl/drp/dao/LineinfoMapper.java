@@ -1,19 +1,19 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Lineinfo;
+import com.lhzl.drp.model.LineInfo;
 
-public interface LineinfoMapper {
+public interface LineInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Lineinfo record);
+    int insert(LineInfo record);
 
-    int insertSelective(Lineinfo record);
+    int insertSelective(LineInfo record);
 
-    Lineinfo selectByPrimaryKey(Long id);
+    LineInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Lineinfo record);
+    int updateByPrimaryKeySelective(LineInfo record);
 
-    int updateByPrimaryKeyWithBLOBs(Lineinfo record);
+    int updateByPrimaryKeyWithBLOBs(LineInfo record);
 
-    int updateByPrimaryKey(Lineinfo record);
+    int updateByPrimaryKey(LineInfo record);
 }

@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.PermissioninfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Permissioninfo" >
+<mapper namespace="com.lhzl.drp.dao.PermissionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.PermissionInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="pmsnName" property="pmsnname" jdbcType="VARCHAR" />
     <result column="actionName" property="actionname" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="createby" property="createby" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.Permissioninfo" extends="BaseResultMap" >
-    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
-  </resultMap>
   <sql id="Base_Column_List" >
-    id, pmsnName, actionName, createby, createTime, updateby, updateTime
+    id, pmsnName, actionName, remark, createby, createTime, updateby, updateTime
   </sql>
-  <sql id="Blob_Column_List" >
-    remark
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from tbl_permissioninfo
     where id = #{id,jdbcType=BIGINT}
   </select>
@@ -31,15 +24,15 @@
     delete from tbl_permissioninfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Permissioninfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.PermissionInfo" >
     insert into tbl_permissioninfo (id, pmsnName, actionName, 
-      createby, createTime, updateby, 
-      updateTime, remark)
+      remark, createby, createTime, 
+      updateby, updateTime)
     values (#{id,jdbcType=BIGINT}, #{pmsnname,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR}, 
-      #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
-      #{updatetime,jdbcType=TIMESTAMP}, #{remark,jdbcType=LONGVARCHAR})
+      #{remark,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Permissioninfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.PermissionInfo" >
     insert into tbl_permissioninfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -50,6 +43,9 @@
       </if>
       <if test="actionname != null" >
         actionName,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="createby != null" >
         createby,
@@ -63,9 +59,6 @@
       <if test="updatetime != null" >
         updateTime,
       </if>
-      <if test="remark != null" >
-        remark,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -76,6 +69,9 @@
       </if>
       <if test="actionname != null" >
         #{actionname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createby != null" >
         #{createby,jdbcType=VARCHAR},
@@ -89,12 +85,9 @@
       <if test="updatetime != null" >
         #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Permissioninfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.PermissionInfo" >
     update tbl_permissioninfo
     <set >
       <if test="pmsnname != null" >
@@ -102,6 +95,9 @@
       </if>
       <if test="actionname != null" >
         actionName = #{actionname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createby != null" >
         createby = #{createby,jdbcType=VARCHAR},
@@ -115,31 +111,23 @@
       <if test="updatetime != null" >
         updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=LONGVARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lhzl.drp.model.Permissioninfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.PermissionInfo" >
     update tbl_permissioninfo
     set pmsnName = #{pmsnname,jdbcType=VARCHAR},
       actionName = #{actionname,jdbcType=VARCHAR},
-      createby = #{createby,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateby = #{updateby,jdbcType=VARCHAR},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      remark = #{remark,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Permissioninfo" >
-    update tbl_permissioninfo
-    set pmsnName = #{pmsnname,jdbcType=VARCHAR},
-      actionName = #{actionname,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from tbl_permissioninfo
+  </select>
 </mapper>

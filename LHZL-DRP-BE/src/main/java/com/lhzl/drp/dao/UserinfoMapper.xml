@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.UserinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Userinfo" >
+<mapper namespace="com.lhzl.drp.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.UserInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="userType" property="usertype" jdbcType="VARCHAR" />
     <result column="userPid" property="userpid" jdbcType="BIGINT" />
@@ -28,7 +28,7 @@
     delete from tbl_userinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Userinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.UserInfo" >
     insert into tbl_userinfo (id, userType, userPid, 
       username, mobile, IDCard, 
       status, createby, createTime, 
@@ -38,7 +38,7 @@
       #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Userinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.UserInfo" >
     insert into tbl_userinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Userinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.UserInfo" >
     update tbl_userinfo
     <set >
       <if test="usertype != null" >
@@ -147,7 +147,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Userinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.UserInfo" >
     update tbl_userinfo
     set userType = #{usertype,jdbcType=VARCHAR},
       userPid = #{userpid,jdbcType=BIGINT},
@@ -162,7 +162,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="queryUser" parameterType="Map" resultType="com.lhzl.drp.model.Userinfo">
+  <select id="queryUser" parameterType="Map" resultType="com.lhzl.drp.model.UserInfo">
     select
     <include refid="Base_Column_List"/>
     from tbl_userinfo

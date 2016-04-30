@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Stationinfo {
+public class StationInfo {
     private Long id;
 
     private Long stationpid;

@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Rolepermissioninfo {
+public class RolePermissionInfo {
     private Long id;
 
     private Long roleid;

@@ -2,12 +2,14 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Permissioninfo {
+public class PermissionInfo {
     private Long id;
 
     private String pmsnname;
 
     private String actionname;
+
+    private String remark;
 
     private String createby;
 
@@ -16,8 +18,6 @@ public class Permissioninfo {
     private String updateby;
 
     private Date updatetime;
-
-    private String remark;
 
     public Long getId() {
         return id;
@@ -41,6 +41,14 @@ public class Permissioninfo {
 
     public void setActionname(String actionname) {
         this.actionname = actionname == null ? null : actionname.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public String getCreateby() {
@@ -73,13 +81,5 @@ public class Permissioninfo {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
     }
 }

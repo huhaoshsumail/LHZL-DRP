@@ -1,23 +1,23 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Roleinfo;
+import com.lhzl.drp.model.RoleInfo;
 
 import java.util.List;
 
-public interface RoleinfoMapper {
+public interface RoleInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Roleinfo record);
+    int insert(RoleInfo record);
 
-    int insertSelective(Roleinfo record);
+    int insertSelective(RoleInfo record);
 
-    Roleinfo selectByPrimaryKey(Long id);
+    RoleInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Roleinfo record);
+    int updateByPrimaryKeySelective(RoleInfo record);
 
-    int updateByPrimaryKey(Roleinfo record);
+    int updateByPrimaryKey(RoleInfo record);
 
-    List<Roleinfo> selectByUid(Long userid);
+    List<RoleInfo> selectByUid(Long userid);
 
-    int existRoleName(long userid, String roleName);
+    int existRoleName(long userid, String roleName, long rid);
 }

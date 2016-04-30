@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Orderinfo;
+import com.lhzl.drp.model.OrderInfo;
 
-public interface OrderinfoMapper {
+public interface OrderInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Orderinfo record);
+    int insert(OrderInfo record);
 
-    int insertSelective(Orderinfo record);
+    int insertSelective(OrderInfo record);
 
-    Orderinfo selectByPrimaryKey(Long id);
+    OrderInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Orderinfo record);
+    int updateByPrimaryKeySelective(OrderInfo record);
 
-    int updateByPrimaryKey(Orderinfo record);
+    int updateByPrimaryKey(OrderInfo record);
 }

@@ -1,17 +1,17 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Shuttleinfo;
+import com.lhzl.drp.model.ShuttleInfo;
 
-public interface ShuttleinfoMapper {
+public interface ShuttleInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Shuttleinfo record);
+    int insert(ShuttleInfo record);
 
-    int insertSelective(Shuttleinfo record);
+    int insertSelective(ShuttleInfo record);
 
-    Shuttleinfo selectByPrimaryKey(Long id);
+    ShuttleInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Shuttleinfo record);
+    int updateByPrimaryKeySelective(ShuttleInfo record);
 
-    int updateByPrimaryKey(Shuttleinfo record);
+    int updateByPrimaryKey(ShuttleInfo record);
 }

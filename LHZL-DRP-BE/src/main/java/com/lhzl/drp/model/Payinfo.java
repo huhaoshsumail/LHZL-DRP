@@ -3,7 +3,7 @@ package com.lhzl.drp.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Payinfo {
+public class PayInfo {
     private Long id;
 
     private String payno;
@@ -17,6 +17,8 @@ public class Payinfo {
     private BigDecimal payamt;
 
     private BigDecimal prepaidamt;
+
+    private BigDecimal orderrebate;
 
     private Date prepaidtime;
 
@@ -92,6 +94,14 @@ public class Payinfo {
 
     public void setPrepaidamt(BigDecimal prepaidamt) {
         this.prepaidamt = prepaidamt;
+    }
+
+    public BigDecimal getOrderrebate() {
+        return orderrebate;
+    }
+
+    public void setOrderrebate(BigDecimal orderrebate) {
+        this.orderrebate = orderrebate;
     }
 
     public Date getPrepaidtime() {

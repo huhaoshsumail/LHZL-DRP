@@ -1,32 +1,38 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Operatorinfo;
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.model.OperatorInfo;
 
 import java.util.List;
 import java.util.Map;
 
-public interface OperatorinfoMapper {
+public interface OperatorInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Operatorinfo record);
+    int insert(OperatorInfo record);
 
-    int insertSelective(Operatorinfo record);
+    int insertSelective(OperatorInfo record);
 
-    Operatorinfo selectByPrimaryKey(Long id);
+    OperatorInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Operatorinfo record);
+    int updateByPrimaryKeySelective(OperatorInfo record);
 
-    int updateByPrimaryKey(Operatorinfo record);
-
-    /**
+    int updateByPrimaryKey(OperatorInfo record);
+	
+	/**
      * 查询操作员
      *
      * @param map
      * @return
      */
-    List<Operatorinfo> queryOper(Map<String, Object> map);
+    List<OperatorInfo> queryOper(Map<String, Object> map);
 
 
-    int login(Operatorinfo oi);
+    int login(OperatorInfo oi);
+
+    /**
+     * 根据登陆名获取操作员
+     * @param opacct  登陆用户名
+     * @return
+     */
+    OperatorInfo getOperByAcct(String opacct);
 }

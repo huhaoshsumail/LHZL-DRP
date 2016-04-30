@@ -67,7 +67,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="admin/pages/rolepmsn/roles/roles.jsp"><i class="fa fa-th-large"></i><span>角色管理</span></a></li>
-                    <li><a href="admin/index.jsp"><i class="fa fa-cloud-upload"></i><span>权限管理</span></a></li>
+                    <li><a href="admin/pages/rolepmsn/pmsns/pmsns.jsp"><i class="fa fa-cloud-upload"></i><span>权限管理</span></a></li>
                 </ul>
             </li>
             <li><a href="admin/index.jsp"><i class="fa fa-th"></i><span>游客分配座位</span></a></li>

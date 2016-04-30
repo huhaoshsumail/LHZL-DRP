@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Operatorinfo {
+public class OperatorInfo {
     private Long id;
 
     private Long userid;

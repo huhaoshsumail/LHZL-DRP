@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.RoleinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Roleinfo" >
+<mapper namespace="com.lhzl.drp.dao.RoleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.RoleInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="userId" property="userid" jdbcType="BIGINT" />
     <result column="roleName" property="rolename" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="creatby" property="creatby" jdbcType="VARCHAR" />
-    <result column="creatTime" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userId, roleName, flag, remark, creatby, creatTime, updateby, updateTime
+    id, userId, roleName, flag, remark, createby, createTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from tbl_roleinfo
     where id = #{id,jdbcType=BIGINT}
@@ -25,17 +25,17 @@
     delete from tbl_roleinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Roleinfo" >
-    insert into tbl_roleinfo (id, userId, roleName, 
-      flag, remark, creatby, 
-      creatTime, updateby, updateTime
-      )
-    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, 
-      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, 
-      #{creattime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.lhzl.drp.model.RoleInfo" >
+    insert into tbl_roleinfo (id, userId, roleName,
+    flag, remark, createby,
+    createTime, updateby, updateTime
+    )
+    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR},
+    #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR},
+    #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+    )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Roleinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.RoleInfo" >
     insert into tbl_roleinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -53,11 +53,11 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="creatby != null" >
-        creatby,
+      <if test="createby != null" >
+        createby,
       </if>
-      <if test="creattime != null" >
-        creatTime,
+      <if test="createtime != null" >
+        createTime,
       </if>
       <if test="updateby != null" >
         updateby,
@@ -82,11 +82,11 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
       </if>
-      <if test="creattime != null" >
-        #{creattime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateby != null" >
         #{updateby,jdbcType=VARCHAR},
@@ -96,7 +96,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Roleinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.RoleInfo" >
     update tbl_roleinfo
     <set >
       <if test="userid != null" >
@@ -111,11 +111,11 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        creatby = #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
       </if>
-      <if test="creattime != null" >
-        creatTime = #{creattime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateby != null" >
         updateby = #{updateby,jdbcType=VARCHAR},
@@ -126,12 +126,14 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Roleinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.RoleInfo" >
     update tbl_roleinfo
     set userId = #{userid,jdbcType=BIGINT},
       roleName = #{rolename,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
@@ -144,6 +146,6 @@
   </select>
   <select id="existRoleName" resultType="java.lang.Integer" >
     select count(*) from tbl_roleinfo
-    where userId = #{0} and roleName = #{1}
+    where userId = #{0} and roleName = #{1} and id != #{2}
   </select>
 </mapper>

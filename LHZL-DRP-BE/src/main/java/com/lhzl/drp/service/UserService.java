@@ -1,19 +1,19 @@
 package com.lhzl.drp.service;
 
-import com.lhzl.drp.model.Userinfo;
+import com.lhzl.drp.model.UserInfo;
 
 import java.util.List;
 import java.util.Map;
 
 public interface UserService {
 
-    Userinfo queryUserById(long id);
+    UserInfo queryUserById(long id);
 
-    List<Userinfo> queryUser(Map<String, Object> map);
+    List<UserInfo> queryUser(Map<String, Object> map);
 
-    void insertUser(Userinfo user);
+    void insertUser(UserInfo user);
 
-    void updateUser(Userinfo user);
+    void updateUser(UserInfo user);
 
     void deleteUser(long id);
 }

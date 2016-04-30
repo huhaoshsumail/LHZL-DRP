@@ -1,19 +1,22 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Permissioninfo;
 
-public interface PermissioninfoMapper {
+import com.lhzl.drp.model.PermissionInfo;
+
+import java.util.List;
+
+public interface PermissionInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Permissioninfo record);
+    int insert(PermissionInfo record);
 
-    int insertSelective(Permissioninfo record);
+    int insertSelective(PermissionInfo record);
 
-    Permissioninfo selectByPrimaryKey(Long id);
+    PermissionInfo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Permissioninfo record);
+    int updateByPrimaryKeySelective(PermissionInfo record);
 
-    int updateByPrimaryKeyWithBLOBs(Permissioninfo record);
+    int updateByPrimaryKey(PermissionInfo record);
 
-    int updateByPrimaryKey(Permissioninfo record);
+    List<PermissionInfo> selectAll();
 }

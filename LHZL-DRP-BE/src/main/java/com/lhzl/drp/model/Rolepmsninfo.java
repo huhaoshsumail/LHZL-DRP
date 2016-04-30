@@ -2,7 +2,7 @@ package com.lhzl.drp.model;
 
 import java.util.Date;
 
-public class Rolepmsninfo {
+public class RolepmsnInfo {
     private Long id;
 
     private Long roleid;

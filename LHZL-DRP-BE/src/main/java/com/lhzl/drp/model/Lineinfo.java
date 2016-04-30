@@ -1,8 +1,9 @@
 package com.lhzl.drp.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class Lineinfo {
+public class LineInfo {
     private Long id;
 
     private String linetype;
@@ -42,6 +43,12 @@ public class Lineinfo {
     private String cusselect;
 
     private Integer min;
+
+    private BigDecimal rebate;
+
+    private Long traintype;
+
+    private String trainno;
 
     private String hasconfirm;
 
@@ -215,6 +222,30 @@ public class Lineinfo {
 
     public void setMin(Integer min) {
         this.min = min;
+    }
+
+    public BigDecimal getRebate() {
+        return rebate;
+    }
+
+    public void setRebate(BigDecimal rebate) {
+        this.rebate = rebate;
+    }
+
+    public Long getTraintype() {
+        return traintype;
+    }
+
+    public void setTraintype(Long traintype) {
+        this.traintype = traintype;
+    }
+
+    public String getTrainno() {
+        return trainno;
+    }
+
+    public void setTrainno(String trainno) {
+        this.trainno = trainno == null ? null : trainno.trim();
     }
 
     public String getHasconfirm() {

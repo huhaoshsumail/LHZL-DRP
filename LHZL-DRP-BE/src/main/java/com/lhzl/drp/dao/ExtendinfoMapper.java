@@ -1,20 +1,20 @@
 package com.lhzl.drp.dao;
 
-import com.lhzl.drp.model.Extendinfo;
-import com.lhzl.drp.model.ExtendinfoWithBLOBs;
+import com.lhzl.drp.model.ExtendInfo;
+import com.lhzl.drp.model.ExtendInfoWithBLOBs;
 
-public interface ExtendinfoMapper {
+public interface ExtendInfoMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(ExtendinfoWithBLOBs record);
+    int insert(ExtendInfoWithBLOBs record);
 
-    int insertSelective(ExtendinfoWithBLOBs record);
+    int insertSelective(ExtendInfoWithBLOBs record);
 
-    ExtendinfoWithBLOBs selectByPrimaryKey(Long id);
+    ExtendInfoWithBLOBs selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(ExtendinfoWithBLOBs record);
+    int updateByPrimaryKeySelective(ExtendInfoWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(ExtendinfoWithBLOBs record);
+    int updateByPrimaryKeyWithBLOBs(ExtendInfoWithBLOBs record);
 
-    int updateByPrimaryKey(Extendinfo record);
+    int updateByPrimaryKey(ExtendInfo record);
 }

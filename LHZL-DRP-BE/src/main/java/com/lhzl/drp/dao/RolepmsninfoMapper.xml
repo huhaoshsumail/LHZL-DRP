@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.RolepmsninfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Rolepmsninfo" >
+<mapper namespace="com.lhzl.drp.dao.RolepmsnInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.RolepmsnInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="roleid" property="roleid" jdbcType="BIGINT" />
     <result column="oprtid" property="oprtid" jdbcType="BIGINT" />
@@ -21,13 +21,13 @@
     delete from tbl_rolepmsninfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Rolepmsninfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.RolepmsnInfo" >
     insert into tbl_rolepmsninfo (id, roleid, oprtid, 
       createby, createTime)
     values (#{id,jdbcType=BIGINT}, #{roleid,jdbcType=BIGINT}, #{oprtid,jdbcType=BIGINT}, 
       #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Rolepmsninfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.RolepmsnInfo" >
     insert into tbl_rolepmsninfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Rolepmsninfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.RolepmsnInfo" >
     update tbl_rolepmsninfo
     <set >
       <if test="roleid != null" >
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Rolepmsninfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.RolepmsnInfo" >
     update tbl_rolepmsninfo
     set roleid = #{roleid,jdbcType=BIGINT},
       oprtid = #{oprtid,jdbcType=BIGINT},

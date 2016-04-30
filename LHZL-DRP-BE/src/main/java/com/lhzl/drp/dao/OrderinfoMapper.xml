@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lhzl.drp.dao.OrderinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.Orderinfo" >
+<mapper namespace="com.lhzl.drp.dao.OrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lhzl.drp.model.OrderInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
     <result column="lineId" property="lineid" jdbcType="BIGINT" />
     <result column="drpid" property="drpid" jdbcType="BIGINT" />
+    <result column="guide" property="guide" jdbcType="VARCHAR" />
+    <result column="guideTel" property="guidetel" jdbcType="VARCHAR" />
+    <result column="driver" property="driver" jdbcType="VARCHAR" />
+    <result column="driverTel" property="drivertel" jdbcType="VARCHAR" />
     <result column="ordamt" property="ordamt" jdbcType="DECIMAL" />
     <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="VARCHAR" />
@@ -16,8 +20,8 @@
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, orderNo, lineId, drpid, ordamt, startTime, status, orderTime, createby, createTime, 
-    updateby, updateTime
+    id, orderNo, lineId, drpid, guide, guideTel, driver, driverTel, ordamt, startTime, 
+    status, orderTime, createby, createTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -29,19 +33,21 @@
     delete from tbl_orderinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lhzl.drp.model.Orderinfo" >
+  <insert id="insert" parameterType="com.lhzl.drp.model.OrderInfo" >
     insert into tbl_orderinfo (id, orderNo, lineId, 
-      drpid, ordamt, startTime, 
-      status, orderTime, createby, 
-      createTime, updateby, updateTime
-      )
+      drpid, guide, guideTel, 
+      driver, driverTel, ordamt, 
+      startTime, status, orderTime, 
+      createby, createTime, updateby, 
+      updateTime)
     values (#{id,jdbcType=BIGINT}, #{orderno,jdbcType=VARCHAR}, #{lineid,jdbcType=BIGINT}, 
-      #{drpid,jdbcType=BIGINT}, #{ordamt,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
-      )
+      #{drpid,jdbcType=BIGINT}, #{guide,jdbcType=VARCHAR}, #{guidetel,jdbcType=VARCHAR}, 
+      #{driver,jdbcType=VARCHAR}, #{drivertel,jdbcType=VARCHAR}, #{ordamt,jdbcType=DECIMAL}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.Orderinfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.OrderInfo" >
     insert into tbl_orderinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -55,6 +61,18 @@
       </if>
       <if test="drpid != null" >
         drpid,
+      </if>
+      <if test="guide != null" >
+        guide,
+      </if>
+      <if test="guidetel != null" >
+        guideTel,
+      </if>
+      <if test="driver != null" >
+        driver,
+      </if>
+      <if test="drivertel != null" >
+        driverTel,
       </if>
       <if test="ordamt != null" >
         ordamt,
@@ -94,6 +112,18 @@
       <if test="drpid != null" >
         #{drpid,jdbcType=BIGINT},
       </if>
+      <if test="guide != null" >
+        #{guide,jdbcType=VARCHAR},
+      </if>
+      <if test="guidetel != null" >
+        #{guidetel,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="drivertel != null" >
+        #{drivertel,jdbcType=VARCHAR},
+      </if>
       <if test="ordamt != null" >
         #{ordamt,jdbcType=DECIMAL},
       </if>
@@ -120,7 +150,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.Orderinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhzl.drp.model.OrderInfo" >
     update tbl_orderinfo
     <set >
       <if test="orderno != null" >
@@ -131,6 +161,18 @@
       </if>
       <if test="drpid != null" >
         drpid = #{drpid,jdbcType=BIGINT},
+      </if>
+      <if test="guide != null" >
+        guide = #{guide,jdbcType=VARCHAR},
+      </if>
+      <if test="guidetel != null" >
+        guideTel = #{guidetel,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="drivertel != null" >
+        driverTel = #{drivertel,jdbcType=VARCHAR},
       </if>
       <if test="ordamt != null" >
         ordamt = #{ordamt,jdbcType=DECIMAL},
@@ -159,11 +201,15 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.Orderinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.OrderInfo" >
     update tbl_orderinfo
     set orderNo = #{orderno,jdbcType=VARCHAR},
       lineId = #{lineid,jdbcType=BIGINT},
       drpid = #{drpid,jdbcType=BIGINT},
+      guide = #{guide,jdbcType=VARCHAR},
+      guideTel = #{guidetel,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      driverTel = #{drivertel,jdbcType=VARCHAR},
       ordamt = #{ordamt,jdbcType=DECIMAL},
       startTime = #{starttime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=VARCHAR},

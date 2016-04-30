@@ -1,9 +1,5 @@
 package com.lhzl.drp.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import redis.clients.jedis.ShardedJedisPool;
-
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
@@ -14,13 +10,13 @@ import java.util.Date;
 public class DataBaseUtil {
 
     public static void setCreateInfo(Object obj, String createBy) {
-        Method setCreatby = null;
-        Method setCreattime = null;
+        Method setCreateby = null;
+        Method setCreatetime = null;
         try {
-            setCreatby = obj.getClass().getMethod("setCreatby", new Class[]{String.class});
-            setCreattime = obj.getClass().getMethod("setCreattime", new Class[]{Date.class});
-            setCreatby.invoke(obj, new Object[]{createBy});
-            setCreattime.invoke(obj, new Object[]{new Date()});
+            setCreateby = obj.getClass().getMethod("setCreateby", new Class[]{String.class});
+            setCreatetime = obj.getClass().getMethod("setCreatetime", new Class[]{Date.class});
+            setCreateby.invoke(obj, new Object[]{createBy});
+            setCreatetime.invoke(obj, new Object[]{new Date()});
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -35,7 +31,7 @@ public class DataBaseUtil {
         Method tUpdatetime = null;
         try {
             setUpdateby = obj.getClass().getMethod("setUpdateby", new Class[]{String.class});
-            tUpdatetime = obj.getClass().getMethod("tUpdatetime", new Class[]{Date.class});
+            tUpdatetime = obj.getClass().getMethod("setUpdatetime", new Class[]{Date.class});
             setUpdateby.invoke(obj, new Object[]{updateBy});
             tUpdatetime.invoke(obj, new Object[]{new Date()});
         } catch (IllegalAccessException e) {
