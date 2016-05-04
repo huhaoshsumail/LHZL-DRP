@@ -16,10 +16,15 @@
             var html = "";
             if (opts.buttons != null) {
                 for (var i = 0; i < opts.buttons.length; i++) {
-                    var btn_id = opts.buttons[i]["id"];
-                    html += "<input type='button' id='" + btn_id + "' style='margin:0 5px;' class='btn btn-default' value='" + opts.buttons[i]["text"] + "'/>";
-                    if (opts.buttons[i]["action"] != null)
-                        $(document).on('click', '#' + btn_id, eval(opts.buttons[i]["action"]));
+                    var type = opts.buttons[i]["type"];
+                    if (type == "customBtn") {
+                        html +=  opts.buttons[i]["content"];
+                    } else {
+                        var btn_id = opts.buttons[i]["id"];
+                        html += "<input type='button' id='" + btn_id + "' style='margin:0 5px;' class='btn btn-default' value='" + opts.buttons[i]["text"] + "'/>";
+                        if (opts.buttons[i]["action"] != null)
+                            $(document).on('click', '#' + btn_id, eval(opts.buttons[i]["action"]));
+                    }
                 }
             }
             /*********************update by chenjinyi*************************/

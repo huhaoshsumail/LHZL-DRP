@@ -5,16 +5,10 @@ var initLineData = function () {
     var gridApi = $("#lineTable").grid({
         ennableSelect: true,
         buttons: [
-            {id: "addLine", text: "新增", action: function(){
-                layer.open({
-                    type: 2,
-                    title: '添加线路',
-                    area: ['700px', '530px'],
-                    fix: false, //不固定
-                    maxmin: true,
-                    content: 'admin/pages/line/lineMant.jsp'
-                });
-            }},
+            {
+                type: 'customBtn',
+                content: '<input id="addLine" type="button" class="btn btn-default" value="新增" data-toggle="modal" data-target="#addLineDiv"  href="admin/pages/line/lineMant.jsp"/>'
+            },
             {id: "updLine", text: '修改', action: function(){
                 var selected = gridApi.getSelectedRows()[0];
                 if (selected != null) {
@@ -107,3 +101,9 @@ var initLineData = function () {
         });
     }
 }
+
+$(function () {
+    
+
+
+})
