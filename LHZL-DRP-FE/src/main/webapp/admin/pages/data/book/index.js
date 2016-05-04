@@ -55,7 +55,7 @@ var initDataBook = function () {
     });
 
     //修改code
-    $("#updateCode").click(function () {
+    $("#updateCode").unbind().click(function () {
         if (codeGridApi.getSelectedRows().length != 1) {
             alert("请选择一条数据");
             return false;
@@ -148,7 +148,7 @@ function initDataBookValue(codeid) {
     });
 
     //修改value
-    $("#updateValue").click(function () {
+    $("#updateValue").unbind().click(function () {
         if (valueGridApi.getSelectedRows().length != 1) {
             alert("请选择一条数据");
             return false;
