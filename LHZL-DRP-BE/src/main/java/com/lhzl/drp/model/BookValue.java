@@ -1,5 +1,8 @@
 package com.lhzl.drp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.Date;
 
 public class BookValue {
@@ -7,16 +10,19 @@ public class BookValue {
 
     private Long codeid;
 
+    @NotBlank(message = "值不能为空")
     private String value;
 
     private String description;
 
     private String createby;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createtime;
 
     private String updateby;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updatetime;
 
     public Long getValueid() {

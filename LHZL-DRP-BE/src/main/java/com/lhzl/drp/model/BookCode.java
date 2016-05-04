@@ -1,20 +1,26 @@
 package com.lhzl.drp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.Date;
 
 public class BookCode {
     private Long codeid;
 
+    @NotBlank(message = "代码不能为空")
     private String code;
 
     private String description;
 
     private String createby;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createtime;
 
     private String updateby;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updatetime;
 
     public Long getCodeid() {
