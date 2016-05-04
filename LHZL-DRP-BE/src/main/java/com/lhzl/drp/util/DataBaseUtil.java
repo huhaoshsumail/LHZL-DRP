@@ -12,11 +12,17 @@ public class DataBaseUtil {
     public static void setCreateInfo(Object obj, String createBy) {
         Method setCreateby = null;
         Method setCreatetime = null;
+        Method setUpdateby = null;
+        Method setUpdatetime = null;
         try {
             setCreateby = obj.getClass().getMethod("setCreateby", new Class[]{String.class});
             setCreatetime = obj.getClass().getMethod("setCreatetime", new Class[]{Date.class});
+            setUpdateby = obj.getClass().getMethod("setUpdateby", new Class[]{String.class});
+            setUpdatetime = obj.getClass().getMethod("setUpdatetime", new Class[]{Date.class});
             setCreateby.invoke(obj, new Object[]{createBy});
             setCreatetime.invoke(obj, new Object[]{new Date()});
+            setUpdateby.invoke(obj, new Object[]{createBy});
+            setUpdatetime.invoke(obj, new Object[]{new Date()});
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
