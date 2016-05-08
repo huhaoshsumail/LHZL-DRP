@@ -13,6 +13,7 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="puserName" property="puserName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, userType, userPid, username, mobile, IDCard, status, createby, createTime, updateby, 
@@ -198,4 +199,21 @@
       AND updateTime = #{updatetime,jdbcType=TIMESTAMP}
     </if>
   </select>
+  <select id="querySupplierUser" parameterType="Map" resultType="com.lhzl.drp.model.UserInfo">
+    select s.username as puserName,t.*
+    from Tbl_UserInfo  s ,
+    (select * from Tbl_UserInfo  t where  userType='F'  and  status='F') t
+    where s.id=t.userPid
+  </select>
+  <update id="updateUserInfoByPrimaryKey" parameterType="com.lhzl.drp.model.UserInfo" >
+    update tbl_userinfo
+    set
+    username = #{username,jdbcType=VARCHAR},
+    mobile = #{mobile,jdbcType=VARCHAR},
+    IDCard = #{idcard,jdbcType=VARCHAR},
+    updateby = #{updateby,jdbcType=VARCHAR},
+    updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
 </mapper>
