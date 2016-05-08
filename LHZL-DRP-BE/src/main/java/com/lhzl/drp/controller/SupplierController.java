@@ -31,12 +31,6 @@ public class SupplierController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping("/queryOperById")
-    @ResponseBody
-    public Response queryOperById(long id) {
-        OperatorInfo oper = supplierService.queryOperById(id);
-        return new Response().success(oper);
-    }
 
     @RequestMapping("/querySupplierUser")
     @ResponseBody
@@ -48,6 +42,29 @@ public class SupplierController {
         }
         return res;
     }
+
+    @RequestMapping("/queryManagementUser")
+    @ResponseBody
+    public Response queryManagementUser(@RequestBody Map<String, Object> map) {
+        List<UserInfo> users = supplierService.queryManagementUser(map);
+        Response res = new Response().success(users);
+        if (map.containsKey("count")) {
+            res.setCount((Integer) map.get("count"));
+        }
+        return res;
+    }
+
+    @RequestMapping("/querySubmanageUser")
+    @ResponseBody
+    public Response querySubmanageUser(@RequestBody Map<String, Object> map) {
+        List<UserInfo> users = supplierService.querySubmanageUser(map);
+        Response res = new Response().success(users);
+        if (map.containsKey("count")) {
+            res.setCount((Integer) map.get("count"));
+        }
+        return res;
+    }
+
 
     @RequestMapping("/insertSupplier")
     @ResponseBody
@@ -61,11 +78,42 @@ public class SupplierController {
         return new Response().success();
     }
 
+    @RequestMapping("/insertManager")
+    @ResponseBody
+    public Response insertManager(@RequestBody @Valid UserInfo userInfo) {
+        DataBaseUtil.setCreateInfo(userInfo, (String) request.getAttribute("opacct"));
+        //先设置死的供应商  因为目前就一个
+        userInfo.setUserpid(Long.valueOf(1));
+        userInfo.setStatus("F");
+        userInfo.setUsertype("U");
+        supplierService.insertSupplier(userInfo);
+        return new Response().success();
+    }
+
+    @RequestMapping("/insertSubmanage")
+    @ResponseBody
+    public Response insertSubmanage(@RequestBody @Valid UserInfo userInfo) {
+        DataBaseUtil.setCreateInfo(userInfo, (String) request.getAttribute("opacct"));
+        //先设置死的供应商  因为目前就一个
+        userInfo.setStatus("F");
+        userInfo.setUsertype("U");
+        supplierService.insertSupplier(userInfo);
+        return new Response().success();
+    }
+
     @RequestMapping("/updateSupplier")
     @ResponseBody
     public Response updateSupplier(@RequestBody @Valid UserInfo userInfo) {
         DataBaseUtil.setCreateInfo(userInfo, (String) request.getAttribute("opacct"));
         supplierService.updateSupplier(userInfo);
+        return new Response().success();
+    }
+
+    @RequestMapping("/updateSubmanage")
+    @ResponseBody
+    public Response updateSubmanage(@RequestBody @Valid UserInfo userInfo) {
+        DataBaseUtil.setCreateInfo(userInfo, (String) request.getAttribute("opacct"));
+        supplierService.updateSubmanage(userInfo);
         return new Response().success();
     }
 
@@ -76,20 +124,6 @@ public class SupplierController {
         for (int i = 0; i < ids.length; i++) {
             supplierService.deleteSupplier(ids[i]);
         }
-        return new Response().success();
-    }
-
-    @RequestMapping("/updateOper")
-    @ResponseBody
-    public Response updateOper(@RequestBody @Valid OperatorInfo oper) {
-        supplierService.updateOper(oper);
-        return new Response().success();
-    }
-
-    @RequestMapping("/deleteOper")
-    @ResponseBody
-    public Response deleteOper(long id) {
-        supplierService.deleteOper(id);
         return new Response().success();
     }
 

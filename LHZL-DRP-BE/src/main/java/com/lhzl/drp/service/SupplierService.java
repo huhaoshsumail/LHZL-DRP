@@ -9,7 +9,6 @@ import java.util.Map;
 
 public interface SupplierService {
 
-    OperatorInfo queryOperById(long id);
 
     List<UserInfo> querySupplierUser(Map<String, Object> map);
 
@@ -17,11 +16,12 @@ public interface SupplierService {
 
     public void updateSupplier(UserInfo userInfo);
 
+    public void updateSubmanage(UserInfo userInfo);
+
     public void deleteSupplier(long id);
 
-    void insertOper(OperatorInfo oper);
+    List<UserInfo> queryManagementUser(Map<String, Object> map);
 
-    void updateOper(OperatorInfo oper);
+    List<UserInfo> querySubmanageUser(Map<String, Object> map);
 
-    void deleteOper(long id);
 }

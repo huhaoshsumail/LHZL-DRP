@@ -14,31 +14,7 @@ import java.util.Map;
 public class SupplierServiceImpl implements SupplierService {
 
     @Autowired
-    public OperatorInfoMapper operinfoMapper;
-    @Autowired
     public UserInfoMapper userinfoMapper;
-
-    @Override
-    public OperatorInfo queryOperById(long id) {
-        return operinfoMapper.selectByPrimaryKey(id);
-    }
-
-
-    @Override
-    public void insertOper(OperatorInfo oper) {
-        operinfoMapper.insert(oper);
-    }
-
-    @Override
-    public void updateOper(OperatorInfo oper) {
-        operinfoMapper.updateByPrimaryKey(oper);
-    }
-
-    @Override
-    public void deleteOper(long ids) {
-        operinfoMapper.deleteByPrimaryKey(ids);
-    }
-
 
     @Override
     public List<UserInfo> querySupplierUser(Map<String, Object> map) {
@@ -55,9 +31,25 @@ public class SupplierServiceImpl implements SupplierService {
         userinfoMapper.updateUserInfoByPrimaryKey(userInfo);
     }
 
+
+    @Override
+    public void updateSubmanage(UserInfo userInfo) {
+        userinfoMapper.updateSubmanage(userInfo);
+    }
+
     @Override
     public void deleteSupplier(long id) {
         userinfoMapper.deleteByPrimaryKey(id);
     }
 
+
+    @Override
+    public List<UserInfo> queryManagementUser(Map<String, Object> map) {
+        return userinfoMapper.queryManagementUser(map);
+    }
+
+    @Override
+    public List<UserInfo> querySubmanageUser(Map<String, Object> map) {
+        return userinfoMapper.querySubmanageUser(map);
+    }
 }

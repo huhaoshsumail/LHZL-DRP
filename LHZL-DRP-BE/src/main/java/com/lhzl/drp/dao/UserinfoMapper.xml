@@ -215,5 +215,27 @@
     updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="queryManagementUser" parameterType="Map" resultType="com.lhzl.drp.model.UserInfo">
+   <!-- 特定是指莲花之旅下属的分销商-->
+   select *  from Tbl_UserInfo where   userType='U' and status='F' and userPid=1
+  </select>
+  <select id="querySubmanageUser" parameterType="Map" resultType="com.lhzl.drp.model.UserInfo">
+    <!-- 特定是指莲花之旅下属的分销商所有子账户-->
+    select s.username as PuserName,t.*
+    from Tbl_UserInfo  s ,
+    (select * from Tbl_UserInfo  t where  userType='U'  and  status='F') t
+    where s.id=t.userPid and s.id!=1
+  </select>
 
+  <update id="updateSubmanage" parameterType="com.lhzl.drp.model.UserInfo" >
+    update tbl_userinfo
+    set
+    userPid = #{userpid,jdbcType=BIGINT},
+    username = #{username,jdbcType=VARCHAR},
+    mobile = #{mobile,jdbcType=VARCHAR},
+    IDCard = #{idcard,jdbcType=VARCHAR},
+    updateby = #{updateby,jdbcType=VARCHAR},
+    updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

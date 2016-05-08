@@ -25,6 +25,17 @@ public class UserInfo {
 
     private Date updatetime;
 
+    //用来记录供应商子账户管理的时候的对应哪个供应商下面的
+    private String puserName;
+
+    public String getPuserName() {
+        return puserName;
+    }
+
+    public void setPuserName(String puserName) {
+        this.puserName = puserName;
+    }
+
     public Long getId() {
         return id;
     }
