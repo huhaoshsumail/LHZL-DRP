@@ -61,4 +61,35 @@ public interface UserInfoMapper {
      * @return
      */
     List<UserInfo> queryUser(Map<String, Object> map);
+
+    /**
+     * 查询供应商子账户用户
+     *
+     * @param map
+     * @return
+     */
+    List<UserInfo> querySupplierUser(Map<String, Object> map);
+
+
+    int updateUserInfoByPrimaryKey(UserInfo record);
+
+    /**
+     * 查询分销商
+     *
+     * @param map
+     * @return
+     */
+    List<UserInfo> queryManagementUser(Map<String, Object> map);
+
+
+    /**
+     * 查询分销商子账户
+     *
+     * @param map
+     * @return
+     */
+    List<UserInfo> querySubmanageUser(Map<String, Object> map);
+
+
+    int updateSubmanage(UserInfo record);
 }
