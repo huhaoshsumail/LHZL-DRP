@@ -161,4 +161,10 @@
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where tripId = #{tripid,jdbcType=BIGINT}
   </update>
+
+  <select id="queryShuttlerule" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from tbl_triprules
+  </select>
 </mapper>
