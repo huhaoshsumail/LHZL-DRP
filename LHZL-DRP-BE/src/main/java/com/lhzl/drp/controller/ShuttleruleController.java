@@ -43,6 +43,28 @@ public class ShuttleruleController {
         return res;
     }
 
+    @RequestMapping("/insertShuttlerule")
+    @ResponseBody
+    public Response insertShuttlerule(@RequestBody @Valid Triprules triprules) {
+        DataBaseUtil.setCreateInfo(triprules, (String) request.getAttribute("opacct"));
+        shuttleruleService.insertShuttlerule(triprules);
+        return new Response().success();
+    }
+    @RequestMapping("/updateShuttlerule")
+    @ResponseBody
+    public Response updateShuttlerule(@RequestBody @Valid Triprules triprules) {
+        DataBaseUtil.setCreateInfo(triprules, (String) request.getAttribute("opacct"));
+        shuttleruleService.updateShuttlerule(triprules);
+        return new Response().success();
+    }
 
+    @RequestMapping("/deleteShuttlerule")
+    @ResponseBody
+    public Response deleteShuttlerule(@RequestBody long[] ids) {
+        for (int i = 0; i < ids.length; i++) {
+            shuttleruleService.deleteShuttlerule(ids[i]);
+        }
+        return new Response().success();
+    }
 
 }

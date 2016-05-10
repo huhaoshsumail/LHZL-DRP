@@ -21,4 +21,17 @@ public class ShuttleruleServiceImpl implements ShuttleruleService {
         return triprulesMapper.queryShuttlerule(map);
     }
 
+    @Override
+    public void insertShuttlerule(Triprules triprules) {
+        triprulesMapper.insert(triprules);
+    }
+    @Override
+    public void updateShuttlerule(Triprules triprules) {
+        triprulesMapper.updateByPrimaryKey(triprules);
+    }
+
+    @Override
+    public void deleteShuttlerule(long id) {
+        triprulesMapper.deleteByPrimaryKey(id);
+    }
 }

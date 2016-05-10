@@ -77,10 +77,11 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <input name="tripId" hidden readonly>
+                            <input name="tripid" hidden readonly>
                             <div class="form-group">
                                 <label>接送类型</label>
-                                <select id="tripType" class="form-control">
+                                <select id="triptype" class="form-control">
+                                    <option value=''>-- 请选择 --</option>
                                     <option value="QC">去程</option>
                                     <option value="HC">回程</option>
                                 </select>
@@ -88,13 +89,14 @@
                             <div class="form-group">
                                 <label>是否启用</label>
                                 <select id="status" class="form-control">
-                                    <option value="QC">启用</option>
-                                    <option value="HC">不启用</option>
+                                    <option value=''>-- 请选择 --</option>
+                                    <option value="Y">启用</option>
+                                    <option value="N">不启用</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>上车点</label>
-                                <input type="text" name="busLocation" class="form-control"
+                                <input type="text" name="buslocation" class="form-control"
                                        placeholder="上车点">
                             </div>
                             <div class="form-group">
@@ -118,7 +120,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span
                                 class="btn-span">关闭</span>
                         </button>
-                        <button id="saveSupplier" type="button" class="btn btn-primary"><span class="btn-span">保存</span>
+                        <button id="saveShuttlerule" type="button" class="btn btn-primary"><span class="btn-span">保存</span>
                         </button>
                     </div>
                 </div>

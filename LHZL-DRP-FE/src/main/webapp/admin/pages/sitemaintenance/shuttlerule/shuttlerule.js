@@ -38,13 +38,16 @@ var initDataShuttleRule = function () {
     $("#insertCode").click(function () {
         $("#codeModal").modal('show');
         //保存codeModal
-        $("#saveSupplier").unbind().click(function () {
+        $("#saveShuttlerule").unbind().click(function () {
+            var formData=$("#codeModal form").form2object();
+            formData.triptype=$("#triptype").val();
+            formData.status=$("#status").val();
             $.ajax({
-                url: window.serviceUrl + "supplierController/insertSupplier?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "shuttleruleController/insertShuttlerule?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#codeModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     codeGridApi.reload();
                     $('#codeModal').modal('hide');
@@ -64,14 +67,19 @@ var initDataShuttleRule = function () {
         //加载数据
         var data = codeGridApi.getSelectedRows()[0];
         $("#codeModal form").object2form(data);
+        $("#triptype").val(data.triptype);
+        $("#status").val(data.status);
         //保存codeModal
-        $("#saveSupplier").unbind().click(function () {
+        $("#saveShuttlerule").unbind().click(function () {
+            var formData=$("#codeModal form").form2object();
+            formData.triptype=$("#triptype").val();
+            formData.status=$("#status").val();
             $.ajax({
-                url: window.serviceUrl + "supplierController/updateSupplier?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "shuttleruleController/updateShuttlerule?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#codeModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     codeGridApi.reload();
                     $('#codeModal').modal('hide');
@@ -88,10 +96,10 @@ var initDataShuttleRule = function () {
         }
         var ids = [];
         for (var i = 0; i < codeGridApi.getSelectedRows().length; i++) {
-            ids.push(codeGridApi.getSelectedRows()[i]["id"]);
+            ids.push(codeGridApi.getSelectedRows()[i]["tripid"]);
         }
         $.ajax({
-            url: window.serviceUrl + "supplierController/deleteSupplier?token=" + localStorage.getItem("token"),
+            url: window.serviceUrl + "shuttleruleController/deleteShuttlerule?token=" + localStorage.getItem("token"),
             type: "post",
             dataType: "json",
             contentType: "application/json",
