@@ -13,4 +13,10 @@ public interface ShuttleruleService {
 
     List<Triprules> queryShuttlerule(Map<String, Object> map);
 
+    void insertShuttlerule(Triprules triprules);
+
+    public void updateShuttlerule(Triprules triprules);
+
+    public void deleteShuttlerule(long id);
+
 }
