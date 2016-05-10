@@ -68,7 +68,7 @@
     <%@include file="../../common/common_control.jsp" %>
 </div>
 <!-- 弹出框 -->
-<div class="modal fade" id="addLineDiv" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true">
+<div class="modal fade" id="addLineDiv" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content"></div>
     </div>

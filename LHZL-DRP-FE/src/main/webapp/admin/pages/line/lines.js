@@ -104,6 +104,39 @@ var initLineData = function () {
 
 $(function () {
     
+    // 加载数据
+    loadData();
 
+    //保存Line
+    $("#saveLineBtn").unbind().click(function () {
+        var formData=$("#lineForm form").form2object();
+        //formData.userpid=$("#manage").val();
+        $.ajax({
+            url: window.serviceUrl + "supplierController/updateSubmanage?token=" + localStorage.getItem("token"),
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (result) {
+                gridApi.reload();
+                //$('#codeModal').modal('hide');
+            }
+        })
+    });
 
+    function loadData() {
+        var json = [{"id": 1, "stationPid": 0, "stationName": "上海"}];
+        var options = $("#end_station").html();
+        $.each(json, function (n, value) {
+            options += "<option value='" + value.id + "'>" + value.stationName + "</option>";
+            $("#end_station").html(options);
+        })
+
+        json = [{"valueId": 1, "codeId": 1, "value": "纯玩"}, {"valueId": 2, "codeId": 1, "value": "买一送一"}];
+        options = $("#keyword").html();
+        $.each(json, function (n, value) {
+            options += "<option value='" + value.valueId + "'>" + value.value + "</option>";
+            $("#keyword").html(options);
+        })
+    }
 })
