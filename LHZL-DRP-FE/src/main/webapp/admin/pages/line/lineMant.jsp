@@ -75,7 +75,19 @@
                 <table class="form">
                     <tr>
                         <td>线路类型</td>
-                        <td>短线</td>
+                        <td>
+                            短线
+                            <input type="hidden" id="linetype" name="linetype" value="DX">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>旅游类型</td>
+                        <td>
+                            <select id="tourtype" name="tourtype">
+                                <option value="ZYX">自由行</option>
+                                <option value="GTY">跟团游</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>系统编号</td>
@@ -89,14 +101,13 @@
                         <td>站点</td>
                         <td>
                             上海
+                            <input type="hidden" id="linestart" name="linestart" value="1">
                         </td>
                     </tr>
                     <tr>
                         <td>目的地</td>
                         <td>
-                            <select id="end_station">
-                                <option>--请选择--</option>
-                            </select>
+                            <select id="lineend" name="lineend"></select>
                         </td>
                     </tr>
                     <tr>
@@ -105,7 +116,7 @@
                     </tr>
                     <tr>
                         <td>副标题</td>
-                        <td><input type="text" id="sub_title" name="sub_title"></td>
+                        <td><input type="text" id="sub_title" name="subtitile"></td>
                     </tr>
                     <tr>
                         <td>描述</td>
@@ -114,19 +125,18 @@
                     <tr>
                         <td>线路主题</td>
                         <td>
-                            <input type="checkbox" name="theme">山水景观<span class="blank"></span>
-                            <input type="checkbox" name="theme">田园度假<span class="blank"></span>
-                            <input type="checkbox" name="theme">民俗文化<span class="blank"></span>
-                            <input type="checkbox" name="theme">都市观光<span class="blank"></span>
-                            <input type="checkbox" name="theme">夕阳红
+                            <input type="checkbox" name="theme" value="1">山水景观<span class="blank"></span>
+                            <input type="checkbox" name="theme" value="2">田园度假<span class="blank"></span>
+                            <input type="checkbox" name="theme" value="3">民俗文化<span class="blank"></span>
+                            <input type="checkbox" name="theme" value="4">都市观光<span class="blank"></span>
+                            <input type="checkbox" name="theme" value="5">夕阳红
+                            <input type="hidden" id="linesid" name="linesid">
                         </td>
                     </tr>
                     <tr>
                         <td>关键字</td>
                         <td>
-                            <select id="keyword">
-                                <option>--请选择--</option>
-                            </select>
+                            <select id="keyword" name="keyword"></select>
                         </td>
                     </tr>
                     <tr>
@@ -135,7 +145,7 @@
                     </tr>
                     <tr>
                         <td>住宿天数</td>
-                        <td><input type="text" id="hotel_days" name="hotelDays"></td>
+                        <td><input type="text" id="hoteldays" name="hoteldays"></td>
                     </tr>
                     <tr>
                         <td>应急电话</td>
@@ -148,10 +158,9 @@
                     <tr>
                         <td>下单需确认</td>
                         <td>
-                            <select>
-                                <option>--请选择--</option>
-                                <option>是</option>
-                                <option>否</option>
+                            <select id="hasConfirm" name="hasConfirm">
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                     </tr>

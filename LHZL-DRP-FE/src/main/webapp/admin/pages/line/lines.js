@@ -109,10 +109,57 @@ $(function () {
 
     //保存Line
     $("#saveLineBtn").unbind().click(function () {
-        var formData=$("#lineForm form").form2object();
-        //formData.userpid=$("#manage").val();
+        // var validate = $("#myform").validate({
+        //     debug: true, //调试模式取消submit的默认提交功能
+        //     //errorClass: "label.error", //默认为错误的样式类为：error
+        //     focusInvalid: false, //当为false时，验证无效时，没有焦点响应
+        //     onkeyup: false,
+        //     rules:{
+        //         title:{
+        //             required:true
+        //         },
+        //         days:{
+        //             required:true,
+        //             number:true
+        //         },
+        //         hotelDays:{
+        //             required:true,
+        //             number:true
+        //         },
+        //         min:{
+        //             required:true,
+        //             number:true
+        //         }
+        //     },
+        //     messages:{
+        //         title:{
+        //             required:"主标题为必填项."
+        //         },
+        //         days:{
+        //             required:"天数为必填项.",
+        //             number:"天数只能为数字."
+        //         },
+        //         hotelDays:{
+        //             required:"住宿天数为必填项.",
+        //             number:"住宿天数只能为数字."
+        //         },
+        //         min:{
+        //             required:"最小成团人数为必填项.",
+        //             number:"最小成团人数只能为数字."
+        //         }
+        //     }
+        // });
+        var result = new Array();
+        $("[name = theme]:checkbox").each(function () {
+            if ($(this).is(":checked")) {
+                result.push($(this).attr("value"));
+            }
+        });
+        $("#linesid").val(result.join(","));
+
+        var formData=$("#lineForm").form2object();
         $.ajax({
-            url: window.serviceUrl + "supplierController/updateSubmanage?token=" + localStorage.getItem("token"),
+            url: window.serviceUrl + "lineController/saveLine?token=" + localStorage.getItem("token"),
             type: "post",
             dataType: "json",
             contentType: "application/json",
@@ -126,17 +173,25 @@ $(function () {
 
     function loadData() {
         var json = [{"id": 1, "stationPid": 0, "stationName": "上海"}];
-        var options = $("#end_station").html();
-        $.each(json, function (n, value) {
-            options += "<option value='" + value.id + "'>" + value.stationName + "</option>";
-            $("#end_station").html(options);
-        })
+        var options = $("#lineend").html();
+        if (json == "") {
+            options = "<option>--请选择--</option>";
+        } else {
+            $.each(json, function (n, value) {
+                options += "<option value='" + value.id + "'>" + value.stationName + "</option>";
+            })
+        }
+        $("#lineend").html(options);
 
         json = [{"valueId": 1, "codeId": 1, "value": "纯玩"}, {"valueId": 2, "codeId": 1, "value": "买一送一"}];
         options = $("#keyword").html();
-        $.each(json, function (n, value) {
-            options += "<option value='" + value.valueId + "'>" + value.value + "</option>";
-            $("#keyword").html(options);
-        })
+        if (json == "") {
+            options = "<option>--请选择--</option>";
+        } else {
+            $.each(json, function (n, value) {
+                options += "<option value='" + value.valueId + "'>" + value.value + "</option>";
+            })
+        }
+        $("#keyword").html(options);
     }
 })

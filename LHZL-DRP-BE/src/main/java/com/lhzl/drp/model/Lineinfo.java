@@ -64,6 +64,20 @@ public class LineInfo {
 
     private String desc;
 
+    private String remind;
+
+    private String linefeature;
+
+    private String include;
+
+    private String notinclude;
+
+    private String remarks;
+
+    private String shopping;
+
+    private String note;
+
     public Long getId() {
         return id;
     }
@@ -302,5 +316,61 @@ public class LineInfo {
 
     public void setDesc(String desc) {
         this.desc = desc == null ? null : desc.trim();
+    }
+
+    public String getRemind() {
+        return remind;
+    }
+
+    public void setRemind(String remind) {
+        this.remind = remind;
+    }
+
+    public String getLinefeature() {
+        return linefeature;
+    }
+
+    public void setLinefeature(String linefeature) {
+        this.linefeature = linefeature;
+    }
+
+    public String getInclude() {
+        return include;
+    }
+
+    public void setInclude(String include) {
+        this.include = include;
+    }
+
+    public String getNotinclude() {
+        return notinclude;
+    }
+
+    public void setNotinclude(String notinclude) {
+        this.notinclude = notinclude;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public String getShopping() {
+        return shopping;
+    }
+
+    public void setShopping(String shopping) {
+        this.shopping = shopping;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

@@ -80,7 +80,7 @@
       #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lhzl.drp.model.LineInfo" >
+  <insert id="insertSelective" parameterType="com.lhzl.drp.model.LineInfo" useGeneratedKeys="true" keyProperty="id">
     insert into tbl_lineinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -425,4 +425,13 @@
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 查询所有线路 -->
+  <select id="qryLines" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_lineinfo
+  </select>
 </mapper>

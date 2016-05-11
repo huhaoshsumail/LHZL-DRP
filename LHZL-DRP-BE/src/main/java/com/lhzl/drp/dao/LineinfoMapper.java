@@ -2,6 +2,8 @@ package com.lhzl.drp.dao;
 
 import com.lhzl.drp.model.LineInfo;
 
+import java.util.List;
+
 public interface LineInfoMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -16,4 +18,6 @@ public interface LineInfoMapper {
     int updateByPrimaryKeyWithBLOBs(LineInfo record);
 
     int updateByPrimaryKey(LineInfo record);
+
+    List<LineInfo> qryLines();
 }
