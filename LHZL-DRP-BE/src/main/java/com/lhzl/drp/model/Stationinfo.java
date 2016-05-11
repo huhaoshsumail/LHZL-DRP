@@ -9,6 +9,8 @@ public class StationInfo {
 
     private String stationname;
 
+    private String stationpname;
+
     private String status;
 
     private String creatby;
@@ -18,6 +20,14 @@ public class StationInfo {
     private String updateby;
 
     private Date updatetime;
+
+    public String getStationpname() {
+        return stationpname;
+    }
+
+    public void setStationpname(String stationpname) {
+        this.stationpname = stationpname;
+    }
 
     public Long getId() {
         return id;
