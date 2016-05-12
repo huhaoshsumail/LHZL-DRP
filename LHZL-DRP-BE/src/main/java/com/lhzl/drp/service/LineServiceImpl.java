@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,11 +52,14 @@ public class LineServiceImpl implements LineService {
                 extendInfoWithBLOBs.setShopping(lineInfo.getShopping());
                 extendInfoWithBLOBs.setNote(lineInfo.getNote());
 
+                SimpleDateFormat sdf = new SimpleDateFormat("MMddhhmmss");
+                String lineNo = "line" + sdf.format(new Date());
+                lineInfo.setLineno(lineNo);
                 // 保存数据
                 this.lineInfoMapper.insertSelective(lineInfo);
 
                 extendInfoWithBLOBs.setLineid(lineInfo.getId());
-                extendInfoWithBLOBs.setCreatby(lineInfo.getCreatby());
+                extendInfoWithBLOBs.setCreatby(lineInfo.getCreateby());
                 extendInfoWithBLOBs.setCreattime(lineInfo.getCreatetime());
                 extendInfoWithBLOBs.setUpdateby(lineInfo.getUpdateby());
                 extendInfoWithBLOBs.setUpdatetime(lineInfo.getUpdatetime());

@@ -54,7 +54,7 @@ public class LineInfo {
 
     private String status;
 
-    private String creatby;
+    private String createby;
 
     private Date createtime;
 
@@ -62,7 +62,7 @@ public class LineInfo {
 
     private Date updatetime;
 
-    private String desc;
+    private String linedesc;
 
     private String remind;
 
@@ -278,12 +278,12 @@ public class LineInfo {
         this.status = status == null ? null : status.trim();
     }
 
-    public String getCreatby() {
-        return creatby;
+    public String getCreateby() {
+        return createby;
     }
 
-    public void setCreatby(String creatby) {
-        this.creatby = creatby == null ? null : creatby.trim();
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
     }
 
     public Date getCreatetime() {
@@ -310,12 +310,12 @@ public class LineInfo {
         this.updatetime = updatetime;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getLinedesc() {
+        return linedesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setLinedesc(String linedesc) {
+        this.linedesc = linedesc == null ? null : linedesc.trim();
     }
 
     public String getRemind() {

@@ -156,6 +156,16 @@
                         <td><input type="text" id="min" name="min"></td>
                     </tr>
                     <tr>
+                        <td>报名截止时间</td>
+                        <td>
+                            <select id="day"></select>&nbsp;天&nbsp;&nbsp;
+                            <select id="hour"></select>&nbsp;时&nbsp;&nbsp;
+                            <select id="minute"></select>&nbsp;分<br>
+                            <input type="hidden" id="deadline" name="deadline">
+                            <input type="checkbox" id="hasWeekend" name="hasWeekend" checked>周末计算在内
+                        </td>
+                    </tr>
+                    <tr>
                         <td>下单需确认</td>
                         <td>
                             <select id="hasConfirm" name="hasConfirm">
