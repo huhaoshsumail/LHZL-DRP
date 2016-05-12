@@ -128,9 +128,7 @@
   </update>
 
   <select id="queryStationInfo" parameterType="Map" resultType="com.lhzl.drp.model.StationInfo">
-  select s.stationname as stationpname,t.*
-    from Tbl_StationInfo  s ,
-    (select * from Tbl_StationInfo  t ) t
-    where s.id=t.stationPid
+--    select t.*,s.stationname as stationpname from tbl_stationInfo  t  left join tbl_stationInfo  s   on s.id=t.stationPid
+select * from  tbl_stationInfo  where  stationPid=0
   </select>
 </mapper>
