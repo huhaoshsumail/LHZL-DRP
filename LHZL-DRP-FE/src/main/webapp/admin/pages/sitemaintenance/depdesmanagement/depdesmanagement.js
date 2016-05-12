@@ -158,12 +158,14 @@ var initDataDepAndDes = function () {
         $("#codeModal").modal('show');
         //保存codeModal
         $("#saveCode").unbind().click(function () {
+            var formData=$("#codeModal form").form2object();
+            formData.status=$("#status").val();
             $.ajax({
-                url: window.serviceUrl + "bookCodeController/insertBookCode?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "stationInfoController/insertStationInfo?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#codeModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     codeGridApi.reload();
                     $('#codeModal').modal('hide');
@@ -183,14 +185,17 @@ var initDataDepAndDes = function () {
         //加载数据
         var data = codeGridApi.getSelectedRows()[0];
         $("#codeModal form").object2form(data);
+        $("#status").val(data.status);
         //保存codeModal
         $("#saveCode").unbind().click(function () {
+            var formData=$("#codeModal form").form2object();
+            formData.status=$("#status").val();
             $.ajax({
-                url: window.serviceUrl + "bookCodeController/updateBookCode?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "stationInfoController/updateStationInfo?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#codeModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     codeGridApi.reload();
                     $('#codeModal').modal('hide');
@@ -207,10 +212,10 @@ var initDataDepAndDes = function () {
         }
         var ids = [];
         for (var i = 0; i < codeGridApi.getSelectedRows().length; i++) {
-            ids.push(codeGridApi.getSelectedRows()[i]["codeid"]);
+            ids.push(codeGridApi.getSelectedRows()[i]["id"]);
         }
         $.ajax({
-            url: window.serviceUrl + "bookCodeController/deleteBookCode?token=" + localStorage.getItem("token"),
+            url: window.serviceUrl + "stationInfoController/deleteStationInfo?token=" + localStorage.getItem("token"),
             type: "post",
             dataType: "json",
             contentType: "application/json",
@@ -229,8 +234,7 @@ var initDataDepAndDes = function () {
 
 }
 
-//查询代码对于的值
-function initDataDepAndDesSon(codeid) {
+function initDataDepAndDesSon(id) {
     var valueGridApi = $("#valueTable").grid({
         ennableSelect: true,
         columns: [
@@ -248,15 +252,18 @@ function initDataDepAndDesSon(codeid) {
     //新增value
     $("#insertValue").unbind().click(function () {
         $("#valueModal").modal('show');
-        $("#valueModal form input[name='codeid']").val(codeid);
+        $("#valueModal form input[name='stationpid']").val(id);
+
         //保存ValueModal
         $("#saveValue").unbind().click(function () {
+            var formData=$("#valueModal form").form2object();
+            formData.status=$("#sonstatus").val();
             $.ajax({
-                url: window.serviceUrl + "bookCodeController/insertBookValue?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "stationInfoController/insertSonStationInfo?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#valueModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     valueGridApi.reload();
                     $('#valueModal').modal('hide');
@@ -276,14 +283,17 @@ function initDataDepAndDesSon(codeid) {
         //加载数据
         var data = valueGridApi.getSelectedRows()[0];
         $("#valueModal form").object2form(data);
+        $("#sonstatus").val(data.status);
         //保存valueModal
         $("#saveValue").unbind().click(function () {
+            var formData=$("#valueModal form").form2object();
+            formData.status=$("#sonstatus").val();
             $.ajax({
-                url: window.serviceUrl + "bookCodeController/updateBookValue?token=" + localStorage.getItem("token"),
+                url: window.serviceUrl + "stationInfoController/updateSonStationInfo?token=" + localStorage.getItem("token"),
                 type: "post",
                 dataType: "json",
                 contentType: "application/json",
-                data: JSON.stringify($("#valueModal form").form2object()),
+                data: JSON.stringify(formData),
                 success: function (result) {
                     valueGridApi.reload();
                     $('#valueModal').modal('hide');
@@ -300,10 +310,10 @@ function initDataDepAndDesSon(codeid) {
         }
         var ids = [];
         for (var i = 0; i < valueGridApi.getSelectedRows().length; i++) {
-            ids.push(valueGridApi.getSelectedRows()[i]["valueid"]);
+            ids.push(valueGridApi.getSelectedRows()[i]["id"]);
         }
         $.ajax({
-            url: window.serviceUrl + "bookCodeController/deleteBookValue?token=" + localStorage.getItem("token"),
+            url: window.serviceUrl + "stationInfoController/deleteStationInfo?token=" + localStorage.getItem("token"),
             type: "post",
             dataType: "json",
             contentType: "application/json",

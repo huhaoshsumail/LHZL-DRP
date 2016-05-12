@@ -19,4 +19,7 @@ public interface StationInfoMapper {
     int updateByPrimaryKey(StationInfo record);
 
     List<StationInfo> queryStationInfo(Map<String, Object> map);
+
+    List<StationInfo> querySonStationInfo(Map<String, Object> map);
+
 }

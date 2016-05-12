@@ -6,14 +6,14 @@
     <result column="stationPid" property="stationpid" jdbcType="BIGINT" />
     <result column="stationName" property="stationname" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="creatby" property="creatby" jdbcType="VARCHAR" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="stationpname" property="stationpname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, stationPid, stationName, status, creatby, createTime, updateby, updateTime
+    id, stationPid, stationName, status, createby, createTime, updateby, updateTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -27,10 +27,10 @@
   </delete>
   <insert id="insert" parameterType="com.lhzl.drp.model.StationInfo" >
     insert into tbl_stationinfo (id, stationPid, stationName, 
-      status, creatby, createTime, 
+      status, createby, createTime,
       updateby, updateTime)
     values (#{id,jdbcType=BIGINT}, #{stationpid,jdbcType=BIGINT}, #{stationname,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
       #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lhzl.drp.model.StationInfo" >
@@ -48,8 +48,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="creatby != null" >
-        creatby,
+      <if test="createby != null" >
+        createby,
       </if>
       <if test="createtime != null" >
         createTime,
@@ -74,8 +74,8 @@
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -100,8 +100,8 @@
       <if test="status != null" >
         status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        creatby = #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         createTime = #{createtime,jdbcType=TIMESTAMP},
@@ -120,7 +120,7 @@
     set stationPid = #{stationpid,jdbcType=BIGINT},
       stationName = #{stationname,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      creatby = #{creatby,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
@@ -128,7 +128,10 @@
   </update>
 
   <select id="queryStationInfo" parameterType="Map" resultType="com.lhzl.drp.model.StationInfo">
---    select t.*,s.stationname as stationpname from tbl_stationInfo  t  left join tbl_stationInfo  s   on s.id=t.stationPid
 select * from  tbl_stationInfo  where  stationPid=0
+  </select>
+
+  <select id="querySonStationInfo" parameterType="Map" resultType="com.lhzl.drp.model.StationInfo">
+    select * from  tbl_stationInfo  where  stationPid=#{id}
   </select>
 </mapper>

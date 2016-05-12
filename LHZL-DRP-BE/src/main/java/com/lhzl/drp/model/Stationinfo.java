@@ -13,13 +13,14 @@ public class StationInfo {
 
     private String status;
 
-    private String creatby;
+    private String createby;
 
     private Date createtime;
 
     private String updateby;
 
     private Date updatetime;
+
 
     public String getStationpname() {
         return stationpname;
@@ -61,12 +62,12 @@ public class StationInfo {
         this.status = status == null ? null : status.trim();
     }
 
-    public String getCreatby() {
-        return creatby;
+    public String getCreateby() {
+        return createby;
     }
 
-    public void setCreatby(String creatby) {
-        this.creatby = creatby == null ? null : creatby.trim();
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
     }
 
     public Date getCreatetime() {
@@ -92,4 +93,6 @@ public class StationInfo {
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
+
+
 }
