@@ -27,25 +27,25 @@
     <result column="trainNo" property="trainno" jdbcType="VARCHAR" />
     <result column="hasConfirm" property="hasconfirm" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="creatby" property="creatby" jdbcType="VARCHAR" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateby" property="updateby" jdbcType="VARCHAR" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.lhzl.drp.model.LineInfo" extends="BaseResultMap" >
-    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+    <result column="lineDesc" property="linedesc" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, lineType, tourType, lineNo, sysNO, lineStart, lineEnd, title, subTitile, lineSid, 
-    keyword, days, hotelDays, hotelType, hotelName, tel, deadline, hasWeekend, cusSelect, 
-    min, rebate, trainType, trainNo, hasConfirm, status, creatby, createTime, updateby, 
+    id, lineType, tourType, lineNo, sysNO, lineStart, lineEnd, title, subTitile, lineSid,
+    keyword, days, hotelDays, hotelType, hotelName, tel, deadline, hasWeekend, cusSelect,
+    min, rebate, trainType, trainNo, hasConfirm, status, createby, createTime, updateby,
     updateTime
   </sql>
   <sql id="Blob_Column_List" >
-    desc
+    lineDesc
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -57,28 +57,28 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.lhzl.drp.model.LineInfo" >
-    insert into tbl_lineinfo (id, lineType, tourType, 
-      lineNo, sysNO, lineStart, 
-      lineEnd, title, subTitile, 
-      lineSid, keyword, days, 
-      hotelDays, hotelType, hotelName, 
-      tel, deadline, hasWeekend, 
-      cusSelect, min, rebate, 
-      trainType, trainNo, hasConfirm, 
-      status, creatby, createTime, 
-      updateby, updateTime, desc
-      )
-    values (#{id,jdbcType=BIGINT}, #{linetype,jdbcType=VARCHAR}, #{tourtype,jdbcType=VARCHAR}, 
-      #{lineno,jdbcType=VARCHAR}, #{sysno,jdbcType=VARCHAR}, #{linestart,jdbcType=BIGINT}, 
-      #{lineend,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{subtitile,jdbcType=VARCHAR}, 
-      #{linesid,jdbcType=VARCHAR}, #{keyword,jdbcType=BIGINT}, #{days,jdbcType=INTEGER}, 
-      #{hoteldays,jdbcType=INTEGER}, #{hoteltype,jdbcType=BIGINT}, #{hotelname,jdbcType=VARCHAR}, 
-      #{tel,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR}, #{hasweekend,jdbcType=VARCHAR}, 
-      #{cusselect,jdbcType=VARCHAR}, #{min,jdbcType=INTEGER}, #{rebate,jdbcType=DECIMAL}, 
-      #{traintype,jdbcType=BIGINT}, #{trainno,jdbcType=VARCHAR}, #{hasconfirm,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{creatby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{desc,jdbcType=LONGVARCHAR}
-      )
+    insert into tbl_lineinfo (id, lineType, tourType,
+    lineNo, sysNO, lineStart,
+    lineEnd, title, subTitile,
+    lineSid, keyword, days,
+    hotelDays, hotelType, hotelName,
+    tel, deadline, hasWeekend,
+    cusSelect, min, rebate,
+    trainType, trainNo, hasConfirm,
+    status, createby, createTime,
+    updateby, updateTime, lineDesc
+    )
+    values (#{id,jdbcType=BIGINT}, #{linetype,jdbcType=VARCHAR}, #{tourtype,jdbcType=VARCHAR},
+    #{lineno,jdbcType=VARCHAR}, #{sysno,jdbcType=VARCHAR}, #{linestart,jdbcType=BIGINT},
+    #{lineend,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{subtitile,jdbcType=VARCHAR},
+    #{linesid,jdbcType=VARCHAR}, #{keyword,jdbcType=BIGINT}, #{days,jdbcType=INTEGER},
+    #{hoteldays,jdbcType=INTEGER}, #{hoteltype,jdbcType=BIGINT}, #{hotelname,jdbcType=VARCHAR},
+    #{tel,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR}, #{hasweekend,jdbcType=VARCHAR},
+    #{cusselect,jdbcType=VARCHAR}, #{min,jdbcType=INTEGER}, #{rebate,jdbcType=DECIMAL},
+    #{traintype,jdbcType=BIGINT}, #{trainno,jdbcType=VARCHAR}, #{hasconfirm,jdbcType=VARCHAR},
+    #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+    #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{linedesc,jdbcType=LONGVARCHAR}
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.lhzl.drp.model.LineInfo" useGeneratedKeys="true" keyProperty="id">
     insert into tbl_lineinfo
@@ -158,8 +158,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="creatby != null" >
-        creatby,
+      <if test="createby != null" >
+        createby,
       </if>
       <if test="createtime != null" >
         createTime,
@@ -170,8 +170,8 @@
       <if test="updatetime != null" >
         updateTime,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="linedesc != null" >
+        lineDesc,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -250,8 +250,8 @@
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -262,8 +262,8 @@
       <if test="updatetime != null" >
         #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=LONGVARCHAR},
+      <if test="linedesc != null" >
+        #{linedesc,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -342,8 +342,8 @@
       <if test="status != null" >
         status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="creatby != null" >
-        creatby = #{creatby,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         createTime = #{createtime,jdbcType=TIMESTAMP},
@@ -354,8 +354,8 @@
       <if test="updatetime != null" >
         updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=LONGVARCHAR},
+      <if test="linedesc != null" >
+        lineDesc = #{linedesc,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -386,11 +386,11 @@
       trainNo = #{trainno,jdbcType=VARCHAR},
       hasConfirm = #{hasconfirm,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      creatby = #{creatby,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      desc = #{desc,jdbcType=LONGVARCHAR}
+      lineDesc = #{linedesc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lhzl.drp.model.LineInfo" >
@@ -419,7 +419,7 @@
       trainNo = #{trainno,jdbcType=VARCHAR},
       hasConfirm = #{hasconfirm,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      creatby = #{creatby,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateby = #{updateby,jdbcType=VARCHAR},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}

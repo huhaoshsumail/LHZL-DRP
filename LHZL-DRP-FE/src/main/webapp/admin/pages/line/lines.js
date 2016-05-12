@@ -53,13 +53,13 @@ var initLineData = function () {
         ],
         columns: [
             {name: "id", display: "id", hidden: true},
-            {name: "lineNo", "display": "线路编号"},
+            {name: "lineno", "display": "线路编号"},
             {name: "title", "display": "线路名称"},
             {name: "days", "display": "天数"},
-            {name: "lineType", "display": "线路类型"},
+            {name: "tourtype", "display": "线路类型"},
             {name: "status", "display": "状态"},
-            {name: "create", "display": "创建人/时间"},
-            {name: "update", "display": "最后编辑/时间"}
+            {name: "createtime", "display": "创建人/时间"},
+            {name: "updatetime", "display": "最后编辑/时间"}
         ],
         ajax: {
             url: window.serviceUrl + "lineController/lineList?token=" + (localStorage.getItem("token")||""),
@@ -96,14 +96,20 @@ var initLineData = function () {
                 );
             },
             error : function(data) {
-                alert(data.meta.message);
+                layer.alert(
+                    data.meta.message,
+                    {
+                        title : '提示',
+                        icon : 5
+                    }
+                )
             }
         });
     }
 }
 
 $(function () {
-    
+
     // 加载数据
     loadData();
 
@@ -149,6 +155,7 @@ $(function () {
         //         }
         //     }
         // });
+
         var result = new Array();
         $("[name = theme]:checkbox").each(function () {
             if ($(this).is(":checked")) {
@@ -156,6 +163,10 @@ $(function () {
             }
         });
         $("#linesid").val(result.join(","));
+
+        var deadline = $("#day").find("option:selected").text() + ":" + $("#hour").find("option:selected").text() + ":"
+                        + $("#minute").find("option:selected").text();
+        $("#deadline").val(deadline);
 
         var formData=$("#lineForm").form2object();
         $.ajax({
@@ -193,5 +204,26 @@ $(function () {
             })
         }
         $("#keyword").html(options);
+
+        // 初始化天数
+        options = "";
+        for (var i = 0; i <= 30; i++) {
+            options += "<option>" + i + "</option>";
+        }
+        $("#day").html(options);
+
+        // 初始化小时
+        options = "";
+        for (var i = 0; i <= 23; i++) {
+            options += "<option>" + i + "</option>";
+        }
+        $("#hour").html(options);
+
+        // 初始化分钟
+        options = "";
+        for (var i = 0; i <= 55; i = i + 5) {
+            options += "<option>" + i + "</option>";
+        }
+        $("#minute").html(options);
     }
 })

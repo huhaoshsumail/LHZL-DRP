@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,7 +44,11 @@ public class LineController {
     public Response lineList(@RequestBody Map<String, Object> map) {
         Response res = null;
         try{
-
+            List<LineInfo> lines = this.lineService.qryLines();
+            res = new Response().success(lines);
+            if (map.containsKey("count")) {
+                res.setCount(lines.size());
+            }
         } catch (Exception e) {
             this.logger.error("查询线路列表异常", e);
         }
