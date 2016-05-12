@@ -18,7 +18,7 @@ CREATE TABLE `Tbl_LineInfo` (
 
 `subTitile` varchar(60) NULL COMMENT '副标题',
 
-`desc` text NULL COMMENT '描述',
+`lineDesc` text NULL COMMENT '描述',
 
 `lineSid` varchar(50) NULL COMMENT '线路主题-线路主题外键, 多选用逗号隔开',
 
@@ -42,11 +42,17 @@ CREATE TABLE `Tbl_LineInfo` (
 
 `min` int NOT NULL COMMENT '最小成团人数',
 
+`rebate` numeric(24,3) NOT NULL COMMENT '返利',
+
+`trainType` bigint NOT NULL COMMENT '车次类型（关联在字典表）',
+
+`trainNo` varchar(24) NOT NULL COMMENT '车次编号',
+
 `hasConfirm` varchar(1) NOT NULL DEFAULT 'N' COMMENT '订单是否需要确认-N   不需要确认\r\nY    需要确认',
 
 `status` varchar(2) NOT NULL DEFAULT 'T' COMMENT '状态-T   草稿\r\nS    提交\r\nA    审核中\r\nP    审核通过\r\nR    审核拒绝\r\nN    上架中\r\nF     暂停\r\nD     删除',
 
-`creatby` varchar(200) NOT NULL COMMENT '创建人',
+`createby` varchar(200) NOT NULL COMMENT '创建人',
 
 `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
 
@@ -60,7 +66,10 @@ UNIQUE INDEX `index_lineNo` (`lineNo`),
 
 UNIQUE INDEX `index_sysNO` (`sysNO`)
 
-);
+)
+
+COMMENT='线路主表'
+;
 
 
 
@@ -74,74 +83,6 @@ CREATE TABLE `Tbl_StationInfo` (
 
 `status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用\r\nＮ　　不启用\r\nＹ　　启用',
 
-`creatby` varchar(200) NOT NULL COMMENT '创建人',
-
-`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
-
-
-
-CREATE TABLE `Tbl_ThemeInfo` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '主题id',
-
-`themeName` varchar(200) NOT NULL COMMENT '主题名称',
-
-`remark` varchar(500) NULL COMMENT '备注',
-
-`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '状态\r\nN  不启用\r\nY   启用',
-
-`createby` varchar(200) NOT NULL COMMENT '创建人',
-
-`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
-
-
-
-CREATE TABLE `Tbl_KeyWords` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '关键字id',
-
-`keywords` varchar(200) NOT NULL COMMENT '关键字',
-
-`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用 N  不启用   Y  启用',
-
-`createby` varchar(200) NOT NULL COMMENT '关键字',
-
-`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
-
-
-
-CREATE TABLE `Tbl_HotelInfo` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '住宿id',
-
-`hotelType` varchar(1) NOT NULL COMMENT '住宿类型',
-
-`status` varchar(1) NOT NULL DEFAULT 'Y' COMMENT '是否启用 N  不启用  Y   启用',
-
 `createby` varchar(200) NOT NULL COMMENT '创建人',
 
 `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
@@ -152,7 +93,10 @@ CREATE TABLE `Tbl_HotelInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='站点管理表'
+;
 
 
 
@@ -184,7 +128,10 @@ CREATE TABLE `Tbl_ShuttleInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='接送信息表'
+;
 
 
 
@@ -214,7 +161,10 @@ CREATE TABLE `Tbl_Triprules` (
 
 PRIMARY KEY (`tripId`) 
 
-);
+)
+
+COMMENT='接送规则表'
+;
 
 
 
@@ -238,36 +188,6 @@ CREATE TABLE `Tbl_ExtendInfo` (
 
 `note` text NOT NULL COMMENT '注意事项',
 
-`creatby` varchar(200) NOT NULL COMMENT '创建人',
-
-`creatTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
-
-
-
-CREATE TABLE `Tbl_GroupInfo` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '团体id',
-
-`groupNo` varchar(20) NOT NULL COMMENT '团体编号',
-
-`lineId` bigint NOT NULL COMMENT '线路编号-路线主表外键关联',
-
-`groupName` varchar(200) NOT NULL COMMENT '团体名称',
-
-`groupStart` datetime NOT NULL COMMENT '出团开始时间',
-
-`groupEnd` datetime NOT NULL COMMENT '出团结束时间',
-
-`status` varchar(1) NOT NULL DEFAULT 'T' COMMENT '状态-T     草稿\r\nA     审核中\r\nP     审核通过\r\nF      审核失败',
-
 `createby` varchar(200) NOT NULL COMMENT '创建人',
 
 `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -278,37 +198,10 @@ CREATE TABLE `Tbl_GroupInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
 
-
-
-CREATE TABLE `Tbl_TouristInfo` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '游客信息id',
-
-`groupId` bigint NOT NULL COMMENT '团体id',
-
-`trainId` bigint NULL COMMENT '旅游车次',
-
-`tourName` varchar(200) NOT NULL COMMENT '游客姓名',
-
-`isChildren` varchar(1) NOT NULL DEFAULT 'M' COMMENT '成人/儿童 - M     成人\r\nC      儿童',
-
-`IDCard` varchar(18) NULL COMMENT '游客证件',
-
-`tourSeat` varchar(10) NULL COMMENT '游客座位',
-
-`creatby` varchar(200) NOT NULL COMMENT '创建人',
-
-`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
+COMMENT='扩展信息表'
+;
 
 
 
@@ -338,33 +231,10 @@ CREATE TABLE `Tbl_UserInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
 
-
-
-CREATE TABLE `Tbl_TrainInfo` (
-
-`id` bigint NOT NULL AUTO_INCREMENT COMMENT '车次id',
-
-`trainNo` varchar(20) NOT NULL COMMENT '车次编号',
-
-`trainName` varchar(20) NOT NULL COMMENT '车次名称',
-
-`plateNum` varchar(10) NOT NULL COMMENT '车牌号',
-
-`status` varchar(1) NOT NULL DEFAULT 'N' COMMENT '状态   N  正常    D  停用   T  出行',
-
-`createby` varchar(200) NOT NULL COMMENT '创建人',
-
-`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-
-`updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
-
-`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
-
-PRIMARY KEY (`id`) 
-
-);
+COMMENT='会员信息表'
+;
 
 
 
@@ -404,7 +274,10 @@ PRIMARY KEY (`id`) ,
 
 UNIQUE INDEX `index_opacct` (`opacct`)
 
-);
+)
+
+COMMENT='会员操作员表'
+;
 
 
 
@@ -417,6 +290,14 @@ CREATE TABLE `Tbl_OrderInfo` (
 `lineId` bigint NOT NULL COMMENT '线路id',
 
 `drpid` bigint NOT NULL COMMENT '分销商id',
+
+`guide` varchar(200) NULL,
+
+`guideTel` varchar(20) NULL,
+
+`driver` varchar(200) NULL,
+
+`driverTel` varchar(20) NULL,
 
 `ordamt` numeric(24,3) NULL COMMENT '订单金额',
 
@@ -436,7 +317,10 @@ CREATE TABLE `Tbl_OrderInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='订单主表'
+;
 
 
 
@@ -455,6 +339,8 @@ CREATE TABLE `Tbl_PayInfo` (
 `payAmt` numeric(24,3) NULL COMMENT '订单实付金额',
 
 `prepaidAmt` numeric(24,3) NULL COMMENT '订单预付金额',
+
+`orderRebate` numeric(24,3) NULL COMMENT '订单返利',
 
 `prepaidTime` datetime NULL COMMENT '预付款时间',
 
@@ -478,7 +364,10 @@ CREATE TABLE `Tbl_PayInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='订单付款信息'
+;
 
 
 
@@ -494,7 +383,10 @@ CREATE TABLE `Tbl_LogInfo` (
 
 PRIMARY KEY (`logId`) 
 
-);
+)
+
+COMMENT='日志表'
+;
 
 
 
@@ -510,9 +402,9 @@ CREATE TABLE `Tbl_RoleInfo` (
 
 `remark` varchar(300) NULL COMMENT '备注',
 
-`creatby` varchar(200) NOT NULL COMMENT '创建人',
+`createby` varchar(200) NOT NULL COMMENT '创建人',
 
-`creatTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 
 `updateby` varchar(200) NULL DEFAULT 'anonymous' COMMENT '最后修改人',
 
@@ -520,7 +412,10 @@ CREATE TABLE `Tbl_RoleInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='角色表'
+;
 
 
 
@@ -532,7 +427,7 @@ CREATE TABLE `Tbl_PermissionInfo` (
 
 `actionName` varchar(200) NOT NULL COMMENT '操作名称',
 
-`remark` text NULL COMMENT '备注',
+`remark` varchar(500) NULL COMMENT '备注',
 
 `createby` varchar(200) NOT NULL COMMENT '创建人',
 
@@ -544,7 +439,10 @@ CREATE TABLE `Tbl_PermissionInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='权限表'
+;
 
 
 
@@ -566,7 +464,10 @@ CREATE TABLE `Tbl_RolePermissionInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='角色权限关联表'
+;
 
 
 
@@ -584,7 +485,10 @@ CREATE TABLE `Tbl_MessageInfo` (
 
 PRIMARY KEY (`msgId`) 
 
-);
+)
+
+COMMENT='系统消息表'
+;
 
 
 
@@ -596,13 +500,16 @@ CREATE TABLE `Tbl_RolePmsnInfo` (
 
 `oprtid` bigint NULL COMMENT '操作员id',
 
-`createby` varchar(200) NULL COMMENT '创建人',
+`createby` varchar(200) NOT NULL COMMENT '创建人',
 
-`createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='角色操作员关联表'
+;
 
 
 
@@ -628,7 +535,95 @@ CREATE TABLE `Tbl_LineAmtsInfo` (
 
 PRIMARY KEY (`id`) 
 
-);
+)
+
+COMMENT='线路金额表'
+;
+
+
+
+CREATE TABLE `Tbl_AuditInfo` (
+
+`id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+
+`auditType` varchar(3) NOT NULL COMMENT '审核类型  \r\nORD    订单\r\nUSR     会员\r\nLNE     线路\r\n',
+
+`referenceId` bigint NOT NULL COMMENT '关联表id',
+
+`userid` bigint NOT NULL COMMENT '审核用户id',
+
+`title` varchar(200) NOT NULL COMMENT '标题',
+
+`status` varchar(255) NOT NULL COMMENT '状态\r\nN    草稿\r\nR    正在审核\r\nP     审核通过\r\nF      审核拒绝',
+
+`remark` varchar(500) NULL COMMENT '备注',
+
+`createby` varchar(255) NULL COMMENT '创建人',
+
+`createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+`updteby` varchar(255) NULL DEFAULT 'anonymous' COMMENT '修改人',
+
+`updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+
+PRIMARY KEY (`id`) 
+
+)
+
+COMMENT='审核表'
+;
+
+
+
+CREATE TABLE `tbl_book_code` (
+
+`codeId` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+
+`code` varchar(200) NOT NULL COMMENT 'code',
+
+`description` varchar(200) NULL COMMENT '备注',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NOT NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`codeId`) 
+
+)
+
+COMMENT='字典表'
+;
+
+
+
+CREATE TABLE `tbl_book_value` (
+
+`valueId` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+
+`codeId` bigint NOT NULL COMMENT 'code外键',
+
+`value` varchar(200) NOT NULL COMMENT '值',
+
+`description` varchar(200) NULL COMMENT '备注',
+
+`createby` varchar(200) NOT NULL COMMENT '创建人',
+
+`createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '创建时间',
+
+`updateby` varchar(200) NOT NULL DEFAULT 'anonymous' COMMENT '最后修改人',
+
+`updateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT '最后修改时间',
+
+PRIMARY KEY (`valueId`) 
+
+)
+
+COMMENT='字典表'
+;
 
 
 
@@ -648,8 +643,6 @@ ALTER TABLE `Tbl_ExtendInfo` ADD CONSTRAINT `fk_ext_lineid` FOREIGN KEY (`lineId
 
 ALTER TABLE `Tbl_PayInfo` ADD CONSTRAINT `fk_pay_orderid` FOREIGN KEY (`orderId`) REFERENCES `Tbl_OrderInfo` (`id`);
 
-ALTER TABLE `Tbl_TouristInfo` ADD CONSTRAINT `fk_tour_groupid` FOREIGN KEY (`groupId`) REFERENCES `Tbl_GroupInfo` (`id`);
-
 ALTER TABLE `Tbl_ShuttleInfo` ADD CONSTRAINT `fk_shut_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
 
 ALTER TABLE `Tbl_ShuttleInfo` ADD CONSTRAINT `fk_shut_startid` FOREIGN KEY (`startId`) REFERENCES `Tbl_StationInfo` (`id`);
@@ -658,15 +651,11 @@ ALTER TABLE `Tbl_OrderInfo` ADD CONSTRAINT `fk_order_lineid` FOREIGN KEY (`lineI
 
 ALTER TABLE `Tbl_OrderInfo` ADD CONSTRAINT `fk_order_drpid` FOREIGN KEY (`drpid`) REFERENCES `Tbl_UserInfo` (`id`);
 
-ALTER TABLE `Tbl_GroupInfo` ADD CONSTRAINT `fk_group_lineid` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
-
-ALTER TABLE `Tbl_LineInfo` ADD CONSTRAINT `fk_line_keywords` FOREIGN KEY (`keyword`) REFERENCES `Tbl_KeyWords` (`id`);
-
-ALTER TABLE `Tbl_TouristInfo` ADD CONSTRAINT `fk_tour_trainid` FOREIGN KEY (`trainId`) REFERENCES `Tbl_TrainInfo` (`id`);
-
 ALTER TABLE `Tbl_LineAmtsInfo` ADD CONSTRAINT `fk_amt_lineId` FOREIGN KEY (`lineId`) REFERENCES `Tbl_LineInfo` (`id`);
 
 ALTER TABLE `Tbl_RoleInfo` ADD CONSTRAINT `fk_role_userid` FOREIGN KEY (`userId`) REFERENCES `Tbl_UserInfo` (`id`);
+
+ALTER TABLE `tbl_book_value` ADD CONSTRAINT `fk_val_cid` FOREIGN KEY (`codeId`) REFERENCES `tbl_book_code` (`codeId`);
 
 
 
