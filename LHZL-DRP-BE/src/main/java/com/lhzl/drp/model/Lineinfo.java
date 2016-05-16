@@ -1,5 +1,10 @@
 package com.lhzl.drp.model;
 
+import com.lhzl.drp.dao.AppCodeMapper;
+import com.lhzl.drp.service.AppCodeService;
+import com.lhzl.drp.util.DateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -58,9 +63,13 @@ public class LineInfo {
 
     private Date createtime;
 
+    private String createTimeStr;
+
     private String updateby;
 
     private Date updatetime;
+
+    private String updateTimeStr;
 
     private String linedesc;
 
@@ -292,15 +301,14 @@ public class LineInfo {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+        this.createTimeStr = DateUtil.dateToString(this.createtime);
     }
 
     public String getUpdateby() {
         return updateby;
     }
 
-    public void setUpdateby(String updateby) {
-        this.updateby = updateby == null ? null : updateby.trim();
-    }
+    public void setUpdateby(String updateby) { this.updateby = updateby == null ? null : updateby.trim();}
 
     public Date getUpdatetime() {
         return updatetime;
@@ -308,6 +316,7 @@ public class LineInfo {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+        this.updateTimeStr = DateUtil.dateToString(this.updatetime);
     }
 
     public String getLinedesc() {
@@ -316,6 +325,22 @@ public class LineInfo {
 
     public void setLinedesc(String linedesc) {
         this.linedesc = linedesc == null ? null : linedesc.trim();
+    }
+
+    public String getCreateTimeStr() {
+        return createTimeStr;
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public String getUpdateTimeStr() {
+        return updateTimeStr;
+    }
+
+    public void setUpdateTimeStr(String updateTimeStr) {
+        this.updateTimeStr = updateTimeStr;
     }
 
     public String getRemind() {

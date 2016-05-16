@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.xml.crypto.Data;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +35,8 @@ public class LineController {
 
     @Autowired
     private HttpServletRequest request;
+
+    private Map<String, Object> rspMap = new HashMap<>();
 
     /**
      * 线路列表查询
@@ -84,5 +88,13 @@ public class LineController {
             throw new Exception("线路保存异常", e);
         }
         return res;
+    }
+
+    public Map<String, Object> getRspMap() {
+        return rspMap;
+    }
+
+    public void setRspMap(Map<String, Object> rspMap) {
+        this.rspMap = rspMap;
     }
 }

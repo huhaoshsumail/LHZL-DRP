@@ -2,6 +2,10 @@
  * Created by chenjinyi on 2016年4月2日15:34:03
  */
 var initLineData = function () {
+    // 旅游类型
+    var tourtypeMap = {"ZYX": "自由行", "GTY": "跟团游"};
+    // 状态
+    var statusMap = {"T": "草稿", "S": "提交", "A": "审核中", "P": "审核通过", "R": "审核拒绝", "N": "上架中", "F": "暂停", "D": "删除"};
     var gridApi = $("#lineTable").grid({
         ennableSelect: true,
         buttons: [
@@ -56,10 +60,10 @@ var initLineData = function () {
             {name: "lineno", "display": "线路编号"},
             {name: "title", "display": "线路名称"},
             {name: "days", "display": "天数"},
-            {name: "tourtype", "display": "线路类型"},
-            {name: "status", "display": "状态"},
-            {name: "createtime", "display": "创建人/时间"},
-            {name: "updatetime", "display": "最后编辑/时间"}
+            {name: "tourtype", "display": "线路类型", isArray: true, values: tourtypeMap},
+            {name: "status", "display": "状态", isArray: true, values: statusMap},
+            {name: "createby", "display": "创建人/时间", mix: "createTimeStr", split: "/"},
+            {name: "updateby", "display": "最后编辑/时间", mix: "updateTimeStr", split: "/"}
         ],
         ajax: {
             url: window.serviceUrl + "lineController/lineList?token=" + (localStorage.getItem("token")||""),

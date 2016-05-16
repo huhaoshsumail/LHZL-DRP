@@ -43,6 +43,7 @@ public class LineServiceImpl implements LineService {
         int result = 0;
         try {
             if (lineInfo.getId() == null) {
+                // 保存详情对象
                 ExtendInfoWithBLOBs extendInfoWithBLOBs = new ExtendInfoWithBLOBs();
                 extendInfoWithBLOBs.setRemind(lineInfo.getRemind());
                 extendInfoWithBLOBs.setLinefeature(lineInfo.getLinefeature());
@@ -66,7 +67,6 @@ public class LineServiceImpl implements LineService {
 
                 // 保存数据
                 this.extendInfoMapper.insertSelective(extendInfoWithBLOBs);
-
             }
         } catch (Exception e) {
             result = -1;

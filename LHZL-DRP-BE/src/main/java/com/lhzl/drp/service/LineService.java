@@ -12,4 +12,5 @@ public interface LineService {
     public List<LineInfo> qryLines();
 
     public int saveLine(LineInfo lineInfo) throws Exception;
+
 }

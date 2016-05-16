@@ -189,6 +189,15 @@
                                 temp = temp.replace(temp.substring(temp.indexOf("${"), temp.indexOf("}") + 1), eval(temp.substring(temp.indexOf("${") + 2, temp.indexOf("}"))));
                             }
                             html += temp;
+                        /*********************update by chenjinyi*************************/
+                        } else if (opts.columns[j]["mix"]) {
+                            // 混合类型
+                            html += result.data[i][opts.columns[j]["name"]] + opts.columns[j]["split"] + result.data[i][opts.columns[j]["mix"]];
+                        } else if (opts.columns[j]["isArray"]) {
+                            // 数组/键值对类型
+                            var map = opts.columns[j]["values"];
+                            html += map[result.data[i][opts.columns[j]["name"]]];
+                        /*********************update by chenjinyi*************************/
                         } else {
                             html += result.data[i][opts.columns[j]["name"]];
                         }
