@@ -16,7 +16,10 @@ var initLineData = function () {
             {id: "updLine", text: '修改', action: function(){
                 var selected = gridApi.getSelectedRows()[0];
                 if (selected != null) {
-
+                    $('#addLine').trigger("click");
+                    //加载数据
+                    console.log($("#lineForm"));
+                    $("#lineForm").object2form(selected);
                 } else {
                     layer.alert(
                         "请先选择一条记录",

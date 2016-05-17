@@ -15,9 +15,8 @@ var initRoleData = function () {
                 var selected = gridApi.getSelectedRows()[0];
                 if (selected != null) {
                     $('.roleForm').show();
-                    $("#roleForm input[name='id']").val(selected.id);
-                    $("#roleForm input[name='rolename']").val(selected.rolename);
-                    $("#roleForm input[name='remark']").val(selected.remark);
+                    //加载数据
+                    $("#roleForm").object2form(selected);
                 } else {
                     layer.alert(
                         "请先选择一条记录",

@@ -15,9 +15,16 @@ var initPmsnData = function () {
                 var selected = gridApi.getSelectedRows()[0];
                 if (selected != null) {
                     $('.pmsnForm').show();
-                    $("#pmsnForm input[name='roleid']").val(selected.id);
-                    $("#pmsnForm input[name='rolename']").val(selected.rolename);
-                    $("#pmsnForm input[name='remark']").val(selected.remark);
+                    //加载数据
+                    $("#pmsnForm").object2form(selected);
+                } else {
+                    layer.alert(
+                        "请先选择一条记录",
+                        {
+                            title : '提示',
+                            icon : 3
+                        }
+                    )
                 }
             }},
             {id: "delRoles", text: '删除', action: function(){

@@ -401,7 +401,7 @@
     //对象转表单
     $.fn.object2form = function (obj) {
         for (var key in obj) {
-            $(this).find("input[name='" + key + "']").val(obj[key]);
+            $(this).find("i nput[name='" + key + "']").val(obj[key]);
             $(this).find("textarea[name='" + key + "']").val(obj[key]);
             $(this).find("select[name='" + key + "']").val(obj[key]);
         }
